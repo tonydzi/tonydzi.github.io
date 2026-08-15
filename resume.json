@@ -4,7 +4,7 @@
     "name": "Anton Dziatkovskii",
     "label": "Developer activation for frontier platforms · founder, Palo Alto AI Research Lab (an independent lab)",
     "email": "a@platinum.fund",
-    "url": "https://palo-alto-ai-research-lab.github.io/",
+    "url": "https://tonydzi.github.io/",
     "summary": "I've done developer activation for a frontier platform before — when smart contracts were where LLM agents are now. Classically trained in CS security (MEPhI), 7+ years venture founder, author of two preprints on multi-agent stability. Today I run a production multi-machine Claude fleet in public — and write the operating manual as I go. Built with Claude as implementation collaborator; I own problem framing, architecture, evaluation, product decisions and final QA.",
     "location": {
       "city": "Lisbon",
@@ -13,8 +13,8 @@
     "profiles": [
       {
         "network": "GitHub",
-        "username": "Palo-Alto-AI-Research-Lab",
-        "url": "https://github.com/Palo-Alto-AI-Research-Lab"
+        "username": "tonydzi",
+        "url": "https://github.com/tonydzi"
       },
       {
         "network": "X",
@@ -96,7 +96,7 @@
     },
     {
       "name": "50+ published items, 2018–2026 (137 citations, h-index 7)",
-      "url": "https://palo-alto-ai-research-lab.github.io/scholar/publications/"
+      "url": "https://tonydzi.github.io/scholar/publications/"
     }
   ],
   "languages": [

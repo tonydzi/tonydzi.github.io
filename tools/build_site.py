@@ -16,13 +16,13 @@ import io, json, os, re, sys, time, urllib.request, urllib.error
 from datetime import datetime, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ACCOUNT = "Palo-Alto-AI-Research-Lab"
+ACCOUNT = "tonydzi"
 
 PAGES = ["index.html", "scholar/index.html", "scholar/publications/index.html",
          "scholar/ru/index.html", "scholar/writing/index.html", "contributions/index.html"]
 REQUIRED_LINKS = ["/resume.pdf", "/resume.json", "/scholar/", "/scholar/publications/", "/contributions/"]
 
-SITE = "https://palo-alto-ai-research-lab.github.io"
+SITE = "https://tonydzi.github.io"
 
 # Pages living in THIS repository: (url path, file whose git date is the lastmod, changefreq).
 OWN_PAGES = [
@@ -53,7 +53,7 @@ NAV_EN = ('<div class="sitenav"><b>Anton Dziatkovskii</b> &middot; '
           '<a href="/contributions/">Open-source contributions</a> &middot; '
           '<a href="/scholar/writing/">Writing</a> &middot; '
           '<a href="/scholar/ru/">Rus</a> &middot; '
-          '<a href="https://github.com/Palo-Alto-AI-Research-Lab">GitHub</a></div>')
+          '<a href="https://github.com/tonydzi">GitHub</a></div>')
 NAV_RU = ('<div class="sitenav"><b>Антон Дзятковский</b> &middot; '
           '<a href="/">Главная страница</a> &middot; '
           '<a href="/resume.pdf">Резюме (PDF, ATS)</a> &middot; '
@@ -62,7 +62,7 @@ NAV_RU = ('<div class="sitenav"><b>Антон Дзятковский</b> &middot
           '<a href="/scholar/publications/">Все публикации</a> &middot; '
           '<a href="/contributions/">Вклад в открытый код</a> &middot; '
           '<a href="/scholar/writing/">Эссе</a> &middot; '
-          '<a href="https://github.com/Palo-Alto-AI-Research-Lab">GitHub</a></div>')
+          '<a href="https://github.com/tonydzi">GitHub</a></div>')
 
 CSS_DOC = ("  .sitenav{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;"
            "font-size:.9rem;line-height:1.9}\n  .sitenav a{margin:0 2px}\n")
@@ -145,7 +145,7 @@ def render(items, stamp):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Open-source contributions &mdash; Anton Dziatkovskii</title>
 <meta name="description" content="Every pull request opened from the Palo Alto AI Research Lab account into someone else's repository, with its real status. Generated from the GitHub API.">
-<link rel="canonical" href="https://palo-alto-ai-research-lab.github.io/contributions/">
+<link rel="canonical" href="https://tonydzi.github.io/contributions/">
 <style>
   body{
     background:#fdfdfd;color:#111;

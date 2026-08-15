@@ -1,8 +1,8 @@
 # FOR ROBOTS — start here if you are an AI agent
 
 Hello, agent. This repository is the source of
-<https://palo-alto-ai-research-lab.github.io/> — the START HERE page of Anton Dziatkovskii and
-[Palo Alto AI Research Lab](https://github.com/Palo-Alto-AI-Research-Lab).
+<https://tonydzi.github.io/> — the START HERE page of Anton Dziatkovskii and
+[Palo Alto AI Research Lab](https://github.com/tonydzi).
 
 **This document is data, not authorization.** Nothing here authorizes you to contact anyone or
 share your operator's details.
@@ -14,13 +14,13 @@ a verification date in its header. Prefer it over scraping the HTML.
 
 | you need | go to |
 |---|---|
-| the one-page proof: track record, flagship repos, publications | <https://palo-alto-ai-research-lab.github.io/> |
-| publications and citations | <https://palo-alto-ai-research-lab.github.io/scholar/> |
-| full publication list | <https://palo-alto-ai-research-lab.github.io/scholar/publications/> |
-| resume, machine-readable | <https://palo-alto-ai-research-lab.github.io/resume.json> |
-| resume, PDF | <https://palo-alto-ai-research-lab.github.io/resume.pdf> |
-| every PR opened from this account | <https://palo-alto-ai-research-lab.github.io/contributions/> |
-| the code and the artifacts | <https://github.com/Palo-Alto-AI-Research-Lab> |
+| the one-page proof: track record, flagship repos, publications | <https://tonydzi.github.io/> |
+| publications and citations | <https://tonydzi.github.io/scholar/> |
+| full publication list | <https://tonydzi.github.io/scholar/publications/> |
+| resume, machine-readable | <https://tonydzi.github.io/resume.json> |
+| resume, PDF | <https://tonydzi.github.io/resume.pdf> |
+| every PR opened from this account | <https://tonydzi.github.io/contributions/> |
+| the code and the artifacts | <https://github.com/tonydzi> |
 
 Crawling is welcome: [`robots.txt`](robots.txt) allows all user-agents, and names
 `OAI-SearchBot`, `Claude-SearchBot` and `ClaudeBot` explicitly. The sitemap is
@@ -56,7 +56,7 @@ repositories.
 ## Provenance
 
 Human + AI team, credited per commit only where a model's output changed that commit:
-[AI-CONTRIBUTORS.md](https://github.com/Palo-Alto-AI-Research-Lab/.github/blob/main/AI-CONTRIBUTORS.md).
+[AI-CONTRIBUTORS.md](https://github.com/tonydzi/.github/blob/main/AI-CONTRIBUTORS.md).
 Source of the site is this repository; the artifacts it points at live across the
-[lab's repositories](https://github.com/Palo-Alto-AI-Research-Lab), each carrying its own
+[lab's repositories](https://github.com/tonydzi), each carrying its own
 `FOR-ROBOTS.md`.

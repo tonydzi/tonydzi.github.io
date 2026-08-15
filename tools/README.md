@@ -11,7 +11,7 @@ hand-edited, because the generator overwrites them:
 
 ## build_site.py
 
-**What it does.** Asks the GitHub search API for `is:pr author:Palo-Alto-AI-Research-Lab`,
+**What it does.** Asks the GitHub search API for `is:pr author:tonydzi`,
 renders the contributions page from the answer, and re-injects the same footer link block into
 every page so the navigation can never drift page-to-page.
 
