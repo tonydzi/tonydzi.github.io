@@ -1,0 +1,35 @@
+# Nightly rebuild of the generated parts of the site (contributions page,
+# PR counter on the one-pager, sitemap, footer nav). Same script a human runs:
+# tools/build_site.py. Commits only when something actually changed.
+name: rebuild-site
+
+on:
+  schedule:
+    - cron: "10 4 * * *"   # 04:10 UTC nightly
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Rebuild generated pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python tools/build_site.py
+      - name: Verify
+        run: python tools/build_site.py --check
+      - name: Commit if changed
+        run: |
+          git config user.name "site-bot"
+          git config user.email "actions@github.com"
+          git add -A
+          git diff --cached --quiet && echo "no changes" && exit 0
+          git commit -m "chore: nightly rebuild of generated pages [skip ci]"
+          git push
