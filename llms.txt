@@ -16,6 +16,7 @@
 ## Pages
 
 - [START HERE — one page of proof](https://tonydzi.github.io/) — track record, flagship repos, publications, contact.
+- [Mycroft — synthetic cofounder](https://tonydzi.github.io/mycroft/) — the lab's AI cofounder: what it does, how authorship is labeled (4 modes, EU AI Act Art. 50), correction log, stated limits. Operator: Anton Dziatkovskii.
 - [Academic profile](https://tonydzi.github.io/scholar/) — publications, citations, research.
 - [Publications](https://tonydzi.github.io/scholar/publications/)
 - [Writing](https://tonydzi.github.io/scholar/writing/)
