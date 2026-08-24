@@ -45,7 +45,7 @@
       "name": "Palo Alto AI Research Lab",
       "position": "Founder",
       "startDate": "2026-05",
-      "summary": "Production multi-machine Claude fleet run in public: claude-consensus (reproducible multi-machine agent consensus, offline demo, published evals, FAILURE-MODES.md), verbatim-citation-gate (zero-token gate + burden-of-proof judge that catches fabricated RAG citations, MIT), the operating manual written day by day (相棒 AIBŌ · The Partner)."
+      "summary": "Production multi-machine Claude fleet run in public: claw-consensus (reproducible multi-machine agent consensus, offline demo, published evals, FAILURE-MODES.md), verbatim-citation-gate (zero-token gate + burden-of-proof judge that catches fabricated RAG citations, MIT), the operating manual written day by day (相棒 AIBŌ · The Partner)."
     },
     {
       "name": "Platinum Software Development Company / Platinum VC & Incubator",

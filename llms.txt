@@ -25,7 +25,7 @@
 
 ## Open-source repositories
 
-- [claude-consensus](https://github.com/tonydzi/claude-consensus) — multi-machine agent consensus (propose/counter/accept/commit), dual-rail bus, ACK discipline, self-healing sync. Offline demo, documented failure modes. MIT.
+- [claw-consensus](https://github.com/tonydzi/claw-consensus) — multi-machine agent consensus (propose/counter/accept/commit), dual-rail bus, ACK discipline, self-healing sync. Offline demo, documented failure modes. MIT.
 - [verbatim-citation-gate](https://github.com/tonydzi/verbatim-citation-gate) — catch fabricated RAG citations before they reach the user: zero-token verbatim gate plus a burden-of-proof judge, framework-agnostic. MIT.
 - [agent-leash](https://github.com/tonydzi/agent-leash) — LEASH-8, an 8-domain control model for AI agents with delegated authority: scorecard, approval-design checklist, plan-vs-authorize pattern. MIT.
 - [claude-bible](https://github.com/tonydzi/claude-bible) — rules-as-files governance for Claude Code: precedence, declined-decisions journal, objection sparring. MIT.
