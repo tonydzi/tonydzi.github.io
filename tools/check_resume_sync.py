@@ -70,20 +70,50 @@ def check_citations(problems):
     return seen
 
 
+def parse_stamp(text):
+    """`<sha256>  <path>` per line. Tolerant of hand-editing, because a watchdog that
+    crashes on a malformed input file reports nothing at all — which reads exactly like
+    'everything is fine'."""
+    out, bad = {}, []
+    for line in text.split("\n"):
+        line = line.strip()
+        if not line:
+            continue
+        parts = line.split(None, 1)
+        if len(parts) != 2 or len(parts[0]) != 64:
+            bad.append(line)
+            continue
+        out[parts[1].strip()] = parts[0].strip()
+    return out, bad
+
+
 def check_pdf_stamp(problems):
     if not STAMP.exists():
         problems.append("resume.pdf.sources is missing — run --stamp after printing the PDF")
         return
-    want = dict(
-        line.split("  ", 1)[::-1] for line in STAMP.read_text(encoding="utf-8").split("\n") if line.strip()
-    )
+    want, bad = parse_stamp(STAMP.read_text(encoding="utf-8"))
+    for line in bad:
+        problems.append(f"resume.pdf.sources has a line that is not '<sha256>  <path>': {line!r}"
+                        " — do not hand-edit it, reprint the PDF and run --stamp")
+    if not want and not bad:
+        problems.append("resume.pdf.sources is empty — reprint the PDF and run --stamp")
     for name, recorded in want.items():
-        name = name.strip()
-        if sha(name) != recorded.strip():
+        if not (ROOT / name).exists():
+            problems.append(f"resume.pdf.sources points at {name}, which does not exist")
+            continue
+        if sha(name) != recorded:
             problems.append(
                 f"resume.pdf was printed from an older {name} — reprint it with Chrome "
                 "(Edge writes a zero-byte file without saying so) and run --stamp"
             )
+
+
+def normalise_place(raw):
+    """'Lisbon, Portugal (CET/WET)' and 'Lisbon' are the same claim; 'Lisbon' and
+    'Bay Area' are not. Compare the leading place name only, so the gate fires on a
+    real contradiction and stays quiet on a longer spelling of the same one."""
+    head = raw.split(",")[0].split("(")[0]
+    return " ".join(head.split()).strip(" .;:·-").casefold()
 
 
 def check_location(problems, warnings):
@@ -91,9 +121,9 @@ def check_location(problems, warnings):
     for name, pat in LOCATION_PATTERNS.items():
         m = pat.search(read(name))
         if m:
-            found[name] = m.group(1).strip()
-    if len(set(found.values())) > 1:
-        detail = ", ".join(f"{f}: {v!r}" for f, v in found.items())
+            found[name] = (m.group(1).strip(), normalise_place(m.group(1)))
+    if len({norm for _raw, norm in found.values()}) > 1:
+        detail = ", ".join(f"{f}: {raw!r}" for f, (raw, _n) in found.items())
         msg = "the resume and the one-pager give different locations — " + detail
         if datetime.date.today() > LOCATION_DEADLINE:
             problems.append(msg + f" (unresolved past {LOCATION_DEADLINE})")

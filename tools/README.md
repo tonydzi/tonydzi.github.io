@@ -132,3 +132,10 @@ one at a time, and asserts the gate goes red. Five of its six cases must fail th
 asserts a clean tree still passes.
 
     python tools/_test_check_resume_sync.py      # exit 0 = pass
+
+**Reviewed by outside models, 2026-08-28.** Three findings, all fixed and each now covered by a
+case in `_test_check_resume_sync.py`: a hand-edited `resume.pdf.sources` crashed the gate with an
+uncaught `ValueError` (a watchdog that dies reports nothing, which reads like "fine"); the two
+location patterns captured different amounts of tail, so `Lisbon` and `Lisbon, Portugal` looked
+like a contradiction; and the same review found the sibling gate in `~/.claude/scripts` was
+case-sensitive about a login GitHub itself treats as case-insensitive.

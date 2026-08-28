@@ -85,10 +85,27 @@ case("claim deleted from a surface",
      lambda tmp: edit(tmp, "resume.html",
                       "(136 citations, h-index 7, verified 2026-08-28)", ""),
      want_red=True)
+# 7. External review, 28 Aug: a hand-edited stamp file crashed the gate with an
+#    uncaught ValueError. A watchdog that dies reports nothing, which reads exactly
+#    like "everything is fine". It must return a verdict instead.
+case("garbled stamp line is a verdict, not a crash",
+     lambda tmp: (tmp / "resume.pdf.sources").write_text("not-a-hash\n", encoding="utf-8"),
+     want_red=True)
+
+# 8. Same review: the two location patterns captured different amounts of tail, so
+#    "Lisbon" and "Lisbon, Portugal" read as a contradiction. Longer spelling of the
+#    same place must stay green, or the gate trains people to ignore it.
+#    (edited through index.html, which is not part of the PDF stamp, so this case
+#    isolates the location logic instead of also tripping the stamp check)
+case("same place spelled longer stays green",
+     lambda tmp: edit(tmp, "index.html", "Based in Lisbon, Portugal (CET/WET)",
+                      "Based in Bay Area (Palo Alto, CA)"),
+     want_red=False)
+
 
 if FAILS:
     print("RED:", len(FAILS), "case(s) failed\n")
     for f in FAILS:
         print("  " + f)
     sys.exit(1)
-print("GREEN: 6 cases — the gate catches every drift we have actually had")
+print("GREEN: 8 cases — the gate catches every drift we have actually had")
