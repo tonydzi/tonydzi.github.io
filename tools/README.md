@@ -84,3 +84,51 @@ and asserts the page tells the truth about them.
 
 Verified 2026-07-29 to go red on a mutant that hid closed PRs (3 of 18 checks failed), so a green
 run means something.
+
+## check_resume_sync.py (added 2026-08-28)
+
+**The failure it exists for.** The same two facts — the citation count and the location — are
+written by hand in `index.html`, `resume.json` and `resume.html`, and `resume.pdf` is printed by
+hand from the last of those. Nothing tied the four together, so they drifted, and every drift was
+caught weeks later by a human reading the page:
+
+| date | what was live |
+|---|---|
+| 2026-07-27 | site said 139 citations, Google Scholar said 137 |
+| 2026-08-02 | `resume.pdf` printed 27 Jul, `resume.json` edited 01 Aug — the PDF and the JSON disagreed about the location |
+| 2026-08-28 | site said 137, Scholar said 136; the PDF was ten days behind the JSON again |
+
+**What it checks.** That the `N citations, h-index M` claim is byte-identical on all three
+surfaces; that `resume.pdf` was printed from the current `resume.html` (hashes recorded in
+`resume.pdf.sources`, not timestamps — timestamps are meaningless in a fresh checkout); and that
+the resume and the one-pager do not name two different locations.
+
+**What it deliberately does not check.** Whether the citation number is still *true*. Google
+Scholar blocks CI, so freshness is the weekly review's job — the gate only guarantees the number
+is written once and carries a `verified <date>`.
+
+**How to run.**
+
+    python tools/check_resume_sync.py            # check; exit 1 = drift
+    python tools/check_resume_sync.py --stamp    # after re-printing resume.pdf
+
+**Reprinting the PDF** (Chrome only — Edge writes a zero-byte file and reports success):
+
+    chrome --headless=new --disable-gpu --user-data-dir=<tmp> --no-first-run \
+           --no-pdf-header-footer --print-to-pdf=resume.pdf resume.html
+    python tools/check_resume_sync.py --stamp
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| `citation claim differs between surfaces` | one file was edited, the others were not | Make all three say the same number, with the date you verified it. |
+| `resume.pdf was printed from an older resume.html` | the source changed, the PDF was not reprinted | Reprint with the command above, then `--stamp`. |
+| `resume.pdf.sources is missing` | the PDF's provenance is unknown | Reprint and `--stamp`. Do not just recreate the file — that would certify a PDF nobody checked. |
+| `WARN ... different locations` | open question for the owner, not a machine-decidable defect | Decide which surface is canon and make them agree. The warning turns into a failure after the date named in the file, so it cannot outlive another season. |
+
+## _test_check_resume_sync.py
+
+Offline test. Copies the tree into a temporary directory, reintroduces each of the drifts above
+one at a time, and asserts the gate goes red. Five of its six cases must fail the gate; one
+asserts a clean tree still passes.
+
+    python tools/_test_check_resume_sync.py      # exit 0 = pass
