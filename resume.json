@@ -5,10 +5,11 @@
     "label": "Developer activation for frontier platforms · founder, Palo Alto AI Research Lab (an independent lab)",
     "email": "a@platinum.fund",
     "url": "https://tonydzi.github.io/",
-    "summary": "I've done developer activation for a frontier platform before — when smart contracts were where LLM agents are now. Classically trained in CS security (MEPhI), 7+ years venture founder, author of two preprints on multi-agent stability. Today I run a production multi-machine Claude fleet in public — and write the operating manual as I go. Built with Claude as implementation collaborator; I own problem framing, architecture, evaluation, product decisions and final QA.",
+    "summary": "I've done developer activation for a frontier platform before — when smart contracts were where LLM agents are now. Classically trained in CS security (MEPhI), 7+ years venture founder, author of two preprints on multi-agent stability. Today I run a production multi-machine Claude fleet in public — and write the operating manual as I go. Built with Claude as implementation collaborator; I own problem framing, architecture, evaluation, product decisions and final QA. Based between Palo Alto, CA and Lisbon, PT (US O-1 visa, EU passport).",
     "location": {
-      "city": "Lisbon",
-      "countryCode": "PT"
+      "city": "Palo Alto",
+      "region": "CA",
+      "countryCode": "US"
     },
     "profiles": [
       {
@@ -44,8 +45,8 @@
     {
       "name": "Palo Alto AI Research Lab",
       "position": "Founder",
-      "startDate": "2026-05",
-      "summary": "Production multi-machine Claude fleet run in public: claw-consensus (reproducible multi-machine agent consensus, offline demo, published evals, FAILURE-MODES.md), verbatim-citation-gate (zero-token gate + burden-of-proof judge that catches fabricated RAG citations, MIT), the operating manual written day by day (相棒 AIBŌ · The Partner)."
+      "startDate": "2023",
+      "summary": "Founded in 2023 in Palo Alto, CA; grew a community of 500+ AI practitioners, including Stanford researchers and big-tech engineers. Production multi-machine Claude fleet run in public: claw-consensus (reproducible multi-machine agent consensus, offline demo, published evals, FAILURE-MODES.md), verbatim-citation-gate (zero-token gate + burden-of-proof judge that catches fabricated RAG citations, MIT), the operating manual written day by day (相棒 AIBŌ · The Partner)."
     },
     {
       "name": "Platinum Software Development Company / Platinum VC & Incubator",
@@ -58,7 +59,8 @@
         "Wrote my own CRM to run it (roots: 5 years building ERP/CRM on Salesforce and Microsoft Navision at Merlion): social enrichment, parsing at scale, lead-to-call pipelines; up to 30 operators worked in it daily; today it is AI-native",
         "Ran cohorts end-to-end: recruited builders, coached founders, matched advisors; enterprise advisory for subsidiaries of Foxconn and ANA Airlines",
         "Shipped crypto-exchange infrastructure: cryptocurrency backends, market-maker engines, high-frequency trading systems; partnerships with hedge funds, market makers, brokers",
-        "Managed a distributed engineering org of 40+ developers across APAC as product owner"
+        "Managed a distributed engineering org of 40+ developers across APAC as product owner",
+        "Designed one of the first detailed frameworks for a national government to issue its own stablecoins (regulatory + token-economic design)"
       ]
     },
     {
