@@ -5,7 +5,7 @@
     "label": "Developer activation for frontier platforms · founder, Palo Alto AI Research Lab (an independent lab)",
     "email": "a@platinum.fund",
     "url": "https://tonydzi.github.io/",
-    "summary": "I've done developer activation for a frontier platform before — when smart contracts were where LLM agents are now. Classically trained in CS security (MEPhI), 7+ years venture founder, author of two preprints on multi-agent stability. Today I run a production multi-machine Claude fleet in public — and write the operating manual as I go. Built with Claude as implementation collaborator; I own problem framing, architecture, evaluation, product decisions and final QA. Based between Palo Alto, CA and Lisbon, PT (US O-1 visa, EU passport).",
+    "summary": "I've done developer activation for a frontier platform before — when smart contracts were where LLM agents are now. Classically trained in CS security (MEPhI), venture founder since 2015 (in crypto since 2015 — supported early Ethereum and Cardano fundraising efforts in Japan), author of two preprints on multi-agent stability. Today I run a production multi-machine Claude fleet in public — and write the operating manual as I go. Built with Claude as implementation collaborator; I own problem framing, architecture, evaluation, product decisions and final QA. Based between Palo Alto, CA and Lisbon, PT (US O-1 visa, EU passport).",
     "location": {
       "city": "Palo Alto",
       "region": "CA",
@@ -60,7 +60,11 @@
         "Ran cohorts end-to-end: recruited builders, coached founders, matched advisors; enterprise advisory for subsidiaries of Foxconn and ANA Airlines",
         "Shipped crypto-exchange infrastructure: cryptocurrency backends, market-maker engines, high-frequency trading systems; partnerships with hedge funds, market makers, brokers",
         "Managed a distributed engineering org of 40+ developers across APAC as product owner",
-        "Designed one of the first detailed frameworks for a national government to issue its own stablecoins (regulatory + token-economic design)"
+        "In 2018 worked with banks and governments in Myanmar, Cambodia, Thailand and Australia (incl. central-bank stakeholders) on frameworks to launch their first stablecoins",
+        "Built Solidity curricula and ran hackathons, cohorts and incubations for Web3 builders — from first workshop to shipped mainnet product",
+        "Built custom distributed ledgers for enterprise clients (ANA, Foxconn) before “blockchain” was an industry term",
+        "Worked with major blockchain foundations — Ethereum, Avalanche, Cardano, Aptos, Sui, Canton — supplying engineers and deal flow (“engineers are the new oil”); crypto ecosystem building maps directly onto LLM ecosystem building",
+        "Portfolio focus: crypto INFRASTRUCTURE, not consumer apps — exchanges, market-maker engines, HFT, blockchains, DeFi, Bitcoin L2 (~70% of portfolio)"
       ]
     },
     {
@@ -68,14 +72,21 @@
       "position": "Chief Engineer, Lending & Risk Management",
       "startDate": "2017",
       "endDate": "2018",
-      "summary": "Blockchain credit scoring, stable-value payments."
+      "summary": "Wrote smart contracts and led government/bank relations across SE Asia on structuring crypto payments and stablecoins; blockchain credit scoring, stable-value payments."
     },
     {
       "name": "Merlion",
-      "position": "Sales & CRM-ERP Director",
+      "position": "Sales Director / CRM-ERP Development Director (Microsoft Navision, Salesforce)",
       "startDate": "2006",
       "endDate": "2015",
       "summary": "One of the largest private IT distributors in Eastern Europe. Built ERP and CRM systems on Microsoft Navision and Salesforce (5 years) — where I learned that deal flow runs on CRM quality."
+    },
+    {
+      "name": "CRM/ERP consulting (Salesforce ecosystem)",
+      "position": "CRM Developer Intern",
+      "startDate": "2004",
+      "endDate": "2006",
+      "summary": "First professional years: CRM systems development in the Salesforce/ERP ecosystem."
     }
   ],
   "education": [
