@@ -38,6 +38,8 @@
            border:1px solid var(--border); color:var(--fg); background:var(--card); }
   .cta a.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
   footer { margin-top:48px; font-size:.85em; color:var(--muted); }
+  .joinbtn { text-decoration:none; padding:10px 16px; border-radius:8px; font-weight:600;
+             background:var(--accent); color:#fff !important; white-space:nowrap; }
 </style>
 </head>
 <body>
@@ -45,7 +47,15 @@
   <p class="confirmed">✓ Booking confirmed</p>
   <h1>Thanks for booking —<br>see you on the call</h1>
 
-  <p>The Google&nbsp;Meet link and a reschedule link are in your confirmation email. Add the event to your calendar now — that one click is the single best predictor of actually making it.</p>
+  <div class="card" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between">
+    <div>
+      <b>Where the call happens:</b><br>
+      <a href="https://meet.google.com/fqn-uzvj-kwi" style="font-size:1.1em;font-weight:600">meet.google.com/fqn-uzvj-kwi</a>
+    </div>
+    <a class="joinbtn" href="https://meet.google.com/fqn-uzvj-kwi">Open Google Meet →</a>
+  </div>
+
+  <p>Same link is in your confirmation email, together with a reschedule link. Add the event to your calendar now — that one click is the single best predictor of actually making it.</p>
 
   <!-- VIDEO SLOT: put a YouTube embed here when the new intro video is recorded.
        Old video eG5d5gKAscA (Platinum era) is deleted — do not re-embed it.
