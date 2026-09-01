@@ -3,9 +3,10 @@
   "basics": {
     "name": "Anton Dziatkovskii",
     "label": "Developer activation for frontier platforms · founder, Palo Alto AI Research Lab (an independent lab)",
-    "email": "a@platinum.fund",
+    "email": "dzyatkovskiy.a@gmail.com",
+    "phone": "+1 341 222 9178",
     "url": "https://tonydzi.github.io/",
-    "summary": "I've done developer activation for a frontier platform before — when smart contracts were where LLM agents are now. Classically trained in CS security (MEPhI), venture founder since 2015 (in crypto since 2015 — supported early Ethereum and Cardano fundraising efforts in Japan), author of two preprints on multi-agent stability. A superconnector with a builder's toolkit: a decade-deep network of founders, builders, engineers and investors (10,000+ founder calls, 2,000+ institutional-investor calls) — and I automate my own connector work end-to-end, from a self-built CRM to today's AI-agent fleet. Today I run a production multi-machine Claude fleet in public — and write the operating manual as I go. Built with Claude as implementation collaborator; I own problem framing, architecture, evaluation, product decisions and final QA. Based between Palo Alto, CA and Lisbon, PT (US O-1 visa, EU passport).",
+    "summary": "I've done developer activation for a frontier platform before — when smart contracts were where LLM agents are now. Classically trained in CS security (MEPhI), venture founder since 2015 (in crypto since 2015 — supported early Ethereum and Cardano fundraising efforts in Japan), author of two preprints on multi-agent stability. A superconnector with a builder's toolkit: a decade-deep network of founders, builders, engineers and investors (10,000+ founder calls, 2,000+ institutional-investor calls) — and I automate my own connector work end-to-end, from a self-built CRM to today's AI-agent fleet. Today I run a production multi-machine Claude fleet in public — and write the operating manual as I go. Built with Claude as implementation collaborator; I own problem framing, architecture, evaluation, product decisions and final QA. Based between Palo Alto, CA and Lisbon, PT. US O-1 visa active and EU citizen (Polish passport): authorized to work in the US and anywhere in the EU immediately, no visa sponsorship required.",
     "location": {
       "city": "Palo Alto",
       "region": "CA",
@@ -38,6 +39,14 @@
         "network": "Wellfound",
         "username": "anton-dziatkovskii-3",
         "url": "https://wellfound.com/u/anton-dziatkovskii-3"
+      },
+      {
+        "network": "Calendly",
+        "url": "https://calendly.com/paloaltolab"
+      },
+      {
+        "network": "WhatsApp",
+        "url": "https://wa.me/13412229178"
       }
     ]
   },
