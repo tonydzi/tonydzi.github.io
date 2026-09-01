@@ -8,6 +8,7 @@ from an older source (2 Aug, 28 Aug).
     python tools/_test_check_resume_sync.py
 """
 import pathlib
+import re
 import shutil
 import subprocess
 import sys
@@ -57,17 +58,31 @@ def edit(tmp, name, old, new):
     p.write_text(t.replace(old, new, 1), encoding="utf-8")
 
 
+# The citation count is live data: it changed 136 -> 137 on 2026-09-01 and will
+# change again. Fixtures that hardcode today's number turn this whole file red
+# the next time the number is correct, so read it out of the tree instead.
+CITED = re.search(r"(\d+) citations",
+                  (ROOT / "index.html").read_text(encoding="utf-8")).group(1)
+CLAIM = re.search(r"\(\d+ citations, h-index \d+, verified \d{4}-\d\d-\d\d\)",
+                  (ROOT / "resume.html").read_text(encoding="utf-8")).group(0)
+
+
+def bump(tmp, name, delta):
+    """Drift one surface's citation number without caring what it is today."""
+    edit(tmp, name, CITED + " citations", str(int(CITED) + delta) + " citations")
+
+
 # 1. Untouched copy of the real tree must pass, or every other case is meaningless.
 case("clean tree is green", lambda tmp: None, want_red=False)
 
 # 2. The 27 Jul / 28 Aug incident: one surface keeps the old number.
 case("citation number drifts on one surface",
-     lambda tmp: edit(tmp, "index.html", "136 citations", "137 citations"),
+     lambda tmp: bump(tmp, "index.html", +1),
      want_red=True)
 
 # 3. The same, but in the ATS copy nobody re-reads.
 case("citation number drifts in resume.json",
-     lambda tmp: edit(tmp, "resume.json", "136 citations", "134 citations"),
+     lambda tmp: bump(tmp, "resume.json", -2),
      want_red=True)
 
 # 4. The 2 Aug / 28 Aug incident: the print source moved, the PDF did not.
@@ -82,8 +97,7 @@ case("missing stamp file",
 
 # 6. The claim disappearing entirely must not read as "surfaces agree".
 case("claim deleted from a surface",
-     lambda tmp: edit(tmp, "resume.html",
-                      "(136 citations, h-index 7, verified 2026-08-28)", ""),
+     lambda tmp: edit(tmp, "resume.html", CLAIM, ""),
      want_red=True)
 # 7. External review, 28 Aug: a hand-edited stamp file crashed the gate with an
 #    uncaught ValueError. A watchdog that dies reports nothing, which reads exactly

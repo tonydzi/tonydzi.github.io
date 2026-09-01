@@ -18,10 +18,32 @@ def row(repo, num, state, merged=None, title="t", date="2026-07-24"):
             "pull_request": {"merged_at": merged}}
 
 fails = []
+ran = []
 def ck(name, cond):
+    # Count what actually ran. The footer total used to be a hand-kept sum of
+    # constants, so adding cases left it reporting the old number - a test
+    # counter that lies is worse than no counter at all.
+    ran.append(name)
     print(("  PASS " if cond else "  FAIL ") + name)
     if not cond:
         fails.append(name)
+
+# --- 0. our own PRs are not upstream contributions ----------------------
+# 2026-09-01: the page promised "someone else's repository" and counted 5 of
+# our own PRs anyway — 97 claimed against 92 real. The filter lives at the one
+# point where PRs enter the build, so page, counter and log cannot disagree.
+_mixed = [row("openai/openai-cookbook", 1, "open"),
+          row(B.ACCOUNT + "/clawrush", 2, "open"),
+          row(B.ACCOUNT.upper() + "/dashboards", 3, "merged",
+              merged="2026-07-25T00:00:00Z"),
+          row("anthropics/skills", 4, "open")]
+_kept = B.upstream_only(_mixed)
+_repos = [i["repository_url"].split("/repos/", 1)[1] for i in _kept]
+ck("own-repo PRs are dropped from the upstream set", len(_kept) == 2)
+ck("someone else's PRs survive the filter",
+   _repos == ["openai/openai-cookbook", "anthropics/skills"])
+ck("the account match ignores letter case",
+   not any(r.lower().startswith(B.ACCOUNT.lower() + "/") for r in _repos))
 
 # --- 1. all three states are rendered, none swallowed -------------------
 items = [row("openai/openai-cookbook", 1, "open"),
@@ -107,8 +129,7 @@ finally:
     B.ROOT = real_root
     shutil.rmtree(tmp, ignore_errors=True)
 
-print("\n%d/%d checks passed" % (13 + len(B.REQUIRED_LINKS) + 14 - len(fails),
-                                 13 + len(B.REQUIRED_LINKS) + 14))
+print("\n%d/%d checks passed" % (len(ran) - len(fails), len(ran)))
 if fails:
     print("FAILED:", fails)
 sys.exit(1 if fails else 0)
