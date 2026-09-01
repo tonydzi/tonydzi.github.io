@@ -117,9 +117,23 @@ case("same place spelled longer stays green",
      want_red=False)
 
 
+# 9. 2026-09-01: the stamp hashed raw bytes, so a Windows checkout
+#    (core.autocrlf=true, CRLF) and the Linux CI (LF) turned the same file into
+#    different hashes. Stamping on either one left the other permanently red,
+#    and the nightly rebuild had been failing on exactly that. The same file in
+#    either line ending must stamp identically.
+def crlf(tmp):
+    p = tmp / "resume.html"
+    lf = p.read_bytes().replace(b"\r\n", b"\n")
+    p.write_bytes(lf.replace(b"\n", b"\r\n"))
+
+
+case("line endings do not change the stamp", crlf, want_red=False)
+
+
 if FAILS:
     print("RED:", len(FAILS), "case(s) failed\n")
     for f in FAILS:
         print("  " + f)
     sys.exit(1)
-print("GREEN: 8 cases — the gate catches every drift we have actually had")
+print("GREEN: 9 cases — the gate catches every drift we have actually had")

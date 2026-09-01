@@ -53,7 +53,16 @@ def read(name):
 
 
 def sha(name):
-    return hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
+    """Hash the source with line endings normalised to LF.
+
+    core.autocrlf=true hands a Windows checkout CRLF while git stores and Linux
+    checks out LF, so hashing the raw bytes makes the stamp valid on exactly one
+    operating system. Stamping on Windows then left the Linux CI red forever,
+    and stamping on Linux would do the same to Anton's machine (2026-09-01).
+    Normalising first makes one stamp true everywhere.
+    """
+    raw = (ROOT / name).read_bytes()
+    return hashlib.sha256(raw.replace(b"\r\n", b"\n")).hexdigest()
 
 
 def check_citations(problems):
