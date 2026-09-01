@@ -89,7 +89,24 @@ def fetch_prs():
         time.sleep(2)
     if not items:
         raise SystemExit("refusing to write an empty contributions page (API returned nothing)")
-    return items
+    return upstream_only(items)
+
+
+def upstream_only(items):
+    """This page counts contributions into OTHER people's repositories.
+
+    A pull request into one of our own repos is not an upstream contribution.
+    Filtering here, at the single point where PRs enter the build, keeps the
+    page, the one-pager counter and the build log from disagreeing.
+    """
+    out = [i for i in items
+           if i["repository_url"].split("/repos/", 1)[1].split("/")[0].lower()
+           != ACCOUNT.lower()]
+    dropped = len(items) - len(out)
+    if dropped:
+        print("  (%d PR(s) into our own repos excluded from the upstream count)"
+              % dropped)
+    return out
 
 
 def esc(s):
