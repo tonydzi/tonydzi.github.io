@@ -7,6 +7,7 @@ from an older source (2 Aug, 28 Aug).
 
     python tools/_test_check_resume_sync.py
 """
+import hashlib
 import pathlib
 import re
 import shutil
@@ -111,9 +112,14 @@ case("garbled stamp line is a verdict, not a crash",
 #    same place must stay green, or the gate trains people to ignore it.
 #    (edited through index.html, which is not part of the PDF stamp, so this case
 #    isolates the location logic instead of also tripping the stamp check)
+#    The town changes (Lisbon -> Sintra on 2026-09-02) and the leading city may
+#    change again, so spell the fixture out of the file instead of hardcoding it.
+PLACE = re.search(r"Based in ([^,(]+)",
+                  (ROOT / "index.html").read_text(encoding="utf-8")).group(1).strip()
+
 case("same place spelled longer stays green",
-     lambda tmp: edit(tmp, "index.html", "Based in Lisbon, Portugal (CET/WET)",
-                      "Based in Bay Area (Palo Alto, CA)"),
+     lambda tmp: edit(tmp, "index.html", "Based in " + PLACE,
+                      "Based in " + PLACE + ", Somewhere (UTC+0)"),
      want_red=False)
 
 
@@ -131,9 +137,31 @@ def crlf(tmp):
 case("line endings do not change the stamp", crlf, want_red=False)
 
 
+# 10. 2026-09-02: the "Location:" label was dropped from resume.html, its regex
+#     stopped matching, and the gate compared one surface against nothing while
+#     printing "surfaces agree". A watchdog that lost sight of the item must say
+#     so — silence here is indistinguishable from a pass.
+def blind_location(tmp):
+    """Move the wording out from under the regex, then re-stamp.
+
+    Editing resume.html also breaks the PDF stamp, and a case that goes red for
+    the wrong reason proves nothing: the first draft of this case stayed green
+    with the fix removed. Re-stamping leaves the location blindness as the only
+    thing left to complain about.
+    """
+    edit(tmp, "resume.html", "Based between", "Located between")
+    raw = (tmp / "resume.html").read_bytes().replace(b"\r\n", b"\n")
+    (tmp / "resume.pdf.sources").write_text(
+        hashlib.sha256(raw).hexdigest() + "  resume.html\n", encoding="utf-8")
+
+
+case("a location the gate can no longer read is a finding",
+     blind_location, want_red=True)
+
+
 if FAILS:
     print("RED:", len(FAILS), "case(s) failed\n")
     for f in FAILS:
         print("  " + f)
     sys.exit(1)
-print("GREEN: 9 cases — the gate catches every drift we have actually had")
+print("GREEN: 10 cases — the gate catches every drift we have actually had")

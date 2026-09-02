@@ -42,8 +42,12 @@ CITATION_CLAIM = {
 # the date below it is a warning; after it, this gate goes red on purpose, so the
 # question cannot quietly outlive another month.
 LOCATION_DEADLINE = datetime.date(2026, 9, 30)
+# Each pattern must keep matching its file. On 2026-09-01 the "Location:" label
+# was dropped from resume.html and this regex quietly stopped matching, so the
+# gate compared one surface against nothing and printed "surfaces agree". A
+# pattern that finds nothing is now a finding, not a pass.
 LOCATION_PATTERNS = {
-    "resume.html": re.compile(r"Location:\s*([^<·]+)"),
+    "resume.html": re.compile(r"Based between ([^,(]+)"),
     "index.html": re.compile(r"Based in ([^,(]+)"),
 }
 
@@ -131,6 +135,12 @@ def check_location(problems, warnings):
         m = pat.search(read(name))
         if m:
             found[name] = (m.group(1).strip(), normalise_place(m.group(1)))
+        else:
+            problems.append(
+                f"cannot read the location out of {name} any more — the wording moved "
+                "and LOCATION_PATTERNS did not follow, so this surface is being "
+                "compared against nothing"
+            )
     if len({norm for _raw, norm in found.values()}) > 1:
         detail = ", ".join(f"{f}: {raw!r}" for f, (raw, _n) in found.items())
         msg = "the resume and the one-pager give different locations — " + detail
