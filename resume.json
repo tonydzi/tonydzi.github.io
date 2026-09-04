@@ -55,7 +55,15 @@
    "name": "Palo Alto AI Research Lab",
    "position": "Founder",
    "startDate": "2023",
-   "summary": "Founded in 2023 in Palo Alto, CA; grew a community of 500+ AI practitioners, including Stanford researchers and big-tech engineers. Production multi-machine Claude fleet run in public: claw-consensus (reproducible multi-machine agent consensus, offline demo, published evals, FAILURE-MODES.md), verbatim-citation-gate (zero-token gate + burden-of-proof judge that catches fabricated RAG citations, MIT), agent-control-plane-casebook (reproducible control-plane failures from the production fleet — each case ships a deterministic repro, a runnable red test and an upstream bug report), the operating manual written day by day (相棒 AIBŌ · The Partner)."
+   "summary": "Founded in 2023 in Palo Alto, CA; grew a community of 500+ AI practitioners, including Stanford researchers and big-tech engineers. Production multi-machine Claude fleet run in public: claw-consensus (reproducible multi-machine agent consensus, offline demo, published evals, FAILURE-MODES.md), verbatim-citation-gate (zero-token gate + burden-of-proof judge that catches fabricated RAG citations, MIT), agent-control-plane-casebook (reproducible control-plane failures from the production fleet — each case ships a deterministic repro, a runnable red test and an upstream bug report), the operating manual written day by day (相棒 AIBŌ · The Partner).",
+   "highlights": [
+    "Upstream open-source program since Jul 2026 (counters verified 2026-09-04): 98 pull requests opened in third-party repositories and 34 merged — 23 of them code and docs in engineering projects (Model Context Protocol Go SDK, UK AISI inspect_ai, QwenLM/qwen-code, google-gemini/cookbook, fastmcp, agno, pydantic/logfire, deepset-ai/haystack-integrations, zilliztech/memsearch), 11 entries in curated index lists — plus 52 issues filed with reproductions",
+    "Every contribution ships evidence, not opinion: a deterministic reproduction, a red-first regression test, and a mutation matrix showing which existing tests fail to catch the bug",
+    "Google ADK security PR #6957 (OAuth2 secret leaking over three endpoints): author adopted all three review findings within 6 hours — “genuinely one of the most useful reviews I've gotten on this PR”",
+    "Bugs adopted upstream: google/adk-python#6887 fixed from our report; #6941 filed with a measured root cause, labelled core, assigned to a maintainer and answered by two third-party PRs",
+    "Credited in a third-party release 40 hours after the report — headroom v2.0.8: “reported by @tonydzi”",
+    "The program runs unattended: 13 daily autonomous lanes on the fleet (code review, live-install documentation QA, issue-first bug reports, thread watch), with human approval gates on anything irreversible"
+   ]
   },
   {
    "name": "Platinum Software Development Company / Platinum VC & Incubator",
