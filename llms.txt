@@ -25,6 +25,15 @@
 - [Профиль (RU)](https://tonydzi.github.io/scholar/ru/)
 - [Resume (PDF)](https://tonydzi.github.io/resume.pdf) · [Resume (JSON)](https://tonydzi.github.io/resume.json)
 
+## Preprints (version of record: Zenodo, CC BY 4.0)
+
+- [Operating a Human-Governed Multi-Machine LLM Agent Fleet: An Experience Report](https://doi.org/10.5281/zenodo.22639714) - DOI 10.5281/zenodo.22639714 (2026). Reference implementation: https://github.com/tonydzi/claw-consensus
+- [Homeostatic Governance: A Gorsky-Anokhin Alternative to the Viable System Model](https://doi.org/10.5281/zenodo.22639712) - DOI 10.5281/zenodo.22639712 (2026). Three-circuit control model for multi-actor systems.
+- [When Does Graph Expansion Help Personal-Corpus Retrieval?](https://doi.org/10.5281/zenodo.22639718) - DOI 10.5281/zenodo.22639718 (2026). Reference implementation: https://github.com/tonydzi/sqlite-graph-memory
+- [Le Chatelier Tokenomics: negative feedback as homeostasis in multi-asset coupled equilibria](https://doi.org/10.5281/zenodo.22639710) - DOI 10.5281/zenodo.22639710 (2026).
+
+One text, one DOI: copies of these papers on any other platform are visibility mirrors of the Zenodo record. Cite the Zenodo DOI.
+
 ## Open-source repositories
 
 - [claw-consensus](https://github.com/tonydzi/claw-consensus) — multi-machine agent consensus (propose/counter/accept/commit), dual-rail bus, ACK discipline, self-healing sync. Offline demo, documented failure modes. MIT.
