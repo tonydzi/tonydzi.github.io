@@ -136,5 +136,71 @@
 
 <div class="foot">Updated July 2026 &middot; hand-written HTML, no framework, no tracking.</div>
 
+<!-- READ-WITH-AI:PAGES:START -->
+<!-- READ-WITH-AI widget - read_with_ai.py - github.com/tonydzi -->
+<style>
+.rwai{margin:3rem 0;padding:1.5rem;border:1px solid var(--rwai-border,#d9d5cc);
+ border-radius:var(--rwai-radius,8px);background:var(--rwai-bg,#f4f1ea);
+ font-family:var(--rwai-font,ui-monospace,SFMono-Regular,Menlo,monospace)}
+.rwai-label{font-size:.78rem;color:var(--rwai-dim,#6b6660);text-transform:uppercase;
+ letter-spacing:.12em;margin-bottom:.4rem}
+.rwai-lede{color:var(--rwai-dim,#6b6660);font-size:1rem;line-height:1.55;
+ margin:0 0 1.1rem}
+.rwai-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.rwai-btn{font:inherit;font-size:.86rem;padding:.6rem 1rem;border-radius:6px;
+ cursor:pointer;text-decoration:none;font-weight:700;
+ border:1px solid var(--rwai-accent,#1a56b0);background:transparent;
+ color:var(--rwai-accent,#1a56b0)}
+.rwai-primary{background:var(--rwai-accent,#1a56b0);color:#fff}
+.rwai-sig{margin:1.1rem 0 0;font-size:.75rem;color:var(--rwai-dim,#6b6660)}
+.rwai-sig a{color:inherit}
+.rwai-pill{position:fixed;right:1rem;bottom:1rem;z-index:60;display:flex;
+ align-items:stretch;background:var(--rwai-bg,#f4f1ea);
+ border:1px solid var(--rwai-border,#d9d5cc);border-radius:999px;
+ box-shadow:0 4px 16px rgba(0,0,0,.12);overflow:hidden;
+ font-family:var(--rwai-font,ui-monospace,monospace)}
+.rwai-pill button{background:none;border:0;cursor:pointer;font:inherit;
+ font-size:.82rem;padding:.55rem .95rem;color:var(--rwai-text,#2b2a27)}
+.rwai-pill .rwai-x{border-left:1px solid var(--rwai-border,#d9d5cc);
+ padding:.55rem .7rem;color:var(--rwai-dim,#6b6660)}
+@media(max-width:480px){.rwai-row{flex-direction:column}
+ .rwai-btn{text-align:center}}
+</style>
+<section class="rwai" id="rwai">
+  <div class="rwai-label">READ THIS WITH AI</div>
+  <p class="rwai-lede">One click and an agent reads the article, pulls out the patterns and helps you apply them to your own work.</p>
+  <div class="rwai-row">
+    <button type="button" class="rwai-btn" id="rwai-copy"
+      data-prompt="Read this article: https://tonydzi.github.io/scholar/ (“Anton Dziatkovskii”). Break it down, pull out the key principles and help me apply them to my own work. Start by asking what I am working on." data-done="Copied">Copy the prompt</button>
+    <a class="rwai-btn rwai-primary" target="_blank" rel="noopener" href="https://chatgpt.com/codex?prompt=Read%20this%20article%3A%20https%3A%2F%2Ftonydzi.github.io%2Fscholar%2F%20%28%E2%80%9CAnton%20Dziatkovskii%E2%80%9D%29.%20Break%20it%20down%2C%20pull%20out%20the%20key%20principles%20and%20help%20me%20apply%20them%20to%20my%20own%20work.%20Start%20by%20asking%20what%20I%20am%20working%20on.">Codex &rarr;</a>
+    <a class="rwai-btn rwai-primary" target="_blank" rel="noopener" href="https://chatgpt.com/?q=Read%20this%20article%3A%20https%3A%2F%2Ftonydzi.github.io%2Fscholar%2F%20%28%E2%80%9CAnton%20Dziatkovskii%E2%80%9D%29.%20Break%20it%20down%2C%20pull%20out%20the%20key%20principles%20and%20help%20me%20apply%20them%20to%20my%20own%20work.%20Start%20by%20asking%20what%20I%20am%20working%20on.">ChatGPT &rarr;</a>
+    <a class="rwai-btn rwai-primary" target="_blank" rel="noopener" href="https://claude.ai/new?q=Read%20this%20article%3A%20https%3A%2F%2Ftonydzi.github.io%2Fscholar%2F%20%28%E2%80%9CAnton%20Dziatkovskii%E2%80%9D%29.%20Break%20it%20down%2C%20pull%20out%20the%20key%20principles%20and%20help%20me%20apply%20them%20to%20my%20own%20work.%20Start%20by%20asking%20what%20I%20am%20working%20on.">Claude &rarr;</a>
+  </div>
+  <p class="rwai-sig">— TonyDzi, Palo Alto AI Research Lab · second brain, agent coordination, persistent memory: <a href="https://github.com/tonydzi">github.com/tonydzi</a></p>
+</section>
+<div class="rwai-pill" id="rwai-pill">
+  <button type="button" onclick="document.getElementById('rwai').scrollIntoView({behavior:'smooth',block:'center'})">&#10024; Read with AI</button>
+  <button type="button" class="rwai-x" aria-label="close" onclick="this.parentNode.remove()">&times;</button>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('rwai-copy'); if(!b) return;
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-prompt'), done=b.getAttribute('data-done');
+    var old=b.textContent;
+    function ok(){b.textContent=done+' \u2713';
+      setTimeout(function(){b.textContent=old},1800);}
+    function fb(){var a=document.createElement('textarea');a.value=t;
+      a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);
+      a.select();try{document.execCommand('copy');ok();}catch(e){}
+      document.body.removeChild(a);}
+    if(navigator.clipboard&&window.isSecureContext){
+      navigator.clipboard.writeText(t).then(ok,fb);}else{fb();}
+  });
+})();
+</script>
+<!-- /READ-WITH-AI -->
+<!-- READ-WITH-AI:PAGES:END -->
+
 </body>
 </html>
