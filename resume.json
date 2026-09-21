@@ -6,7 +6,7 @@
     "email": "dzyatkovskiy.a@gmail.com",
     "phone": "+1 341 222 9178",
     "url": "https://tonydzi.github.io/",
-    "summary": "I've done developer activation for a frontier platform before — when smart contracts were where LLM agents are now. Classically trained in CS security (MEPhI), eleven years as a hired operating executive (COO/CTO) at a startup incubator and software house (since 2015; in crypto since 2015 — supported early Ethereum and Cardano fundraising efforts in Japan), author of two preprints on multi-agent stability. A superconnector with a builder's toolkit: a decade-deep network of founders, builders, engineers and investors (10,000+ founder calls, 2,000+ institutional-investor calls) — and I automate my own connector work end-to-end, from a self-built CRM to today's AI-agent fleet. Today I run a production multi-machine Claude fleet in public — and write the operating manual as I go. Built with Claude as implementation collaborator; I own problem framing, architecture, evaluation, product decisions and final QA. Based between Palo Alto, CA — the heart of Silicon Valley — and Sintra, PT. US O-1 visa active and EU citizen (Polish passport): authorized to work in the US and anywhere in the EU immediately, no visa sponsorship required.",
+    "summary": "I've done developer activation for a frontier platform before — when smart contracts were where LLM agents are now. Classically trained in CS security (MEPhI), programming in Python and C++, eleven years as a hired operating executive (COO/CTO) at a startup incubator and software house (since 2015; in crypto since 2015 — supported early Ethereum and Cardano fundraising efforts in Japan), author of two preprints on multi-agent stability. A superconnector with a builder's toolkit: a decade-deep network of founders, builders, engineers and investors (10,000+ founder calls, 2,000+ institutional-investor calls) — and I automate my own connector work end-to-end, from a self-built CRM to today's AI-agent fleet. Today I run a production multi-machine Claude fleet in public — and write the operating manual as I go. Built with Claude as implementation collaborator; I own problem framing, architecture, evaluation, product decisions and final QA. Based between Palo Alto, CA — the heart of Silicon Valley — and Sintra, PT. US O-1 visa active and EU citizen (Polish passport): authorized to work in the US and anywhere in the EU immediately, no visa sponsorship required.",
     "location": {
       "city": "Palo Alto",
       "region": "CA",
@@ -60,7 +60,7 @@
       "name": "Palo Alto AI Research Lab",
       "position": "Operating Lead",
       "startDate": "2023",
-      "summary": "Founded in 2023 in Palo Alto, CA; grew a community of 500+ AI practitioners, including Stanford researchers and big-tech engineers. Production multi-machine Claude fleet run in public: claw-consensus (reproducible multi-machine agent consensus, offline demo, published evals, FAILURE-MODES.md), verbatim-citation-gate (zero-token gate + burden-of-proof judge that catches fabricated RAG citations, MIT), agent-control-plane-casebook (reproducible control-plane failures from the production fleet — each case ships a deterministic repro, a runnable red test and an upstream bug report), the operating manual written day by day (相棒 AIBŌ · The Partner).",
+      "summary": "Independent lab started in 2023 in Palo Alto, CA; grew a community of 500+ AI practitioners, including Stanford researchers and big-tech engineers. Production multi-machine Claude fleet run in public: claw-consensus (reproducible multi-machine agent consensus, offline demo, published evals, FAILURE-MODES.md), verbatim-citation-gate (zero-token gate + burden-of-proof judge that catches fabricated RAG citations, MIT), agent-control-plane-casebook (reproducible control-plane failures from the production fleet — each case ships a deterministic repro, a runnable red test and an upstream bug report), the operating manual written day by day (相棒 AIBŌ · The Partner).",
       "highlights": [
         "Run an evidence-first reliability program across the AI-agent open-source ecosystem: reproducible cross-project probes, mutation-tested reviews of other people's pull requests, and bug reports that arrive with a deterministic reproduction and a regression test demonstrated failing on the unfixed code",
         "Review accepted by the author, not merely posted — google/adk-python#6957, an OAuth2 client secret leaking over three endpoints: the mutation matrix showed which of the project's own tests stayed green, and the author adopted all three findings within six hours (“genuinely one of the most useful reviews I've gotten on this PR”)",
@@ -74,7 +74,7 @@
       "name": "Platinum Software Development Company / Platinum VC & Incubator",
       "position": "COO / CTO (hired executive)",
       "startDate": "2015",
-      "summary": "Co-founded and ran a startup incubator + software house in APAC since 2015 (11 years), alongside Japanese partner Tetsuji Nagata (Grand Corp; 12 years at Bloomberg before that). The job a partner at 500 Startups or Plug and Play does — deal flow, cohorts, founder coaching, advisor matching, fundraising — done hands-on at a boutique incubator, with rare depth in Silicon Valley and even the Japanese and Korean startup communities. Portfolio ~70% crypto / 30% other, AI startups included.",
+      "summary": "Hired operating executive (COO/CTO) who ran a startup incubator + software house in APAC since 2015 (11 years), alongside Japanese partner Tetsuji Nagata (Grand Corp; 12 years at Bloomberg before that). The job a partner at 500 Startups or Plug and Play does — deal flow, cohorts, founder coaching, advisor matching, fundraising — done hands-on at a boutique incubator, with rare depth in Silicon Valley and even the Japanese and Korean startup communities. Portfolio ~70% crypto / 30% other, AI startups included.",
       "highlights": [
         "Superconnector as a system: founders, builders, engineers and investors matched daily — and every repeatable connector motion (enrichment, matching, follow-up) automated, first with a self-built CRM, today with AI agents",
         "In fundraising since 2017: $35M fund under management, syndicate of 250 VCs/angels; helped portfolio startups raise end-to-end — deck, investor intros, term negotiation",
@@ -116,6 +116,12 @@
       "startDate": "2004",
       "endDate": "2006",
       "summary": "First professional years: CRM systems development in the Salesforce/ERP ecosystem."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming",
+      "keywords": ["Python", "C++"]
     }
   ],
   "education": [
