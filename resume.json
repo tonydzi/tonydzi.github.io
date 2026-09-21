@@ -145,7 +145,7 @@
       "summary": "Preprint, arXiv submission in progress."
     },
     {
-      "name": "50+ published items, 2018–2026 (136 citations, h-index 7, verified 2026-08-28)",
+      "name": "50+ published items, 2018–2026 (137 citations, h-index 7, verified 2026-09-01)",
       "url": "https://tonydzi.github.io/scholar/publications/"
     }
   ],
@@ -165,6 +165,38 @@
     {
       "language": "Polish",
       "fluency": "Working proficiency"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Aviation",
+      "keywords": [
+        "Licenced helicopter pilot, ~200 flight hours",
+        "Student pilot on fixed-wing, working toward the licence",
+        "Long-term goal: a small plane for the family, and a round-the-world flight in it"
+      ]
+    },
+    {
+      "name": "Endurance and mountain biking",
+      "keywords": [
+        "Half-marathons",
+        "Mountain biking (downhill, jumps) on an analogue bike by choice: a workout should stay a workout",
+        "Surfing, windsurfing, kitesurfing, tennis"
+      ]
+    },
+    {
+      "name": "Sharp tools, clean workspace",
+      "keywords": [
+        "Perfectionist about the instrument: kitchen knives, keyboard, mouse, spotless glass",
+        "A 5-machine, 9-monitor workspace I administer myself, so work runs in parallel instead of context-switching inside one box",
+        "Ten years of orchestrating many tasks at once; voice-first input over typing"
+      ]
+    },
+    {
+      "name": "Cooking for the family",
+      "keywords": [
+        "Cook dinner for the household on weekends"
+      ]
     }
   ]
 }
