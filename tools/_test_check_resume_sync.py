@@ -69,8 +69,18 @@ CLAIM = re.search(r"\(\d+ citations, h-index \d+, verified \d{4}-\d\d-\d\d\)",
 
 
 def bump(tmp, name, delta):
-    """Drift one surface's citation number without caring what it is today."""
-    edit(tmp, name, CITED + " citations", str(int(CITED) + delta) + " citations")
+    """Drift one surface's citation number without caring what it is today.
+
+    Read the number out of the file being mutated, never out of index.html.
+    Twice now the two have drifted apart in production (136 vs 137 on 13 Sep,
+    again on 17 Sep) and this helper died with its own AssertionError before
+    the checker could report the drift it exists to report. Fourteen nights of
+    red CI between the two, and the public PR counter frozen behind it."""
+    t = (tmp / name).read_text(encoding="utf-8")
+    m = re.search(r"(\d+) citations", t)
+    assert m, f"no citation number to drift in {name}"
+    cur = m.group(1)
+    edit(tmp, name, cur + " citations", str(int(cur) + delta) + " citations")
 
 
 # 1. Untouched copy of the real tree must pass, or every other case is meaningless.
