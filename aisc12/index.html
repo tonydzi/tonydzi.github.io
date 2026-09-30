@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How much of a monitor&rsquo;s job belongs in deterministic code? &mdash; AISC 12 project proposal</title>
+<meta name="description" content="AI Safety Camp 12 project proposal: replace a monitor's general code execution with narrow deterministic tools, and measure catch-rate, cross-class degradation and token cost on SLEIGHT-Bench at a fixed 1% false positive rate.">
+<link rel="canonical" href="https://tonydzi.github.io/aisc12/">
+<style>
+  body{background:#fdfdfd;color:#111;
+    font-family:"Bitstream Charter","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+    font-size:18px;line-height:1.55;max-width:47rem;margin:0 auto;padding:4rem 1.4rem 6rem;}
+  h1{font-size:2.1rem;line-height:1.12;margin:0 0 .2rem;font-weight:600;letter-spacing:-.01em}
+  .role{color:#666;font-style:italic;font-size:1.05rem;margin:0 0 1.5rem}
+  a{color:#0000ee;text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:#0000ee}
+  a:visited{color:#551a8b}
+  h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:#666;font-weight:600;margin:2.6rem 0 .8rem;padding-bottom:.35rem;border-bottom:1px solid #e2ded3}
+  h3{font-size:1.05rem;margin:1.8rem 0 .5rem;font-weight:600}
+  p{margin:0 0 1rem;max-width:65ch}
+  ul,ol{max-width:65ch;margin:0 0 1rem;padding-left:1.4rem}
+  li{margin:0 0 .45rem}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:#f3f1ea;padding:.08em .3em;border-radius:3px}
+  table{border-collapse:collapse;margin:0 0 1.2rem;font-size:.92rem;width:100%}
+  th,td{text-align:left;padding:.4rem .7rem .4rem 0;border-bottom:1px solid #eee9dd;vertical-align:top}
+  th{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:#666}
+  .foot{margin-top:3.2rem;padding-top:1rem;border-top:1px solid #e2ded3;color:#666;font-size:.85rem}
+  .sitenav{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;font-size:.9rem;line-height:1.9}
+  @media (max-width:520px){ body{padding:2.2rem 1.1rem 4rem;font-size:17px} }
+</style>
+</head>
+<body>
+
+<h1>How much of a monitor&rsquo;s job belongs in deterministic code?</h1>
+<p class="role">Project proposal for AI Safety Camp 12, Virtual Edition 2027 &mdash; Anton Dziatkovskii, Palo Alto, California</p>
+
+<h2>Summary</h2>
+
+<p>A monitor watching an AI agent has two ways to decide that a transcript is fine: read it and judge, or check it and know. <a href="https://alignment.anthropic.com/2026/sleight-bench/">SLEIGHT-Bench</a> (Anthropic Alignment Science; arXiv:2605.16626) shows how expensive the gap between those is. Across 40 attacks in 11 blind-spot categories, calibrated at a 1% false positive rate, the overall catch rate is 32% and 20 of the 40 attacks are never caught at all &mdash; counting subversions sit at 13%.</p>
+
+<p>Two further results in that post are what make this a project rather than an observation. Each targeted prompt improves the class it aims at while degrading at least one other, so no single prompt covers everything; and the one intervention that verifies rather than judges &mdash; letting the monitor run arbitrary code &mdash; costs roughly an order of magnitude more model invocations and output tokens. The post&rsquo;s own closing ask is token-efficient scaffolds and ensembling.</p>
+
+<p>This project asks whether narrow deterministic tools buy most of that catch-rate at a small fraction of that price. We hold the monitor model fixed, replace general code execution with three specific tools the monitor calls instead of reasoning &mdash; an object-state tracker, an exact line-and-offset differ, an N-hop chain resolver &mdash; and measure three numbers per blind-spot class at a fixed 1% FPR: the catch-rate delta, the degradation caused in classes the tool does not target, and the token cost against the code-execution baseline.</p>
+
+<p>The output is a set of <code>inspect_ai</code> tasks on a public dataset, so that anyone &mdash; AISI, Anthropic, or the next team &mdash; reruns the number rather than taking our word for it. The honest failure mode is that a deterministic tool buys its class only by spending false positives elsewhere, exactly as their prompts did; the same measurement shows that too, and that result is worth publishing.</p>
+
+<h2>The non-summary</h2>
+
+<h3>Theory of change</h3>
+
+<p>Control and oversight proposals increasingly assume a monitor that catches a scheming or sandbagging agent. Whether that assumption holds is an empirical question with a number attached, and right now the published number is low and unevenly distributed across failure classes.</p>
+
+<p>The load-bearing claim we want to move is narrower than &ldquo;monitoring works&rdquo;. It is: <em>for a given blind-spot class, is the missing capability judgement or verification?</em> If it is verification, the fix is cheap, auditable, and does not scale with model capability &mdash; a differ is a differ. If it is judgement, then monitoring inherits the reliability of the monitor model, and proposals resting on it inherit that too.</p>
+
+<p>Either answer changes what a control protocol should be built out of. A world where two thirds of a monitor&rsquo;s misses are verification failures is a world where oversight gets substantially more trustworthy for a few hundred lines of deterministic code. A world where they are judgement failures is one where the field should stop quoting monitor catch-rates without stating the FPR and the class.</p>
+
+<p>The assumption I am least sure of, and want the team to attack first: that SLEIGHT-Bench&rsquo;s blind-spot classes are the right cut of the space at all. If two classes turn out to be the same defect wearing different clothes, the per-class numbers mislead, and saying so is a real output.</p>
+
+<h3>Project plan</h3>
+
+<p>Everything needed for the first run is public and MIT-licensed: the dataset (<code>safety-research/sleight-bench</code>) and the harness (<code>UKGovernmentBEIS/control-arena</code>, which already depends on <code>inspect_ai</code>). The 1% threshold calibrates on the paired benign transcripts that ship with the dataset. No compute budget and no model training are required; the monitor is an API call.</p>
+
+<ol>
+<li><strong>Weeks 1&ndash;2 &mdash; reproduce the baseline.</strong> Stand up the released blind-spot transcripts as <code>inspect_ai</code> tasks, reproduce the published prompted-monitor numbers at 1% FPR, and reproduce the code-execution arm&rsquo;s cost. If we cannot reproduce them, that is the week-2 finding and we say so publicly.</li>
+<li><strong>Weeks 3&ndash;4 &mdash; scorer integrity.</strong> Every scorer we write is shown red on a transcript we broke on purpose before its number counts. This is not ceremony: I filed the upstream defect where a multi-grader panel let a grader that failed to parse cast the deciding vote, so I know what a silently-passing scorer costs.</li>
+<li><strong>Weeks 5&ndash;9 &mdash; the three tools.</strong> One tool per sub-team: object-state tracker (counting subversions), exact line-and-offset differ (file reuse), N-hop chain resolver (N-hops). Each is a narrow function the monitor calls, not a sandbox it programs.</li>
+<li><strong>Weeks 10&ndash;12 &mdash; the cross-class matrix.</strong> Run every tool against every class, not only its own, so cross-class degradation is measured rather than assumed. Write up catch-rate delta, degradation and token cost per cell, at a fixed 1% FPR.</li>
+</ol>
+
+<h3>Backup plan</h3>
+
+<p>If the released dataset turns out to be insufficient for a fair 1% FPR calibration, the project pivots to the same measurement on <code>control-arena</code>&rsquo;s own settings, which ship their own benign baselines. If the code-execution baseline cannot be reproduced within budget, we drop the cost comparison and keep the catch-rate and degradation axes, which do not depend on it.</p>
+
+<p>If a tool turns out to be trivially perfect on its class, the interesting work moves to adversarial transcripts built to defeat it, and that becomes the deliverable instead.</p>
+
+<h3>Scope</h3>
+
+<p>Three tools, three classes, one fixed monitor model, one FPR. We are not building a general monitoring framework, not training anything, and not attempting the jailbreak and omission classes, where I do not yet have a deterministic check to propose and would rather say so than pretend.</p>
+
+<h2>Output</h2>
+
+<ul>
+<li>A public repository of <code>inspect_ai</code> tasks and deterministic monitor tools, MIT, runnable against the released dataset without our machines.</li>
+<li>A write-up with the cross-class matrix &mdash; catch-rate delta, cross-class degradation, token cost &mdash; stated at a named FPR, published whether or not the tools win.</li>
+<li>Where the tools are a clean fit, a pull request upstream into <code>control-arena</code> or <code>inspect_ai</code>, so the work lands where evaluators already are rather than in a repository nobody installs.</li>
+<li>A LessWrong / Alignment Forum post at the end of the program, and the final AISC presentation.</li>
+</ul>
+
+<h2>Risks and downsides (externalities)</h2>
+
+<p>The main infohazard is that a public map of a monitor&rsquo;s blind spots is also a map for an agent trying to get past one. I judge this net-positive but not costless: the blind spots are already published with their catch-rates, and what we add is defensive tooling rather than new attack categories. We will not publish new subversion strategies that are absent from the released dataset; if the team invents one while building adversarial transcripts, it goes to the dataset&rsquo;s authors first.</p>
+
+<p>The capabilities risk is low: nothing here trains or elicits a model, and a better differ does not make an agent more capable.</p>
+
+<p>The risk I take most seriously is a false green light. A paper claiming &ldquo;deterministic tools fix monitoring&rdquo; on a scorer that never failed would be worse than no paper, because someone would build on it. That is why red-first scorer integrity is week three and not an afterthought, and why every number ships with its FPR and its class.</p>
+
+<h2>Acknowledgements</h2>
+
+<p>The project exists because of SLEIGHT-Bench and its closing ask for token-efficient scaffolds and ensembling; the blind-spot categories, the 1% FPR framing and the cost figures are theirs, not mine. The harness is UK AISI&rsquo;s <code>inspect_ai</code> and <code>control-arena</code>. The red-first rule I apply came out of a scorer defect in <code>inspect_ai</code> that its maintainers fixed to my specification.</p>
+
+<h2>Team</h2>
+
+<h3>Team size</h3>
+
+<p>Three to five, at 10 hours a week or more. The natural split is one person per tool with a shared harness, which is why the middle of that range works better than the bottom.</p>
+
+<h3>Project lead</h3>
+
+<p>Anton Dziatkovskii &mdash; Palo Alto, California (UTC&minus;7/&minus;8). <a href="https://github.com/tonydzi">github.com/tonydzi</a> &middot; <a href="https://tonydzi.github.io/resume.pdf">CV</a> &middot; <a href="https://scholar.google.com/citations?user=b8gKHiMAAAAJ">Google Scholar</a>.</p>
+
+<p>My training is in computer security: MSc, Computer and Information Systems Security, National Research Nuclear University MEPhI. At Everex in Singapore I was Chief Engineer, Lending &amp; Risk Management (2017&ndash;2018), writing smart contracts and credit-scoring code; at Platinum, from 2015, I have shipped crypto-exchange infrastructure &mdash; backends, market-maker engines, high-frequency trading systems &mdash; that was attacked repeatedly over those years. Python daily, C++ from that exchange work.</p>
+
+<p>The directly relevant work is public and in other people&rsquo;s trackers. I specified the scorer fix that landed in UK AISI&rsquo;s Inspect (<a href="https://github.com/UKGovernmentBEIS/inspect_ai/pull/4769">inspect_ai #4769</a>, merged; issue #4721): a multi-grader panel now needs more than half the panel, and a grader that fails to parse stays in the denominator, so a broken grader cannot cast the deciding vote. I built a two-stage citation auditor whose deterministic zero-token gate rejects fabricated quotes before any judge model sees them, merged into <a href="https://github.com/google-gemini/cookbook/pull/1296">google-gemini/cookbook #1296</a>. I found a DNS-rebinding bypass of an anti-SSRF validator in <a href="https://github.com/microsoft/semantic-kernel/pull/14371">microsoft/semantic-kernel #14371</a>. The running list, regenerated daily from GitHub&rsquo;s own search for <code>is:pr author:tonydzi</code>, stood at 139 pull requests into other people&rsquo;s repositories with 46 merged on 30 September 2026: <a href="https://tonydzi.github.io/contributions/">tonydzi.github.io/contributions</a>, which carries its own snapshot timestamp so you are not taking this paragraph&rsquo;s word for it.</p>
+
+<p>What I do not have, stated plainly because it should decide whether I am the right lead: no ML training experience, no PhD, no CVE, and no publication in an alignment venue. I have not completed MATS, PIBBSS or a previous AISC. My research experience is the adversarial testing of agent runtimes and eval harnesses above, done in public and reviewed by the maintainers who merged it.</p>
+
+<p>On how the work gets made: I run Claude as the implementation layer on my own machines and say so in every thread I post in. I pick the targets, set the standard and review what merges, and the standard is that no test counts until I have watched it fail on broken code. A team I lead would work the same way, disclosed the same way.</p>
+
+<p>Time commitment: 10&ndash;15 hours a week for the full program, with the conflict stated in my application rather than here.</p>
+
+<h3>Roles</h3>
+
+<table>
+<tr><th>Role</th><th>What it owns</th></tr>
+<tr><td>Harness &amp; scorer integrity</td><td>The <code>inspect_ai</code> tasks, the 1% FPR calibration, and the red-first discipline &mdash; every scorer shown failing before it is trusted.</td></tr>
+<tr><td>Tool engineer &times;2&ndash;3</td><td>One deterministic tool each (state tracker, differ, N-hop resolver), plus the adversarial transcripts that try to defeat it.</td></tr>
+<tr><td>Measurement &amp; write-up</td><td>The cross-class matrix, the cost accounting against the published baseline, and the post.</td></tr>
+</table>
+
+<h3>Skill requirements</h3>
+
+<p>Essential across the team: Python, comfort reading someone else&rsquo;s test suite, and the willingness to publish a number that does not flatter the project.</p>
+
+<p>Valuable and not in my own toolkit: prior experience with <code>inspect_ai</code> or <code>control-arena</code>; statistics good enough to keep us honest about confidence intervals on small per-class samples; and anyone who has run a real red-team exercise and can tell me which of our &ldquo;adversarial&rdquo; transcripts are actually easy.</p>
+
+<p>Not required: AI safety research background, a PhD, or prior alignment publications. I do not have them either.</p>
+
+<div class="foot">
+<p>Submitted to AI Safety Camp 12 (Virtual Edition 2027), Project Lead round, deadline 18 October 2026. This page is the proposal document; comments are welcome as issues at <a href="https://github.com/tonydzi/tonydzi.github.io/issues">github.com/tonydzi/tonydzi.github.io/issues</a>, or by email, and a Google Doc copy with comment access can be shared on request.</p>
+<p>Anton Dziatkovskii &middot; Palo Alto, California &middot; <a href="https://github.com/tonydzi">github.com/tonydzi</a></p>
+</div>
+
+<div class="sitenav">
+<a href="https://tonydzi.github.io/">Home</a> &middot;
+<a href="https://tonydzi.github.io/contributions/">Open-source contributions</a> &middot;
+<a href="https://tonydzi.github.io/resume.pdf">Resume (PDF)</a> &middot;
+<a href="https://tonydzi.github.io/scholar/">Academic profile</a>
+</div>
+
+</body>
+</html>
