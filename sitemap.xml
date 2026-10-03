@@ -2,33 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tonydzi.github.io/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-03</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://tonydzi.github.io/contributions/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-03</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://tonydzi.github.io/scholar/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-03</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://tonydzi.github.io/scholar/publications/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-03</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://tonydzi.github.io/scholar/writing/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-03</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://tonydzi.github.io/scholar/ru/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://tonydzi.github.io/papers/</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://tonydzi.github.io/papers/agent-fleet.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://tonydzi.github.io/papers/homeostatic-governance.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://tonydzi.github.io/papers/graph-rag-benchmark.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://tonydzi.github.io/papers/lechatelier-tokenomics.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://tonydzi.github.io/papers/compact-canon.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://tonydzi.github.io/papers/control-plane-casebook.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://tonydzi.github.io/papers/leash-8.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://tonydzi.github.io/papers/rules-as-files.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://tonydzi.github.io/papers/blood-panel-pipeline.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://tonydzi.github.io/claude-bible/</loc>
@@ -42,7 +92,7 @@
   </url>
   <url>
     <loc>https://tonydzi.github.io/the-journey/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
