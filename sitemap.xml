@@ -27,13 +27,17 @@
   </url>
   <url>
     <loc>https://tonydzi.github.io/scholar/ru/</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://tonydzi.github.io/papers/</loc>
     <lastmod>2026-10-03</lastmod>
     <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://tonydzi.github.io/speaker/</loc>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://tonydzi.github.io/papers/agent-fleet.html</loc>

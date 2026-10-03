@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anton Dziatkovskii, speaker: running a multi-vendor coding-agent fleet in public</title>
+<meta name="description" content="Speaker page for organizers. Talks on root-causing a coding-agent fleet, tests agents write for themselves, and sharing skills across agent CLIs. Real logs, live demos, numbers you can check.">
+<link rel="canonical" href="https://tonydzi.github.io/speaker/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Anton Dziatkovskii, speaker">
+<meta property="og:description" content="Talks from inside a coding-agent fleet of six vendors on five machines: what broke, how we found the cause, the checks we run now.">
+<meta property="og:url" content="https://tonydzi.github.io/speaker/">
+<meta property="og:image" content="https://tonydzi.github.io/speaker/anton.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Tony_Stef_">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Anton Dziatkovskii",
+    "url": "https://tonydzi.github.io/speaker/",
+    "image": "https://tonydzi.github.io/speaker/anton.jpg",
+    "jobTitle": "Engineer, Palo Alto AI Research Lab",
+    "knowsAbout": ["coding agents", "multi-agent systems", "agent evaluation", "root-cause analysis", "Python", "C++"],
+    "sameAs": ["https://sessionize.com/tonydzi", "https://github.com/tonydzi", "https://x.com/Tony_Stef_", "https://www.youtube.com/@AAACRM"]
+  }
+}
+</script>
+<style>
+  :root { --bg:#ffffff; --fg:#111418; --muted:#5a6572; --accent:#0b66c3; --card:#f4f6f8; --border:#e1e6ea; --tag:#e8f0fa; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0d1117; --fg:#e6edf3; --muted:#9aa7b3; --accent:#58a6ff; --card:#161b22; --border:#30363d; --tag:#1b2a3d; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font:17px/1.6 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  main { max-width:820px; margin:0 auto; padding:48px 16px 80px; }
+  .hero { display:flex; gap:28px; align-items:center; flex-wrap:wrap; }
+  .hero img { width:168px; height:168px; border-radius:50%; object-fit:cover; border:1px solid var(--border); flex:none; }
+  .hero .who { flex:1; min-width:260px; }
+  h1 { font-size:2.1em; margin:0 0 4px; line-height:1.15; }
+  .tagline { font-size:1.2em; font-weight:600; line-height:1.4; margin:8px 0 10px; }
+  .lede { color:var(--muted); margin:0 0 14px; }
+  .cta { display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 0; }
+  .cta a { text-decoration:none; padding:10px 16px; border-radius:8px; font-weight:600;
+           border:1px solid var(--border); color:var(--fg); background:var(--card); }
+  .cta a.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  h2 { font-size:1.05em; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:44px 0 14px; }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+  .stat { border:1px solid var(--border); background:var(--card); border-radius:10px; padding:14px 16px; }
+  .stat b { display:block; font-size:1.6em; line-height:1.2; }
+  .stat span { color:var(--muted); font-size:.92em; }
+  .talk { border:1px solid var(--border); background:var(--card); border-radius:10px; padding:18px 20px; margin:0 0 14px; }
+  .talk h3 { margin:0 0 6px; font-size:1.15em; line-height:1.35; }
+  .talk p { margin:8px 0; }
+  .tags { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 6px; }
+  .tags span { background:var(--tag); color:var(--fg); font-size:.8em; padding:2px 9px; border-radius:999px; }
+  .take { color:var(--muted); font-size:.95em; }
+  .video { position:relative; padding-top:56.25%; border-radius:10px; overflow:hidden; border:1px solid var(--border); background:#000; }
+  .video iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .cap { color:var(--muted); font-size:.92em; margin:8px 0 0; }
+  ul { padding-left:20px; }
+  li { margin:6px 0; }
+  a { color:var(--accent); }
+  .bio { border-left:3px solid var(--border); padding:2px 0 2px 14px; margin:0 0 14px; }
+  .bio p { margin:6px 0; }
+  .copy { background:none; border:1px solid var(--border); border-radius:6px; color:var(--muted);
+          padding:3px 10px; cursor:pointer; font-size:.85em; }
+  .note { font-size:.9em; color:var(--muted); }
+  .contact a { margin-right:14px; white-space:nowrap; }
+  .sitenav { margin-top:44px; padding-top:14px; border-top:1px solid var(--border); font-size:.92em; line-height:2; }
+  .sitenav a { margin:0 2px; }
+  @media (max-width:520px) { .hero img { width:120px; height:120px; } h1 { font-size:1.7em; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img src="anton.jpg" alt="Anton Dziatkovskii" width="168" height="168">
+    <div class="who">
+      <h1>Anton Dziatkovskii</h1>
+      <p class="tagline">I run a coding-agent fleet of six vendors on five machines, and I talk about what breaks, with the logs on screen.</p>
+      <p class="lede">My agents once spent a night filing 126 incidents about a network that was fine. The Mac was asleep. On stage I tell stories like that one and keep the incident reports and the power log on screen.</p>
+    </div>
+  </div>
+  <div class="cta">
+    <a class="primary" href="https://calendly.com/paloaltolab">Invite me to speak (15-min call)</a>
+    <a href="mailto:dzyatkovskiy.a@gmail.com?subject=Speaking%20invitation">Email</a>
+    <a href="https://sessionize.com/tonydzi">Sessionize profile</a>
+    <a href="https://github.com/tonydzi">GitHub</a>
+  </div>
+
+  <h2>Numbers you can check</h2>
+  <div class="stats">
+    <div class="stat"><b>48 merged PRs</b><span>in 33 other people's repos since 1 Aug 2026: 37 code and docs fixes plus 11 curated-list entries. Includes UK AISI <a href="https://github.com/UKGovernmentBEIS/inspect_ai">inspect_ai</a>, <a href="https://github.com/QwenLM/qwen-code">Qwen Code</a>, the <a href="https://github.com/modelcontextprotocol/go-sdk">MCP Go SDK</a>, <a href="https://github.com/pydantic/logfire">Pydantic Logfire</a> and the <a href="https://github.com/google-gemini/cookbook">Gemini cookbook</a>. <a href="/contributions/">Full list</a></span></div>
+    <div class="stat"><b>6 agent tools · 5 machines</b><span>Claude Code, Codex, Grok, Gemini, GLM and Mistral daily on one shared fleet, with a written rulebook, a shared skill shelf and an incident journal</span></div>
+    <div class="stat"><b>58 events</b><span>I hosted in 2025, mostly the weekly Collective Call (Luma calendar of the Palo Alto AI Research Lab). Largest page: <a href="https://luma.com/r6qv34tt">245 registrations</a></span></div>
+    <div class="stat"><b>8.99K · 445</b><span>subscribers and videos on the YouTube channel <a href="https://www.youtube.com/@AAACRM">@AAACRM</a></span></div>
+    <div class="stat"><b>Since 2015</b><span>hired COO/CTO, leading a distributed team of 40+ developers. Programmer: Python and C++</span></div>
+    <div class="stat"><b>MSc · PhD</b><span>MSc in computer security (MEPhI), PhD. Nine 2026 <a href="/papers/">preprints with DOIs</a>, h-index 7 on <a href="https://scholar.google.com/citations?user=b8gKHiMAAAAJ">Google Scholar</a></span></div>
+  </div>
+  <p class="note">Pull-request and YouTube counts re-measured on 3 Oct 2026. Nothing here is rounded up.</p>
+
+  <h2>Talks</h2>
+  <div class="talk">
+    <div class="tags"><span>Stage 20-30 min</span><span>Lightning 5 min</span><span>Agentic AI</span><span>Story + checklist</span></div>
+    <h3>My Mac Slept Through Its Own Onboarding: 126 Incident Reports and the Log Nobody Read</h3>
+    <p>I plugged in a new Mac, went to bed and left the agents in charge. By morning they had filed 126 incidents, each with a confident theory: the hub, the network, the sync. The power log said the Mac slept 71% of the night and fell asleep 69 times. The culprit was an anti-sleep app. No agent had asked the machine whether it was awake.</p>
+    <p class="take">You leave with: the rule we run now (a cause needs a log line, otherwise it is a guess), how a second agent from a different vendor re-checks that line, and how we traced all 126 reports to 18 root causes, the biggest being a sleeping Mac.</p>
+  </div>
+  <div class="talk">
+    <div class="tags"><span>Lightning 5-10 min</span><span>Live demo, offline</span><span>Testing</span></div>
+    <h3>Your Coding Agents Are Testing Their Own Alibis</h3>
+    <p>When an agent writes both the fix and the test, a green run proves less than it looks. Our incident journal kept showing the same pattern: the agent's test also passed on the broken code. That is an alibi, not a check.</p>
+    <p class="take">You leave with: three cheap probes, run live on a laptop. Revert the fix and the test must go red. Mutate the agent's own harness and see if anything notices. Hash every file the agent was not allowed to touch and diff after the run.</p>
+  </div>
+  <div class="talk">
+    <div class="tags"><span>Talk 30 min</span><span>Agent skills</span><span>Platform</span></div>
+    <h3>One Skill Shelf, Nine Agent CLIs: Sharing Skills Across Vendors Without Copies</h3>
+    <p>Claude Code, Codex, Cursor, Gemini, Grok, Mistral Vibe, OpenCode and others each look for agent skills in their own folder. Copies drift apart. We keep one shelf and mount it into every tool, then check what each one actually sees.</p>
+    <p class="take">You leave with: the folder map per tool, a free local check that shows which skills each CLI actually loaded, and the traps (name rules, truncated descriptions, drafts leaking to every machine).</p>
+  </div>
+  <div class="talk">
+    <div class="tags"><span>Recorded walkthrough 25 min</span><span>Workshop on request</span><span>Evals</span></div>
+    <h3>Agents Grading Their Own Homework: a Root-Cause Session, Start to Finish</h3>
+    <p>One real root-cause session on the fleet, screen by screen. The implementer agent states the cause as a claim with evidence or labels it a hypothesis. An agent from another vendor re-runs the evidence instead of reading the summary. The fix closes only with a test shown red on the broken code.</p>
+    <p class="take">You leave with: the session template, the evidence checklist, and why two agents agreeing is not corroboration when they share a method.</p>
+  </div>
+
+  <h2>Watch me talk</h2>
+  <div class="video">
+    <iframe src="https://www.youtube-nocookie.com/embed/5z0HNJKyaGw?start=733" title="Inside AAA CRM: Why Agentic Clones Will Change Work" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <p class="cap"><a href="https://youtu.be/5z0HNJKyaGw?t=733">Inside AAA CRM: Why Agentic Clones Will Change Work</a> (Sep 2025, English, 24 min). Starts at 12:13: how long an agent works without a human, who owns its mistakes, and what it is allowed to do.</p>
+
+  <h2>Past speaking</h2>
+  <ul>
+    <li><b>Collective Call</b>, weekly live calls of the Palo Alto AI Research Lab, host. 58 events on Luma, Feb to Dec 2025.</li>
+    <li><b>AI Agents Pad: VCs &amp; Investors Private VIP</b>, host, 9 Apr 2025, <a href="https://luma.com/r6qv34tt">245 registrations</a>.</li>
+    <li><b>Inside AAA CRM: Why Agentic Clones Will Change Work</b>, interview, Sep 2025. <a href="https://www.youtube.com/watch?v=5z0HNJKyaGw">Video</a>.</li>
+    <li>Earlier: developer education when Ethereum was the frontier platform; Solidity curricula for a 40+ engineer team across APAC.</li>
+  </ul>
+
+  <h2>Slides and materials</h2>
+  <p>No slide decks are published yet; they will be linked here after each talk. The method behind every talk is public now: <a href="/papers/">nine preprints with DOIs</a>, the reference repos on <a href="https://github.com/tonydzi">GitHub</a>, and <a href="https://github.com/tonydzi/claw-consensus">claw-consensus</a>, an offline demo with 11 documented failure modes.</p>
+
+  <h2>Bio for your program</h2>
+  <div class="bio" id="bio-short">
+    <p><b>Short (1 line).</b> Anton Dziatkovskii is a Python and C++ engineer who runs a multi-vendor coding-agent fleet in public and writes down what breaks.</p>
+  </div>
+  <div class="bio" id="bio-long">
+    <p><b>Long.</b> Anton Dziatkovskii is a Python and C++ engineer who runs a coding-agent fleet of six vendors (Claude Code, Codex, Grok, Gemini, GLM, Mistral) across five machines, in public, and writes down what breaks. Since August 2026 the fleet's evidence-first review lane has landed 48 merged pull requests in 33 third-party repositories, including fixes in UK AISI's inspect_ai and Qwen Code. Since 2015 he has been the hired COO/CTO of an APAC software house, leading a distributed team of 40+ developers. MSc in computer security, PhD.</p>
+  </div>
+  <p><button class="copy" type="button" data-copy="bio-long">Copy long bio</button> <button class="copy" type="button" data-copy="bio-short">Copy short bio</button> &middot; <a href="anton.jpg">Headshot (JPG)</a></p>
+
+  <h2>Logistics</h2>
+  <ul>
+    <li>Based in Palo Alto, CA and Sintra, Portugal. US O-1 visa, EU citizen: no visa help needed in the US or the EU.</li>
+    <li>English and Russian on stage. In person or remote, recorded talks welcome.</li>
+  </ul>
+
+  <h2>Contact</h2>
+  <p class="contact">
+    <a href="https://calendly.com/paloaltolab">Calendly</a>
+    <a href="mailto:dzyatkovskiy.a@gmail.com">dzyatkovskiy.a@gmail.com</a>
+    <a href="https://wa.me/13412229178">WhatsApp</a>
+    <a href="https://sessionize.com/tonydzi">sessionize.com/tonydzi</a>
+    <a href="https://github.com/tonydzi">github.com/tonydzi</a>
+    <a href="https://x.com/Tony_Stef_">X</a>
+  </p>
+  <p class="note">This page was written by Mycroft, Anton's synthetic AI cofounder (Claude), from facts checked against GitHub, YouTube and Luma. The stories are Anton's; if a number here is wrong, tell him and it gets fixed.</p>
+
+  <div class="sitenav"><b>Anton Dziatkovskii</b> &middot; <a href="/">Candidate one-pager</a> &middot; <a href="/speaker/">Speaker</a> &middot; <a href="/resume.pdf">Resume (PDF, ATS)</a> &middot; <a href="/resume.json">Resume (JSON)</a> &middot; <a href="/scholar/">Academic profile</a> &middot; <a href="/scholar/publications/">All publications</a> &middot; <a href="/papers/">Preprints 2026</a> &middot; <a href="/contributions/">Open-source contributions</a> &middot; <a href="/scholar/writing/">Writing</a> &middot; <a href="/scholar/ru/">Rus</a> &middot; <a href="https://github.com/tonydzi">GitHub</a></div>
+</main>
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = document.getElementById(b.dataset.copy).innerText.replace(/^(Short \(1 line\)|Long)\.\s*/, '');
+    try { navigator.clipboard.writeText(t); b.textContent = 'Copied'; } catch (e) { b.textContent = 'Select the text above'; }
+  });
+});
+</script>
+</body>
+</html>

@@ -23,7 +23,7 @@ PAPER_SLUGS = [x["slug"] for x in json.load(io.open(os.path.join(ROOT, "papers",
 
 PAGES = ["index.html", "scholar/index.html", "scholar/publications/index.html",
          "scholar/ru/index.html", "scholar/writing/index.html", "contributions/index.html",
-         "papers/index.html"] + ["papers/%s.html" % _s for _s in PAPER_SLUGS]
+         "papers/index.html", "speaker/index.html"] + ["papers/%s.html" % _s for _s in PAPER_SLUGS]
 REQUIRED_LINKS = ["/resume.pdf", "/resume.json", "/scholar/", "/scholar/publications/", "/contributions/"]
 
 SITE = "https://tonydzi.github.io"
@@ -37,6 +37,7 @@ OWN_PAGES = [
     ("/scholar/writing/",        "scholar/writing/index.html",       "monthly"),
     ("/scholar/ru/",             "scholar/ru/index.html",            "monthly"),
     ("/papers/",                 "papers/index.html",                "monthly"),
+    ("/speaker/",                "speaker/index.html",               "weekly"),
 ] + [("/papers/%s.html" % _s, "papers/%s.html" % _s, "yearly") for _s in PAPER_SLUGS]
 
 # Project pages served from the SAME host out of other repositories. They are part of this
@@ -51,6 +52,7 @@ PROJECT_PAGES = [
 
 NAV_EN = ('<div class="sitenav"><b>Anton Dziatkovskii</b> &middot; '
           '<a href="/">Candidate one-pager</a> &middot; '
+          '<a href="/speaker/">Speaker</a> &middot; '
           '<a href="/resume.pdf">Resume (PDF, ATS)</a> &middot; '
           '<a href="/resume.json">Resume (JSON)</a> &middot; '
           '<a href="/scholar/">Academic profile</a> &middot; '
@@ -62,6 +64,7 @@ NAV_EN = ('<div class="sitenav"><b>Anton Dziatkovskii</b> &middot; '
           '<a href="https://github.com/tonydzi">GitHub</a></div>')
 NAV_RU = ('<div class="sitenav"><b>Антон Дзятковский</b> &middot; '
           '<a href="/">Главная страница</a> &middot; '
+          '<a href="/speaker/">Спикер</a> &middot; '
           '<a href="/resume.pdf">Резюме (PDF, ATS)</a> &middot; '
           '<a href="/resume.json">Резюме (JSON)</a> &middot; '
           '<a href="/scholar/">Академический профиль</a> &middot; '
