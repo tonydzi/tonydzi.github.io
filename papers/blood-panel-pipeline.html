@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facts Before Explanation: A Provenance-Tracked Pipeline for a Decade of Personal Lab Panels</title>
+<meta name="description" content="System paper. Not an evaluation. A person who has had blood drawn for ten years owns a decade of evidence in a form nothing can query. Almost everyone in this position writes the same parser once, badly, and never publishes it, so the same defects are rediscovered privately every time. This paper de">
+<meta name="citation_title" content="Facts Before Explanation: A Provenance-Tracked Pipeline for a Decade of Personal Lab Panels">
+<meta name="citation_author" content="Dziatkovskii, Anton">
+<meta name="citation_author_orcid" content="0000-0001-7408-3054">
+<meta name="citation_publication_date" content="2026/09/10">
+<meta name="citation_online_date" content="2026/09/10">
+<meta name="citation_doi" content="10.5281/zenodo.22696755">
+<meta name="citation_pdf_url" content="https://tonydzi.github.io/papers/blood-panel-pipeline.pdf">
+<meta name="citation_abstract_html_url" content="https://tonydzi.github.io/papers/blood-panel-pipeline.html">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="personal health informatics">
+<meta name="citation_keywords" content="provenance">
+<meta name="citation_keywords" content="LOINC">
+<meta name="citation_keywords" content="UCUM">
+<meta name="citation_keywords" content="clinical data normalization">
+<meta name="citation_keywords" content="privacy by design">
+<meta name="citation_keywords" content="self-tracking">
+<meta name="citation_keywords" content="deterministic rules">
+<meta name="citation_keywords" content="large language models">
+<meta name="citation_keywords" content="reproducibility">
+<meta name="citation_keywords" content="laboratory data">
+<meta name="citation_keywords" content="SQLite">
+<link rel="canonical" href="https://tonydzi.github.io/papers/blood-panel-pipeline.html">
+<link rel="alternate" type="application/pdf" href="https://tonydzi.github.io/papers/blood-panel-pipeline.pdf">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ScholarlyArticle", "headline": "Facts Before Explanation: A Provenance-Tracked Pipeline for a Decade of Personal Lab Panels", "name": "Facts Before Explanation: A Provenance-Tracked Pipeline for a Decade of Personal Lab Panels", "datePublished": "2026-09-10", "author": {"@type": "Person", "name": "Anton Dziatkovskii", "sameAs": "https://orcid.org/0000-0001-7408-3054"}, "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.22696755"}, "sameAs": ["https://doi.org/10.5281/zenodo.22696755", "https://zenodo.org/records/22696755"], "url": "https://tonydzi.github.io/papers/blood-panel-pipeline.html", "encoding": {"@type": "MediaObject", "contentUrl": "https://tonydzi.github.io/papers/blood-panel-pipeline.pdf", "encodingFormat": "application/pdf"}, "license": "https://creativecommons.org/licenses/by/4.0/", "keywords": ["personal health informatics", "provenance", "LOINC", "UCUM", "clinical data normalization", "privacy by design", "self-tracking", "deterministic rules", "large language models", "reproducibility", "laboratory data", "SQLite"], "abstract": "System paper. Not an evaluation. A person who has had blood drawn for ten years owns a decade of evidence in a form nothing can query. Almost everyone in this position writes the same parser once, badly, and never publishes it, so the same defects are rediscovered privately every time. This paper describes a small stdlib-only system that turns such an archive into a provenance-tracked fact database, and argues for the decision it is built around: deterministic, testable rules decide what is mechanically true, and a language model, if added later, may only explain. Four planes separate concerns — an immutable verbatim raw layer, a canonical parsed twin rebuilt on every run, a rules plane, and a model plane deliberately shipped empty — and ambiguity is recorded as a quality-control flag on the row rather than resolved silently or dropped. The empirical content is a failure, reproducible from the published artifact alone with no private data: mapping markers to standard LOINC identifiers by substring assigns a wrong code to 12 of 52 matched analytes, including three distinct measurements carrying the code for haemoglobin and red blood cells in urine carrying the code for red blood cells in blood. The instructive part is the repair that did not work — re-ordering candidate keys longest-first turned the failing test green while changing the outcome on exactly one row of 158, so a green suite certified a class that was 92% open. The real repair was to abandon substring matching: exact normalised match only, no code at all for an unmatched analyte, assigned codes dropping from 52 to 40. Two principles generalise: for medical identifiers missing is recoverable and wrong is not , and a fix that turns a red test green is evidence about an instance, never about a class. The paper separates what a reader can run from what is the author's word, names the studies that would turn this case report into a measurement, and reports two defects found in the author's own artifact while writing it. Privacy: the repository ships no measurements and neither does this paper. No measured value, reference range from a real draw, draw date or diagnosis appears anywhere in it. Reproducibility: every figure about the system is re-derivable by running the public repository; tests/reproduce_miscoding.py re-derives the miscoding table from the two shipped mapping files and exits non-zero if the published figures stop reproducing. This is not medical advice and the system described is not a diagnostic device. Code: github.com/tonydzi/blood-panel-pipeline (MIT) · Author: github.com/tonydzi · tonydzi.github.io · ORCID 0000-0001-7408-3054 · dzyatkovskiy.a2@gmail.com"}</script>
+<style>
+  body{background:#fdfdfd;color:#111;
+    font-family:"Bitstream Charter","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+    font-size:18px;line-height:1.55;max-width:47rem;margin:0 auto;padding:3rem 1rem 6rem;}
+  .crumb{font-size:.9rem;color:#666;margin-bottom:2rem}
+  h1{font-size:1.6rem;line-height:1.2;margin:0 0 .6rem;font-weight:600}
+  a{color:#0000ee;text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:#0000ee}
+  h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:#666;font-weight:600;margin:2.2rem 0 .7rem;padding-bottom:.35rem;border-bottom:1px solid #e2ded3}
+  p{margin:0 0 1rem;max-width:65ch}
+  .by{margin:0 0 .3rem}
+  .note{color:#666;font-size:.9rem}
+  .lk a{display:inline-block;margin:.2rem .9rem .2rem 0;text-decoration:underline;text-underline-offset:2px;border-bottom:none}
+  .item{padding:.6rem 0;border-bottom:1px solid #eee9dd}
+  .it-t{font-weight:600}
+  pre{background:#f4f2ec;padding:.8rem;overflow-x:auto;font-size:.8rem;white-space:pre-wrap;word-break:break-word}
+  .foot{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;color:#666;font-size:.85rem}
+  .sitenav{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;font-size:.9rem;line-height:1.9}
+  .sitenav a{margin:0 2px}
+</style>
+</head>
+<body>
+
+<div class="crumb"><a href="/">Anton Dziatkovskii</a> &rsaquo; <a href="/papers/">Papers</a></div>
+<h1>Facts Before Explanation: A Provenance-Tracked Pipeline for a Decade of Personal Lab Panels</h1>
+<p class="by"><b>Anton Dziatkovskii</b> &middot; <a href="https://orcid.org/0000-0001-7408-3054">ORCID 0000-0001-7408-3054</a></p>
+<p class="note">Preprint, 10 September 2026. Version of record: Zenodo, DOI <a href="https://doi.org/10.5281/zenodo.22696755">10.5281/zenodo.22696755</a>. License CC BY 4.0.</p>
+<p class="lk"><a href="blood-panel-pipeline.pdf">Full text (PDF, 8 pages, 203 KB)</a><a href="https://doi.org/10.5281/zenodo.22696755">DOI</a><a href="https://github.com/tonydzi/blood-panel-pipeline">Code: blood-panel-pipeline</a></p>
+
+<h2>Abstract</h2>
+<p><strong>System paper. Not an evaluation.</strong></p>
+
+<p>A person who has had blood drawn for ten years owns a decade of evidence in a form nothing
+can query. Almost everyone in this position writes the same parser once, badly, and never
+publishes it, so the same defects are rediscovered privately every time. This paper describes a
+small stdlib-only system that turns such an archive into a provenance-tracked fact database, and
+argues for the decision it is built around: <strong>deterministic, testable rules decide what is
+mechanically true, and a language model, if added later, may only explain.</strong> Four planes
+separate concerns &mdash; an immutable verbatim raw layer, a canonical parsed twin rebuilt on
+every run, a rules plane, and a model plane deliberately shipped empty &mdash; and ambiguity is
+recorded as a quality-control flag on the row rather than resolved silently or dropped.</p>
+
+<p>The empirical content is a failure, reproducible from the published artifact alone with no
+private data: mapping markers to standard LOINC identifiers by substring assigns a wrong code to
+12 of 52 matched analytes, including three distinct measurements carrying the code for
+haemoglobin and red blood cells <em>in urine</em> carrying the code for red blood cells in blood.
+The instructive part is the repair that did not work &mdash; re-ordering candidate keys
+longest-first turned the failing test green while changing the outcome on exactly one row of 158,
+so a green suite certified a class that was 92% open. The real repair was to abandon substring
+matching: exact normalised match only, no code at all for an unmatched analyte, assigned codes
+dropping from 52 to 40.</p>
+
+<p>Two principles generalise: for medical identifiers <strong>missing is recoverable and wrong is
+not</strong>, and a fix that turns a red test green is evidence about an instance, never about a
+class. The paper separates what a reader can run from what is the author's word, names the
+studies that would turn this case report into a measurement, and reports two defects found in the
+author's own artifact while writing it.</p>
+
+<p><strong>Privacy:</strong> the repository ships no measurements and neither does this paper. No
+measured value, reference range from a real draw, draw date or diagnosis appears anywhere in it.</p>
+
+<p><strong>Reproducibility:</strong> every figure about the system is re-derivable by running the
+public repository; tests/reproduce_miscoding.py re-derives the miscoding table from
+the two shipped mapping files and exits non-zero if the published figures stop reproducing.</p>
+
+<p><strong>This is not medical advice</strong> and the system described is not a diagnostic
+device.</p>
+
+<p>Code: <a href="https://github.com/tonydzi/blood-panel-pipeline">github.com/tonydzi/blood-panel-pipeline</a>
+(MIT) &middot; Author: <a href="https://github.com/tonydzi">github.com/tonydzi</a> &middot;
+<a href="https://tonydzi.github.io">tonydzi.github.io</a> &middot; ORCID
+<a href="https://orcid.org/0000-0001-7408-3054">0000-0001-7408-3054</a> &middot;
+dzyatkovskiy.a2@gmail.com</p>
+
+<h2>Keywords</h2>
+<p class="note">personal health informatics · provenance · LOINC · UCUM · clinical data normalization · privacy by design · self-tracking · deterministic rules · large language models · reproducibility · laboratory data · SQLite</p>
+
+<h2>How to cite</h2>
+<p>Dziatkovskii, A. (2026). Facts Before Explanation: A Provenance-Tracked Pipeline for a Decade of Personal Lab Panels. Preprint. Zenodo. https://doi.org/10.5281/zenodo.22696755</p>
+<pre>@misc{dziatkovskii2026bloodpanelpi,
+  author    = {Dziatkovskii, Anton},
+  title     = {Facts Before Explanation: A Provenance-Tracked Pipeline for a Decade of Personal Lab Panels},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.22696755},
+  url       = {https://doi.org/10.5281/zenodo.22696755},
+  note      = {Preprint, CC BY 4.0}
+}</pre>
+<p class="note">One text, one DOI: the PDF on this page is the Zenodo file byte for byte. Please cite the DOI.</p>
+
+<div class="sitenav"><b>Anton Dziatkovskii</b> &middot; <a href="/">Candidate one-pager</a> &middot; <a href="/resume.pdf">Resume (PDF, ATS)</a> &middot; <a href="/resume.json">Resume (JSON)</a> &middot; <a href="/scholar/">Academic profile</a> &middot; <a href="/scholar/publications/">All publications</a> &middot; <a href="/papers/">Preprints 2026</a> &middot; <a href="/contributions/">Open-source contributions</a> &middot; <a href="/scholar/writing/">Writing</a> &middot; <a href="/scholar/ru/">Rus</a> &middot; <a href="https://github.com/tonydzi">GitHub</a></div>
+
+<div class="foot">Anton Dziatkovskii &middot; Palo Alto AI Research Lab &middot; <a href="/papers/">All 2026 preprints</a> &middot; <a href="/scholar/publications/">Full publication list</a></div>
+
+</body>
+</html>

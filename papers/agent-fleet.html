@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operating a Human-Governed Multi-Machine LLM Agent Fleet: An Experience Report</title>
+<meta name="description" content="Most published multi-agent LLM systems are single-process orchestrations evaluated on benchmarks. We report on something different: a fleet of LLM agents distributed across five physical machines (an always-on hub, laptops, a family computer, and a VPS anchor), operated continuously for roughly two ">
+<meta name="citation_title" content="Operating a Human-Governed Multi-Machine LLM Agent Fleet: An Experience Report">
+<meta name="citation_author" content="Dziatkovskii, Anton">
+<meta name="citation_author_orcid" content="0000-0001-7408-3054">
+<meta name="citation_publication_date" content="2026/09/07">
+<meta name="citation_online_date" content="2026/09/07">
+<meta name="citation_doi" content="10.5281/zenodo.22639714">
+<meta name="citation_pdf_url" content="https://tonydzi.github.io/papers/agent-fleet.pdf">
+<meta name="citation_abstract_html_url" content="https://tonydzi.github.io/papers/agent-fleet.html">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="LLM agents">
+<meta name="citation_keywords" content="multi-agent systems">
+<meta name="citation_keywords" content="distributed systems">
+<meta name="citation_keywords" content="consensus protocol">
+<meta name="citation_keywords" content="experience report">
+<meta name="citation_keywords" content="human oversight">
+<meta name="citation_keywords" content="AI safety">
+<link rel="canonical" href="https://tonydzi.github.io/papers/agent-fleet.html">
+<link rel="alternate" type="application/pdf" href="https://tonydzi.github.io/papers/agent-fleet.pdf">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ScholarlyArticle", "headline": "Operating a Human-Governed Multi-Machine LLM Agent Fleet: An Experience Report", "name": "Operating a Human-Governed Multi-Machine LLM Agent Fleet: An Experience Report", "datePublished": "2026-09-07", "author": {"@type": "Person", "name": "Anton Dziatkovskii", "sameAs": "https://orcid.org/0000-0001-7408-3054"}, "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.22639714"}, "sameAs": ["https://doi.org/10.5281/zenodo.22639714", "https://zenodo.org/records/22639714"], "url": "https://tonydzi.github.io/papers/agent-fleet.html", "encoding": {"@type": "MediaObject", "contentUrl": "https://tonydzi.github.io/papers/agent-fleet.pdf", "encodingFormat": "application/pdf"}, "license": "https://creativecommons.org/licenses/by/4.0/", "keywords": ["LLM agents", "multi-agent systems", "distributed systems", "consensus protocol", "experience report", "human oversight", "AI safety"], "abstract": "Most published multi-agent LLM systems are single-process orchestrations evaluated on benchmarks. We report on something different: a fleet of LLM agents distributed across five physical machines (an always-on hub, laptops, a family computer, and a VPS anchor), operated continuously for roughly two months (June-July 2026) on real knowledge work by a non-technical founder and his collaborators. The fleet negotiates decisions through a deterministic consensus protocol (propose - counter - accept - commit over an append-only, single-writer-per-machine event log), communicates over a dual-rail bus (synced file mailbox plus a group chat that humans also read), enforces an acknowledgement discipline in which silence past an SLA is an incident, and gates every risky action behind a deterministic risk-tier tripwire that escalates to a dedicated human channel. The safety-critical layer makes zero LLM calls: it is auditable file I/O, and we show it derives full fleet state at microsecond cost. This is an experience report, not a benchmark study. Its evidence is (i) a reproducible offline harness — five self-checking scenarios covering the happy path, the human gate, the tripwire, split-brain, and ledger corruption, all passing on commodity hardware — and (ii) a catalog of nine production failure modes, each of which occurred before its guard existed, giving an unusual, historically grounded form of ablation: for every guard we can state what the system actually did without it. We distill the design principles that survived contact with production (single-writer files, dual-rail by construction, delivery is not completion, detect what you cannot prevent, a human gate needs an exit, alert-channel purity, owner-repairability) and state our limitations plainly: this is an N=1 longitudinal case study with no comparative baseline. Reference implementation: claw-consensus (MIT)."}</script>
+<style>
+  body{background:#fdfdfd;color:#111;
+    font-family:"Bitstream Charter","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+    font-size:18px;line-height:1.55;max-width:47rem;margin:0 auto;padding:3rem 1rem 6rem;}
+  .crumb{font-size:.9rem;color:#666;margin-bottom:2rem}
+  h1{font-size:1.6rem;line-height:1.2;margin:0 0 .6rem;font-weight:600}
+  a{color:#0000ee;text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:#0000ee}
+  h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:#666;font-weight:600;margin:2.2rem 0 .7rem;padding-bottom:.35rem;border-bottom:1px solid #e2ded3}
+  p{margin:0 0 1rem;max-width:65ch}
+  .by{margin:0 0 .3rem}
+  .note{color:#666;font-size:.9rem}
+  .lk a{display:inline-block;margin:.2rem .9rem .2rem 0;text-decoration:underline;text-underline-offset:2px;border-bottom:none}
+  .item{padding:.6rem 0;border-bottom:1px solid #eee9dd}
+  .it-t{font-weight:600}
+  pre{background:#f4f2ec;padding:.8rem;overflow-x:auto;font-size:.8rem;white-space:pre-wrap;word-break:break-word}
+  .foot{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;color:#666;font-size:.85rem}
+  .sitenav{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;font-size:.9rem;line-height:1.9}
+  .sitenav a{margin:0 2px}
+</style>
+</head>
+<body>
+
+<div class="crumb"><a href="/">Anton Dziatkovskii</a> &rsaquo; <a href="/papers/">Papers</a></div>
+<h1>Operating a Human-Governed Multi-Machine LLM Agent Fleet: An Experience Report</h1>
+<p class="by"><b>Anton Dziatkovskii</b> &middot; <a href="https://orcid.org/0000-0001-7408-3054">ORCID 0000-0001-7408-3054</a></p>
+<p class="note">Preprint, 7 September 2026. Version of record: Zenodo, DOI <a href="https://doi.org/10.5281/zenodo.22639714">10.5281/zenodo.22639714</a>. License CC BY 4.0.</p>
+<p class="lk"><a href="agent-fleet.pdf">Full text (PDF, 9 pages, 221 KB)</a><a href="https://doi.org/10.5281/zenodo.22639714">DOI</a><a href="https://github.com/tonydzi/claw-consensus">Code: claw-consensus</a></p>
+
+<h2>Abstract</h2>
+<p>Most published multi-agent LLM systems are single-process orchestrations evaluated on benchmarks. We report on something different: a fleet of LLM agents distributed across five physical machines (an always-on hub, laptops, a family computer, and a VPS anchor), operated continuously for roughly two months (June-July 2026) on real knowledge work by a non-technical founder and his collaborators. The fleet negotiates decisions through a deterministic consensus protocol (propose - counter - accept - commit over an append-only, single-writer-per-machine event log), communicates over a dual-rail bus (synced file mailbox plus a group chat that humans also read), enforces an acknowledgement discipline in which silence past an SLA is an incident, and gates every risky action behind a deterministic risk-tier tripwire that escalates to a dedicated human channel. The safety-critical layer makes zero LLM calls: it is auditable file I/O, and we show it derives full fleet state at microsecond cost. This is an experience report, not a benchmark study. Its evidence is (i) a reproducible offline harness — five self-checking scenarios covering the happy path, the human gate, the tripwire, split-brain, and ledger corruption, all passing on commodity hardware — and (ii) a catalog of nine production failure modes, each of which occurred before its guard existed, giving an unusual, historically grounded form of ablation: for every guard we can state what the system actually did without it. We distill the design principles that survived contact with production (single-writer files, dual-rail by construction, delivery is not completion, detect what you cannot prevent, a human gate needs an exit, alert-channel purity, owner-repairability) and state our limitations plainly: this is an N=1 longitudinal case study with no comparative baseline. Reference implementation: claw-consensus (MIT).</p>
+
+<h2>Keywords</h2>
+<p class="note">LLM agents · multi-agent systems · distributed systems · consensus protocol · experience report · human oversight · AI safety</p>
+
+<h2>How to cite</h2>
+<p>Dziatkovskii, A. (2026). Operating a Human-Governed Multi-Machine LLM Agent Fleet: An Experience Report. Preprint. Zenodo. https://doi.org/10.5281/zenodo.22639714</p>
+<pre>@misc{dziatkovskii2026agentfleet,
+  author    = {Dziatkovskii, Anton},
+  title     = {Operating a Human-Governed Multi-Machine LLM Agent Fleet: An Experience Report},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.22639714},
+  url       = {https://doi.org/10.5281/zenodo.22639714},
+  note      = {Preprint, CC BY 4.0}
+}</pre>
+<p class="note">One text, one DOI: the PDF on this page is the Zenodo file byte for byte. Please cite the DOI.</p>
+
+<div class="sitenav"><b>Anton Dziatkovskii</b> &middot; <a href="/">Candidate one-pager</a> &middot; <a href="/resume.pdf">Resume (PDF, ATS)</a> &middot; <a href="/resume.json">Resume (JSON)</a> &middot; <a href="/scholar/">Academic profile</a> &middot; <a href="/scholar/publications/">All publications</a> &middot; <a href="/papers/">Preprints 2026</a> &middot; <a href="/contributions/">Open-source contributions</a> &middot; <a href="/scholar/writing/">Writing</a> &middot; <a href="/scholar/ru/">Rus</a> &middot; <a href="https://github.com/tonydzi">GitHub</a></div>
+
+<div class="foot">Anton Dziatkovskii &middot; Palo Alto AI Research Lab &middot; <a href="/papers/">All 2026 preprints</a> &middot; <a href="/scholar/publications/">Full publication list</a></div>
+
+</body>
+</html>

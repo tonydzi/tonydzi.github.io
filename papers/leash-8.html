@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keeping Agents on a Leash: An Eight-Domain Control Model for AI Agents with Delegated Authority</title>
+<meta name="description" content="Design / position paper. An agent with delegated authority is an attack surface with credentials. The research answer is defenses evaluated on benchmarks, and those benchmarks are sobering: indirect prompt injection still succeeds between 10.7% and 29.6% against frontier models in production-like se">
+<meta name="citation_title" content="Keeping Agents on a Leash: An Eight-Domain Control Model for AI Agents with Delegated Authority">
+<meta name="citation_author" content="Dziatkovskii, Anton">
+<meta name="citation_author_orcid" content="0000-0001-7408-3054">
+<meta name="citation_publication_date" content="2026/09/10">
+<meta name="citation_online_date" content="2026/09/10">
+<meta name="citation_doi" content="10.5281/zenodo.22691782">
+<meta name="citation_pdf_url" content="https://tonydzi.github.io/papers/leash-8.pdf">
+<meta name="citation_abstract_html_url" content="https://tonydzi.github.io/papers/leash-8.html">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="LLM agents">
+<meta name="citation_keywords" content="agent security">
+<meta name="citation_keywords" content="delegated authority">
+<meta name="citation_keywords" content="prompt injection">
+<meta name="citation_keywords" content="confused deputy">
+<meta name="citation_keywords" content="least privilege">
+<meta name="citation_keywords" content="human approval">
+<meta name="citation_keywords" content="authorization">
+<meta name="citation_keywords" content="policy gate">
+<meta name="citation_keywords" content="blast radius">
+<meta name="citation_keywords" content="supply chain security">
+<meta name="citation_keywords" content="observability">
+<meta name="citation_keywords" content="incident response">
+<meta name="citation_keywords" content="scorecard">
+<meta name="citation_keywords" content="design paper">
+<link rel="canonical" href="https://tonydzi.github.io/papers/leash-8.html">
+<link rel="alternate" type="application/pdf" href="https://tonydzi.github.io/papers/leash-8.pdf">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ScholarlyArticle", "headline": "Keeping Agents on a Leash: An Eight-Domain Control Model for AI Agents with Delegated Authority", "name": "Keeping Agents on a Leash: An Eight-Domain Control Model for AI Agents with Delegated Authority", "datePublished": "2026-09-10", "author": {"@type": "Person", "name": "Anton Dziatkovskii", "sameAs": "https://orcid.org/0000-0001-7408-3054"}, "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.22691782"}, "sameAs": ["https://doi.org/10.5281/zenodo.22691782", "https://zenodo.org/records/22691782"], "url": "https://tonydzi.github.io/papers/leash-8.html", "encoding": {"@type": "MediaObject", "contentUrl": "https://tonydzi.github.io/papers/leash-8.pdf", "encodingFormat": "application/pdf"}, "license": "https://creativecommons.org/licenses/by/4.0/", "keywords": ["LLM agents", "agent security", "delegated authority", "prompt injection", "confused deputy", "least privilege", "human approval", "authorization", "policy gate", "blast radius", "supply chain security", "observability", "incident response", "scorecard", "design paper"], "abstract": "Design / position paper. An agent with delegated authority is an attack surface with credentials. The research answer is defenses evaluated on benchmarks, and those benchmarks are sobering: indirect prompt injection still succeeds between 10.7% and 29.6% against frontier models in production-like settings (LivePI), and of ten recent defenses on open-ended tasks almost all are either insufficiently secure or significantly over-defensive (AgentDyn). Operators must nevertheless ship. This paper presents LEASH-8 , an eight-domain control model — identity, secrets, tool supply chain, approvals, containment, egress, observability, incident response — stated so that a small operation can implement it and, more importantly, evidence it: each domain carries a minimal implementation and an evidence test its owner must be able to satisfy in under a minute. Around the model are three instruments: a 24-statement scorecard with bands, a reference architecture in which the model plans, a deterministic gate authorizes and a scoped executor acts, and a checklist for designing the approval leg together with a catalogue of approval designs that fail it (including the one that fails by asking about everything and training its reader to stop looking). No novelty is claimed at the level of principles. Every domain restates least privilege, zero trust, capability security, the confused deputy, supply-chain integrity or operational monitoring; enterprise maturity models (OWASP, CSA) already cover this ground for organizations with security teams, CaMeL formalizes policy enforcement outside the model, and OpenPort specifies risk-gated review, time-bounded approvals and state revalidation. The paper includes a per-domain novelty ledger that says “no novelty” where that is the honest verdict. The contribution is operationalization for the operator who has no security team: the smallest defensible control set, the evidence question that makes each control checkable, and two open reference implementations. Patterns come from a five-machine production agent operation, and a grounding table marks every such claim as either backed by a public artifact or as unaudited operator experience. This is a design paper, not an evaluation: no user study, no benchmark of our own, and no measurement that a higher score produces fewer incidents — the paper states what would falsify it instead. Code: github.com/tonydzi/agent-leash (model, scorecard, checklist, reference A2A agent card, MIT) and github.com/tonydzi/agent-approval-gate (standard-library approval gate with decision classes and tests, MIT). Contact: dzyatkovskiy.a2@gmail.com · ORCID 0000-0001-7408-3054 · github.com/tonydzi · tonydzi.github.io ."}</script>
+<style>
+  body{background:#fdfdfd;color:#111;
+    font-family:"Bitstream Charter","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+    font-size:18px;line-height:1.55;max-width:47rem;margin:0 auto;padding:3rem 1rem 6rem;}
+  .crumb{font-size:.9rem;color:#666;margin-bottom:2rem}
+  h1{font-size:1.6rem;line-height:1.2;margin:0 0 .6rem;font-weight:600}
+  a{color:#0000ee;text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:#0000ee}
+  h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:#666;font-weight:600;margin:2.2rem 0 .7rem;padding-bottom:.35rem;border-bottom:1px solid #e2ded3}
+  p{margin:0 0 1rem;max-width:65ch}
+  .by{margin:0 0 .3rem}
+  .note{color:#666;font-size:.9rem}
+  .lk a{display:inline-block;margin:.2rem .9rem .2rem 0;text-decoration:underline;text-underline-offset:2px;border-bottom:none}
+  .item{padding:.6rem 0;border-bottom:1px solid #eee9dd}
+  .it-t{font-weight:600}
+  pre{background:#f4f2ec;padding:.8rem;overflow-x:auto;font-size:.8rem;white-space:pre-wrap;word-break:break-word}
+  .foot{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;color:#666;font-size:.85rem}
+  .sitenav{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;font-size:.9rem;line-height:1.9}
+  .sitenav a{margin:0 2px}
+</style>
+</head>
+<body>
+
+<div class="crumb"><a href="/">Anton Dziatkovskii</a> &rsaquo; <a href="/papers/">Papers</a></div>
+<h1>Keeping Agents on a Leash: An Eight-Domain Control Model for AI Agents with Delegated Authority</h1>
+<p class="by"><b>Anton Dziatkovskii</b> &middot; <a href="https://orcid.org/0000-0001-7408-3054">ORCID 0000-0001-7408-3054</a></p>
+<p class="note">Preprint, 10 September 2026. Version of record: Zenodo, DOI <a href="https://doi.org/10.5281/zenodo.22691782">10.5281/zenodo.22691782</a>. License CC BY 4.0.</p>
+<p class="lk"><a href="leash-8.pdf">Full text (PDF, 8 pages, 215 KB)</a><a href="https://doi.org/10.5281/zenodo.22691782">DOI</a><a href="https://github.com/tonydzi/agent-leash">Code: agent-leash</a><a href="https://github.com/tonydzi/agent-approval-gate">Code: agent-approval-gate</a></p>
+
+<h2>Abstract</h2>
+<p><strong>Design / position paper.</strong> An agent with delegated authority is an attack surface with credentials. The research answer is defenses evaluated on benchmarks, and those benchmarks are sobering: indirect prompt injection still succeeds between 10.7% and 29.6% against frontier models in production-like settings (LivePI), and of ten recent defenses on open-ended tasks almost all are either insufficiently secure or significantly over-defensive (AgentDyn). Operators must nevertheless ship.</p>
+
+<p>This paper presents <strong>LEASH-8</strong>, an eight-domain control model &mdash; identity, secrets, tool supply chain, approvals, containment, egress, observability, incident response &mdash; stated so that a small operation can implement it and, more importantly, <em>evidence</em> it: each domain carries a minimal implementation and an evidence test its owner must be able to satisfy in under a minute. Around the model are three instruments: a 24-statement scorecard with bands, a reference architecture in which the model plans, a deterministic gate authorizes and a scoped executor acts, and a checklist for designing the approval leg together with a catalogue of approval designs that fail it (including the one that fails by asking about everything and training its reader to stop looking).</p>
+
+<p><strong>No novelty is claimed at the level of principles.</strong> Every domain restates least privilege, zero trust, capability security, the confused deputy, supply-chain integrity or operational monitoring; enterprise maturity models (OWASP, CSA) already cover this ground for organizations with security teams, CaMeL formalizes policy enforcement outside the model, and OpenPort specifies risk-gated review, time-bounded approvals and state revalidation. The paper includes a per-domain <em>novelty ledger</em> that says &ldquo;no novelty&rdquo; where that is the honest verdict. The contribution is operationalization for the operator who has no security team: the smallest defensible control set, the evidence question that makes each control checkable, and two open reference implementations.</p>
+
+<p>Patterns come from a five-machine production agent operation, and a <em>grounding table</em> marks every such claim as either backed by a public artifact or as unaudited operator experience. This is a design paper, not an evaluation: no user study, no benchmark of our own, and no measurement that a higher score produces fewer incidents &mdash; the paper states what would falsify it instead.</p>
+
+<p><strong>Code:</strong> <a href="https://github.com/tonydzi/agent-leash">github.com/tonydzi/agent-leash</a> (model, scorecard, checklist, reference A2A agent card, MIT) and <a href="https://github.com/tonydzi/agent-approval-gate">github.com/tonydzi/agent-approval-gate</a> (standard-library approval gate with decision classes and tests, MIT). <strong>Contact:</strong> dzyatkovskiy.a2@gmail.com &middot; <a href="https://orcid.org/0000-0001-7408-3054">ORCID 0000-0001-7408-3054</a> &middot; <a href="https://github.com/tonydzi">github.com/tonydzi</a> &middot; <a href="https://tonydzi.github.io">tonydzi.github.io</a>.</p>
+
+<h2>Keywords</h2>
+<p class="note">LLM agents · agent security · delegated authority · prompt injection · confused deputy · least privilege · human approval · authorization · policy gate · blast radius · supply chain security · observability · incident response · scorecard · design paper</p>
+
+<h2>How to cite</h2>
+<p>Dziatkovskii, A. (2026). Keeping Agents on a Leash: An Eight-Domain Control Model for AI Agents with Delegated Authority. Preprint. Zenodo. https://doi.org/10.5281/zenodo.22691782</p>
+<pre>@misc{dziatkovskii2026leash,
+  author    = {Dziatkovskii, Anton},
+  title     = {Keeping Agents on a Leash: An Eight-Domain Control Model for AI Agents with Delegated Authority},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.22691782},
+  url       = {https://doi.org/10.5281/zenodo.22691782},
+  note      = {Preprint, CC BY 4.0}
+}</pre>
+<p class="note">One text, one DOI: the PDF on this page is the Zenodo file byte for byte. Please cite the DOI.</p>
+
+<div class="sitenav"><b>Anton Dziatkovskii</b> &middot; <a href="/">Candidate one-pager</a> &middot; <a href="/resume.pdf">Resume (PDF, ATS)</a> &middot; <a href="/resume.json">Resume (JSON)</a> &middot; <a href="/scholar/">Academic profile</a> &middot; <a href="/scholar/publications/">All publications</a> &middot; <a href="/papers/">Preprints 2026</a> &middot; <a href="/contributions/">Open-source contributions</a> &middot; <a href="/scholar/writing/">Writing</a> &middot; <a href="/scholar/ru/">Rus</a> &middot; <a href="https://github.com/tonydzi">GitHub</a></div>
+
+<div class="foot">Anton Dziatkovskii &middot; Palo Alto AI Research Lab &middot; <a href="/papers/">All 2026 preprints</a> &middot; <a href="/scholar/publications/">Full publication list</a></div>
+
+</body>
+</html>

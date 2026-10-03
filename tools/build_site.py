@@ -18,8 +18,12 @@ from datetime import datetime, timezone
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ACCOUNT = "tonydzi"
 
+# One page per preprint, rendered by tools/build_papers.py from papers/papers.json.
+PAPER_SLUGS = [x["slug"] for x in json.load(io.open(os.path.join(ROOT, "papers", "papers.json"), encoding="utf-8"))]
+
 PAGES = ["index.html", "scholar/index.html", "scholar/publications/index.html",
-         "scholar/ru/index.html", "scholar/writing/index.html", "contributions/index.html"]
+         "scholar/ru/index.html", "scholar/writing/index.html", "contributions/index.html",
+         "papers/index.html"] + ["papers/%s.html" % _s for _s in PAPER_SLUGS]
 REQUIRED_LINKS = ["/resume.pdf", "/resume.json", "/scholar/", "/scholar/publications/", "/contributions/"]
 
 SITE = "https://tonydzi.github.io"
@@ -32,7 +36,8 @@ OWN_PAGES = [
     ("/scholar/publications/",   "scholar/publications/index.html",  "monthly"),
     ("/scholar/writing/",        "scholar/writing/index.html",       "monthly"),
     ("/scholar/ru/",             "scholar/ru/index.html",            "monthly"),
-]
+    ("/papers/",                 "papers/index.html",                "monthly"),
+] + [("/papers/%s.html" % _s, "papers/%s.html" % _s, "yearly") for _s in PAPER_SLUGS]
 
 # Project pages served from the SAME host out of other repositories. They are part of this
 # site as far as a crawler is concerned, and nothing else would ever list them:
@@ -50,6 +55,7 @@ NAV_EN = ('<div class="sitenav"><b>Anton Dziatkovskii</b> &middot; '
           '<a href="/resume.json">Resume (JSON)</a> &middot; '
           '<a href="/scholar/">Academic profile</a> &middot; '
           '<a href="/scholar/publications/">All publications</a> &middot; '
+          '<a href="/papers/">Preprints 2026</a> &middot; '
           '<a href="/contributions/">Open-source contributions</a> &middot; '
           '<a href="/scholar/writing/">Writing</a> &middot; '
           '<a href="/scholar/ru/">Rus</a> &middot; '

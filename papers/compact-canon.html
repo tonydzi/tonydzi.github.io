@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instructions That Never Arrive: Measuring Whether Operator Compaction Instructions Reach the Summarizer in a Production LLM Coding Agent</title>
+<meta name="description" content="Long-running LLM coding agents survive finite context windows by compaction : replacing the conversation with a model-written summary. Compaction is lossy, and practitioners are widely advised to steer it by writing “compact instructions” into a project configuration file or a pre-compaction hook. W">
+<meta name="citation_title" content="Instructions That Never Arrive: Measuring Whether Operator Compaction Instructions Reach the Summarizer in a Production LLM Coding Agent">
+<meta name="citation_author" content="Dziatkovskii, Anton">
+<meta name="citation_author_orcid" content="0000-0001-7408-3054">
+<meta name="citation_publication_date" content="2026/09/10">
+<meta name="citation_online_date" content="2026/09/10">
+<meta name="citation_doi" content="10.5281/zenodo.22684968">
+<meta name="citation_pdf_url" content="https://tonydzi.github.io/papers/compact-canon.pdf">
+<meta name="citation_abstract_html_url" content="https://tonydzi.github.io/papers/compact-canon.html">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="LLM agents">
+<meta name="citation_keywords" content="context compaction">
+<meta name="citation_keywords" content="context window management">
+<meta name="citation_keywords" content="agent memory">
+<meta name="citation_keywords" content="prompt engineering">
+<meta name="citation_keywords" content="empirical software engineering">
+<meta name="citation_keywords" content="measurement methodology">
+<meta name="citation_keywords" content="Claude Code">
+<meta name="citation_keywords" content="reproducibility">
+<link rel="canonical" href="https://tonydzi.github.io/papers/compact-canon.html">
+<link rel="alternate" type="application/pdf" href="https://tonydzi.github.io/papers/compact-canon.pdf">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ScholarlyArticle", "headline": "Instructions That Never Arrive: Measuring Whether Operator Compaction Instructions Reach the Summarizer in a P", "name": "Instructions That Never Arrive: Measuring Whether Operator Compaction Instructions Reach the Summarizer in a Production LLM Coding Agent", "datePublished": "2026-09-10", "author": {"@type": "Person", "name": "Anton Dziatkovskii", "sameAs": "https://orcid.org/0000-0001-7408-3054"}, "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.22684968"}, "sameAs": ["https://doi.org/10.5281/zenodo.22684968", "https://zenodo.org/records/22684968"], "url": "https://tonydzi.github.io/papers/compact-canon.html", "encoding": {"@type": "MediaObject", "contentUrl": "https://tonydzi.github.io/papers/compact-canon.pdf", "encodingFormat": "application/pdf"}, "license": "https://creativecommons.org/licenses/by/4.0/", "keywords": ["LLM agents", "context compaction", "context window management", "agent memory", "prompt engineering", "empirical software engineering", "measurement methodology", "Claude Code", "reproducibility"], "abstract": "Long-running LLM coding agents survive finite context windows by compaction : replacing the conversation with a model-written summary. Compaction is lossy, and practitioners are widely advised to steer it by writing “compact instructions” into a project configuration file or a pre-compaction hook. We measure whether those instructions arrive. On two machines of one production fleet we scanned complete agent transcript archives and, for every compaction event, joined the summary to its metadata, recovered what the operator actually passed to the compaction command, and scored whether the summary carried the operator's custom seven-header skeleton. On machine A (16,107 transcript files; 456 events; CLI 2.1.161–2.1.246) not one of 447 compactions run without an inline instruction produced the skeleton. On machine B, measured for this paper (10,435 files; 469 events; CLI 2.1.149–2.1.260), 3 of 431 did (0.7%, 95% CI 0.2–2.0%) — and in all three the header text was already in the conversation before compaction, so the format was copied from visible content rather than delivered as an instruction. Passing the same instructions inline , the documented path, produced the skeleton in 16 of 38 runs on machine B and 5 of 9 on machine A (pooled 21/47, 44.7%, 95% CI 31.4–58.8%): often, not deterministically. Seeded live probes on the current release reproduce both halves. The paper also reports, with fixtures, four defects that make the naive version of this measurement report successes that are not there: the substring detector we began with calls 82 of 335 bare compactions successes where the corrected one finds 2. The study is single-fleet, Windows-only, one agent product; detector, fixtures and per-event table are public so the numbers can be contested. Code and data: github.com/tonydzi/compact-canon · tonydzi.github.io · contact dzyatkovskiy.a2@gmail.com · ORCID 0000-0001-7408-3054 ."}</script>
+<style>
+  body{background:#fdfdfd;color:#111;
+    font-family:"Bitstream Charter","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+    font-size:18px;line-height:1.55;max-width:47rem;margin:0 auto;padding:3rem 1rem 6rem;}
+  .crumb{font-size:.9rem;color:#666;margin-bottom:2rem}
+  h1{font-size:1.6rem;line-height:1.2;margin:0 0 .6rem;font-weight:600}
+  a{color:#0000ee;text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:#0000ee}
+  h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:#666;font-weight:600;margin:2.2rem 0 .7rem;padding-bottom:.35rem;border-bottom:1px solid #e2ded3}
+  p{margin:0 0 1rem;max-width:65ch}
+  .by{margin:0 0 .3rem}
+  .note{color:#666;font-size:.9rem}
+  .lk a{display:inline-block;margin:.2rem .9rem .2rem 0;text-decoration:underline;text-underline-offset:2px;border-bottom:none}
+  .item{padding:.6rem 0;border-bottom:1px solid #eee9dd}
+  .it-t{font-weight:600}
+  pre{background:#f4f2ec;padding:.8rem;overflow-x:auto;font-size:.8rem;white-space:pre-wrap;word-break:break-word}
+  .foot{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;color:#666;font-size:.85rem}
+  .sitenav{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;font-size:.9rem;line-height:1.9}
+  .sitenav a{margin:0 2px}
+</style>
+</head>
+<body>
+
+<div class="crumb"><a href="/">Anton Dziatkovskii</a> &rsaquo; <a href="/papers/">Papers</a></div>
+<h1>Instructions That Never Arrive: Measuring Whether Operator Compaction Instructions Reach the Summarizer in a Production LLM Coding Agent</h1>
+<p class="by"><b>Anton Dziatkovskii</b> &middot; <a href="https://orcid.org/0000-0001-7408-3054">ORCID 0000-0001-7408-3054</a></p>
+<p class="note">Preprint, 10 September 2026. Version of record: Zenodo, DOI <a href="https://doi.org/10.5281/zenodo.22684968">10.5281/zenodo.22684968</a>. License CC BY 4.0.</p>
+<p class="lk"><a href="compact-canon.pdf">Full text (PDF, 6 pages, 298 KB)</a><a href="https://doi.org/10.5281/zenodo.22684968">DOI</a><a href="https://github.com/tonydzi/compact-canon">Code: compact-canon</a></p>
+
+<h2>Abstract</h2>
+<p><strong>Abstract.</strong> Long-running LLM coding agents survive finite context windows by <em>compaction</em>: replacing the conversation with a model-written summary. Compaction is lossy, and practitioners are widely advised to steer it by writing &ldquo;compact instructions&rdquo; into a project configuration file or a pre-compaction hook. We measure whether those instructions arrive. On two machines of one production fleet we scanned complete agent transcript archives and, for every compaction event, joined the summary to its metadata, recovered what the operator actually passed to the compaction command, and scored whether the summary carried the operator's custom seven-header skeleton.</p>
+<p>On machine A (16,107 transcript files; 456 events; CLI 2.1.161&ndash;2.1.246) not one of 447 compactions run without an inline instruction produced the skeleton. On machine B, measured for this paper (10,435 files; 469 events; CLI 2.1.149&ndash;2.1.260), 3 of 431 did (0.7%, 95% CI 0.2&ndash;2.0%) &mdash; and in all three the header text was already in the conversation before compaction, so the format was copied from visible content rather than delivered as an instruction. Passing the same instructions <em>inline</em>, the documented path, produced the skeleton in 16 of 38 runs on machine B and 5 of 9 on machine A (pooled 21/47, 44.7%, 95% CI 31.4&ndash;58.8%): often, not deterministically. Seeded live probes on the current release reproduce both halves.</p>
+<p>The paper also reports, with fixtures, four defects that make the naive version of this measurement report successes that are not there: the substring detector we began with calls 82 of 335 bare compactions successes where the corrected one finds 2. The study is single-fleet, Windows-only, one agent product; detector, fixtures and per-event table are public so the numbers can be contested.</p>
+<p><strong>Code and data:</strong> <a href="https://github.com/tonydzi/compact-canon">github.com/tonydzi/compact-canon</a> &middot; <a href="https://tonydzi.github.io">tonydzi.github.io</a> &middot; contact dzyatkovskiy.a2@gmail.com &middot; ORCID <a href="https://orcid.org/0000-0001-7408-3054">0000-0001-7408-3054</a>.</p>
+
+<h2>Keywords</h2>
+<p class="note">LLM agents · context compaction · context window management · agent memory · prompt engineering · empirical software engineering · measurement methodology · Claude Code · reproducibility</p>
+
+<h2>How to cite</h2>
+<p>Dziatkovskii, A. (2026). Instructions That Never Arrive: Measuring Whether Operator Compaction Instructions Reach the Summarizer in a Production LLM Coding Agent. Preprint. Zenodo. https://doi.org/10.5281/zenodo.22684968</p>
+<pre>@misc{dziatkovskii2026compactcanon,
+  author    = {Dziatkovskii, Anton},
+  title     = {Instructions That Never Arrive: Measuring Whether Operator Compaction Instructions Reach the Summarizer in a Production LLM Coding Agent},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.22684968},
+  url       = {https://doi.org/10.5281/zenodo.22684968},
+  note      = {Preprint, CC BY 4.0}
+}</pre>
+<p class="note">One text, one DOI: the PDF on this page is the Zenodo file byte for byte. Please cite the DOI.</p>
+
+<div class="sitenav"><b>Anton Dziatkovskii</b> &middot; <a href="/">Candidate one-pager</a> &middot; <a href="/resume.pdf">Resume (PDF, ATS)</a> &middot; <a href="/resume.json">Resume (JSON)</a> &middot; <a href="/scholar/">Academic profile</a> &middot; <a href="/scholar/publications/">All publications</a> &middot; <a href="/papers/">Preprints 2026</a> &middot; <a href="/contributions/">Open-source contributions</a> &middot; <a href="/scholar/writing/">Writing</a> &middot; <a href="/scholar/ru/">Rus</a> &middot; <a href="https://github.com/tonydzi">GitHub</a></div>
+
+<div class="foot">Anton Dziatkovskii &middot; Palo Alto AI Research Lab &middot; <a href="/papers/">All 2026 preprints</a> &middot; <a href="/scholar/publications/">Full publication list</a></div>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rules as Files: Governing the Behaviour of LLM Agents Across Sessions, Machines and People. An Experience Report from a Single Production Operation</title>
+<meta name="description" content="Experience report, not an evaluation. An operating instruction given to an LLM agent survives one session. Written into the agent&#x27;s always-loaded configuration file it survives longer, until that file grows past the point where the model reliably attends to all of it, and then it decays silently: no">
+<meta name="citation_title" content="Rules as Files: Governing the Behaviour of LLM Agents Across Sessions, Machines and People. An Experience Report from a Single Production Operation">
+<meta name="citation_author" content="Dziatkovskii, Anton">
+<meta name="citation_author_orcid" content="0000-0001-7408-3054">
+<meta name="citation_publication_date" content="2026/09/10">
+<meta name="citation_online_date" content="2026/09/10">
+<meta name="citation_doi" content="10.5281/zenodo.22694070">
+<meta name="citation_pdf_url" content="https://tonydzi.github.io/papers/rules-as-files.pdf">
+<meta name="citation_abstract_html_url" content="https://tonydzi.github.io/papers/rules-as-files.html">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="LLM agents">
+<meta name="citation_keywords" content="agent governance">
+<meta name="citation_keywords" content="rules as code">
+<meta name="citation_keywords" content="policy as code">
+<meta name="citation_keywords" content="configuration management">
+<meta name="citation_keywords" content="CLAUDE.md">
+<meta name="citation_keywords" content="AGENTS.md">
+<meta name="citation_keywords" content="prompt engineering">
+<meta name="citation_keywords" content="precedence">
+<meta name="citation_keywords" content="supersede">
+<meta name="citation_keywords" content="declined decisions">
+<meta name="citation_keywords" content="decision records">
+<meta name="citation_keywords" content="human-agent teams">
+<meta name="citation_keywords" content="multi-machine agents">
+<meta name="citation_keywords" content="experience report">
+<meta name="citation_keywords" content="context window">
+<meta name="citation_keywords" content="instruction following">
+<meta name="citation_keywords" content="sycophancy">
+<meta name="citation_keywords" content="objection sparring">
+<link rel="canonical" href="https://tonydzi.github.io/papers/rules-as-files.html">
+<link rel="alternate" type="application/pdf" href="https://tonydzi.github.io/papers/rules-as-files.pdf">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ScholarlyArticle", "headline": "Rules as Files: Governing the Behaviour of LLM Agents Across Sessions, Machines and People. An Experience Repo", "name": "Rules as Files: Governing the Behaviour of LLM Agents Across Sessions, Machines and People. An Experience Report from a Single Production Operation", "datePublished": "2026-09-10", "author": {"@type": "Person", "name": "Anton Dziatkovskii", "sameAs": "https://orcid.org/0000-0001-7408-3054"}, "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.22694070"}, "sameAs": ["https://doi.org/10.5281/zenodo.22694070", "https://zenodo.org/records/22694070"], "url": "https://tonydzi.github.io/papers/rules-as-files.html", "encoding": {"@type": "MediaObject", "contentUrl": "https://tonydzi.github.io/papers/rules-as-files.pdf", "encodingFormat": "application/pdf"}, "license": "https://creativecommons.org/licenses/by/4.0/", "keywords": ["LLM agents", "agent governance", "rules as code", "policy as code", "configuration management", "CLAUDE.md", "AGENTS.md", "prompt engineering", "precedence", "supersede", "declined decisions", "decision records", "human-agent teams", "multi-machine agents", "experience report", "context window", "instruction following", "sycophancy", "objection sparring"], "abstract": "Experience report, not an evaluation. An operating instruction given to an LLM agent survives one session. Written into the agent's always-loaded configuration file it survives longer, until that file grows past the point where the model reliably attends to all of it, and then it decays silently: nothing errors, the rule simply stops firing. The same instruction given to a second machine, a second agent or a human assistant is a second copy, and copies drift. This report describes the governance layer run daily in a small production operation and published sanitized as an open repository: rules as one file each with typed frontmatter; precedence by recency and by author (newer beats older, owner-stated rules overturned only by their owner, supersede instead of delete); a routing tree giving each rule exactly one home, with deterministic “every time X” rules leaving prose for hooks; an always-loaded index carrying only trigger, essence and pointer, with the body loaded on demand; a journal of declined decisions with explicit revisit conditions; an intake ritual whose acceptance test is whether a parallel session that never saw the originating conversation would apply the rule unaided; a door quota requiring every rule to name the caller that will invoke it; a separation between writing a rule and compacting the index that holds it; and objection sparring , which turns an agent's refusal into a numbered objection list the principal is invited to rebut. Two of the nine mechanics exist only because the design failed and the failure was measured. At one audit, 19 of 25 recently added rules had no caller anywhere in the system (76%), and one had sat unused for 42 days. A separate lesson came from a rule the operation could not keep at all: a release cadence tied to the calendar rather than to the work. Most of this is not novel and the paper says so per mechanic. A novelty ledger names the prior art that already covers each one: policy-as-code, GitOps and infrastructure as code, architecture decision records, the RFC process, agent memory architectures, long-context attention limits, and the AGENTS.md convention, whose comparison the paper states in the convention's favour for single-machine operators. A grounding table separates what a reader can verify in the public repository from unaudited operator instrumentation and from design opinion, one central number is marked self-judged, and the limitations name the design's weakest joint: precedence carries dates, not a logical clock. Code: github.com/tonydzi/claude-bible (specification, templates, sanitized examples, MIT), docs at tonydzi.github.io/claude-bible . Contact: dzyatkovskiy.a2@gmail.com · ORCID 0000-0001-7408-3054 · github.com/tonydzi · tonydzi.github.io . Corrections and failed reproductions are welcome as issues on the repository."}</script>
+<style>
+  body{background:#fdfdfd;color:#111;
+    font-family:"Bitstream Charter","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+    font-size:18px;line-height:1.55;max-width:47rem;margin:0 auto;padding:3rem 1rem 6rem;}
+  .crumb{font-size:.9rem;color:#666;margin-bottom:2rem}
+  h1{font-size:1.6rem;line-height:1.2;margin:0 0 .6rem;font-weight:600}
+  a{color:#0000ee;text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:#0000ee}
+  h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:#666;font-weight:600;margin:2.2rem 0 .7rem;padding-bottom:.35rem;border-bottom:1px solid #e2ded3}
+  p{margin:0 0 1rem;max-width:65ch}
+  .by{margin:0 0 .3rem}
+  .note{color:#666;font-size:.9rem}
+  .lk a{display:inline-block;margin:.2rem .9rem .2rem 0;text-decoration:underline;text-underline-offset:2px;border-bottom:none}
+  .item{padding:.6rem 0;border-bottom:1px solid #eee9dd}
+  .it-t{font-weight:600}
+  pre{background:#f4f2ec;padding:.8rem;overflow-x:auto;font-size:.8rem;white-space:pre-wrap;word-break:break-word}
+  .foot{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;color:#666;font-size:.85rem}
+  .sitenav{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;font-size:.9rem;line-height:1.9}
+  .sitenav a{margin:0 2px}
+</style>
+</head>
+<body>
+
+<div class="crumb"><a href="/">Anton Dziatkovskii</a> &rsaquo; <a href="/papers/">Papers</a></div>
+<h1>Rules as Files: Governing the Behaviour of LLM Agents Across Sessions, Machines and People. An Experience Report from a Single Production Operation</h1>
+<p class="by"><b>Anton Dziatkovskii</b> &middot; <a href="https://orcid.org/0000-0001-7408-3054">ORCID 0000-0001-7408-3054</a></p>
+<p class="note">Preprint, 10 September 2026. Version of record: Zenodo, DOI <a href="https://doi.org/10.5281/zenodo.22694070">10.5281/zenodo.22694070</a>. License CC BY 4.0.</p>
+<p class="lk"><a href="rules-as-files.pdf">Full text (PDF, 8 pages, 197 KB)</a><a href="https://doi.org/10.5281/zenodo.22694070">DOI</a><a href="https://github.com/tonydzi/claude-bible">Code: claude-bible</a></p>
+
+<h2>Abstract</h2>
+<p><strong>Experience report, not an evaluation.</strong> An operating instruction given to an LLM agent survives one session. Written into the agent's always-loaded configuration file it survives longer, until that file grows past the point where the model reliably attends to all of it, and then it decays silently: nothing errors, the rule simply stops firing. The same instruction given to a second machine, a second agent or a human assistant is a second copy, and copies drift.</p>
+
+<p>This report describes the governance layer run daily in a small production operation and published sanitized as an open repository: <strong>rules as one file each</strong> with typed frontmatter; <strong>precedence</strong> by recency and by author (newer beats older, owner-stated rules overturned only by their owner, supersede instead of delete); a <strong>routing tree</strong> giving each rule exactly one home, with deterministic &ldquo;every time X&rdquo; rules leaving prose for hooks; an <strong>always-loaded index</strong> carrying only trigger, essence and pointer, with the body loaded on demand; a <strong>journal of declined decisions</strong> with explicit revisit conditions; an <strong>intake ritual</strong> whose acceptance test is whether a parallel session that never saw the originating conversation would apply the rule unaided; a <strong>door quota</strong> requiring every rule to name the caller that will invoke it; a <strong>separation</strong> between writing a rule and compacting the index that holds it; and <strong>objection sparring</strong>, which turns an agent's refusal into a numbered objection list the principal is invited to rebut.</p>
+
+<p><strong>Two of the nine mechanics exist only because the design failed and the failure was measured.</strong> At one audit, 19 of 25 recently added rules had no caller anywhere in the system (76%), and one had sat unused for 42 days. A separate lesson came from a rule the operation could not keep at all: a release cadence tied to the calendar rather than to the work.</p>
+
+<p><strong>Most of this is not novel and the paper says so per mechanic.</strong> A novelty ledger names the prior art that already covers each one: policy-as-code, GitOps and infrastructure as code, architecture decision records, the RFC process, agent memory architectures, long-context attention limits, and the AGENTS.md convention, whose comparison the paper states in the convention's favour for single-machine operators. A grounding table separates what a reader can verify in the public repository from unaudited operator instrumentation and from design opinion, one central number is marked self-judged, and the limitations name the design's weakest joint: precedence carries dates, not a logical clock.</p>
+
+<p><strong>Code:</strong> <a href="https://github.com/tonydzi/claude-bible">github.com/tonydzi/claude-bible</a> (specification, templates, sanitized examples, MIT), docs at <a href="https://tonydzi.github.io/claude-bible/">tonydzi.github.io/claude-bible</a>. <strong>Contact:</strong> dzyatkovskiy.a2@gmail.com &middot; <a href="https://orcid.org/0000-0001-7408-3054">ORCID 0000-0001-7408-3054</a> &middot; <a href="https://github.com/tonydzi">github.com/tonydzi</a> &middot; <a href="https://tonydzi.github.io">tonydzi.github.io</a>. Corrections and failed reproductions are welcome as issues on the repository.</p>
+
+<h2>Keywords</h2>
+<p class="note">LLM agents · agent governance · rules as code · policy as code · configuration management · CLAUDE.md · AGENTS.md · prompt engineering · precedence · supersede · declined decisions · decision records · human-agent teams · multi-machine agents · experience report · context window · instruction following · sycophancy · objection sparring</p>
+
+<h2>How to cite</h2>
+<p>Dziatkovskii, A. (2026). Rules as Files: Governing the Behaviour of LLM Agents Across Sessions, Machines and People. An Experience Report from a Single Production Operation. Preprint. Zenodo. https://doi.org/10.5281/zenodo.22694070</p>
+<pre>@misc{dziatkovskii2026rulesasfiles,
+  author    = {Dziatkovskii, Anton},
+  title     = {Rules as Files: Governing the Behaviour of LLM Agents Across Sessions, Machines and People. An Experience Report from a Single Production Operation},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.22694070},
+  url       = {https://doi.org/10.5281/zenodo.22694070},
+  note      = {Preprint, CC BY 4.0}
+}</pre>
+<p class="note">One text, one DOI: the PDF on this page is the Zenodo file byte for byte. Please cite the DOI.</p>
+
+<div class="sitenav"><b>Anton Dziatkovskii</b> &middot; <a href="/">Candidate one-pager</a> &middot; <a href="/resume.pdf">Resume (PDF, ATS)</a> &middot; <a href="/resume.json">Resume (JSON)</a> &middot; <a href="/scholar/">Academic profile</a> &middot; <a href="/scholar/publications/">All publications</a> &middot; <a href="/papers/">Preprints 2026</a> &middot; <a href="/contributions/">Open-source contributions</a> &middot; <a href="/scholar/writing/">Writing</a> &middot; <a href="/scholar/ru/">Rus</a> &middot; <a href="https://github.com/tonydzi">GitHub</a></div>
+
+<div class="foot">Anton Dziatkovskii &middot; Palo Alto AI Research Lab &middot; <a href="/papers/">All 2026 preprints</a> &middot; <a href="/scholar/publications/">Full publication list</a></div>
+
+</body>
+</html>

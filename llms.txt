@@ -21,16 +21,24 @@
 - [Mycroft — synthetic cofounder](https://tonydzi.github.io/mycroft/) — the lab's AI cofounder: what it does, how authorship is labeled (4 modes, EU AI Act Art. 50), correction log, stated limits. Operator: Anton Dziatkovskii.
 - [Academic profile](https://tonydzi.github.io/scholar/) — publications, citations, research.
 - [Publications](https://tonydzi.github.io/scholar/publications/)
+- [Preprints 2026, one page per paper](https://tonydzi.github.io/papers/)
 - [Writing](https://tonydzi.github.io/scholar/writing/)
 - [Профиль (RU)](https://tonydzi.github.io/scholar/ru/)
 - [Resume (PDF)](https://tonydzi.github.io/resume.pdf) · [Resume (JSON)](https://tonydzi.github.io/resume.json)
 
 ## Preprints (version of record: Zenodo, CC BY 4.0)
 
-- [Operating a Human-Governed Multi-Machine LLM Agent Fleet: An Experience Report](https://doi.org/10.5281/zenodo.22639714) - DOI 10.5281/zenodo.22639714 (2026). Reference implementation: https://github.com/tonydzi/claw-consensus
-- [Homeostatic Governance: A Gorsky-Anokhin Alternative to the Viable System Model](https://doi.org/10.5281/zenodo.22639712) - DOI 10.5281/zenodo.22639712 (2026). Three-circuit control model for multi-actor systems.
-- [When Does Graph Expansion Help Personal-Corpus Retrieval?](https://doi.org/10.5281/zenodo.22639718) - DOI 10.5281/zenodo.22639718 (2026). Reference implementation: https://github.com/tonydzi/sqlite-graph-memory
-- [Le Chatelier Tokenomics: negative feedback as homeostasis in multi-asset coupled equilibria](https://doi.org/10.5281/zenodo.22639710) - DOI 10.5281/zenodo.22639710 (2026).
+Index with abstracts: https://tonydzi.github.io/papers/
+
+- [Rules as Files: Governing the Behaviour of LLM Agents Across Sessions, Machines and People. An Experience Report from a Single Production Operation](https://tonydzi.github.io/papers/rules-as-files.html) - DOI 10.5281/zenodo.22694070 (2026). Full text: https://tonydzi.github.io/papers/rules-as-files.pdf
+- [Keeping Agents on a Leash: An Eight-Domain Control Model for AI Agents with Delegated Authority](https://tonydzi.github.io/papers/leash-8.html) - DOI 10.5281/zenodo.22691782 (2026). Full text: https://tonydzi.github.io/papers/leash-8.pdf
+- [Silent by Construction: A Casebook of Control-Plane Failures in a Production LLM Agent Fleet](https://tonydzi.github.io/papers/control-plane-casebook.html) - DOI 10.5281/zenodo.22688465 (2026). Full text: https://tonydzi.github.io/papers/control-plane-casebook.pdf
+- [Instructions That Never Arrive: Measuring Whether Operator Compaction Instructions Reach the Summarizer in a Production LLM Coding Agent](https://tonydzi.github.io/papers/compact-canon.html) - DOI 10.5281/zenodo.22684968 (2026). Full text: https://tonydzi.github.io/papers/compact-canon.pdf
+- [Facts Before Explanation: A Provenance-Tracked Pipeline for a Decade of Personal Lab Panels](https://tonydzi.github.io/papers/blood-panel-pipeline.html) - DOI 10.5281/zenodo.22696755 (2026). Full text: https://tonydzi.github.io/papers/blood-panel-pipeline.pdf
+- [Le Chatelier Tokenomics: A Thermodynamic-Homeostatic Framing of Negative-Feedback Token Supply Control, with a Multi-Asset Coupled-Equilibrium Extension](https://tonydzi.github.io/papers/lechatelier-tokenomics.html) - DOI 10.5281/zenodo.22639710 (2026). Full text: https://tonydzi.github.io/papers/lechatelier-tokenomics.pdf
+- [Homeostatic Governance: A Gorsky-Anokhin Alternative to the Viable System Model for Decentralized Organizations](https://tonydzi.github.io/papers/homeostatic-governance.html) - DOI 10.5281/zenodo.22639712 (2026). Full text: https://tonydzi.github.io/papers/homeostatic-governance.pdf
+- [When Does Graph Expansion Help Personal-Corpus Retrieval? A Query-Class-Stratified Evaluation Protocol for Retrieval over Human-Curated Wikilink Graphs, with Pilot Telemetry from a Production Deployment](https://tonydzi.github.io/papers/graph-rag-benchmark.html) - DOI 10.5281/zenodo.22639718 (2026). Full text: https://tonydzi.github.io/papers/graph-rag-benchmark.pdf
+- [Operating a Human-Governed Multi-Machine LLM Agent Fleet: An Experience Report](https://tonydzi.github.io/papers/agent-fleet.html) - DOI 10.5281/zenodo.22639714 (2026). Full text: https://tonydzi.github.io/papers/agent-fleet.pdf
 
 One text, one DOI: copies of these papers on any other platform are visibility mirrors of the Zenodo record. Cite the Zenodo DOI.
 

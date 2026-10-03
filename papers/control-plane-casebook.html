@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Silent by Construction: A Casebook of Control-Plane Failures in a Production LLM Agent Fleet</title>
+<meta name="description" content="Experience report / casebook. The agent literature evaluates models. Production agent systems are stopped by something else: the control plane — the schedulers, registries, dispatchers and watchdogs that decide when and whether an agent runs at all. This paper reports eleven dated failures of that l">
+<meta name="citation_title" content="Silent by Construction: A Casebook of Control-Plane Failures in a Production LLM Agent Fleet">
+<meta name="citation_author" content="Dziatkovskii, Anton">
+<meta name="citation_author_orcid" content="0000-0001-7408-3054">
+<meta name="citation_publication_date" content="2026/09/10">
+<meta name="citation_online_date" content="2026/09/10">
+<meta name="citation_doi" content="10.5281/zenodo.22688465">
+<meta name="citation_pdf_url" content="https://tonydzi.github.io/papers/control-plane-casebook.pdf">
+<meta name="citation_abstract_html_url" content="https://tonydzi.github.io/papers/control-plane-casebook.html">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="LLM agents">
+<meta name="citation_keywords" content="multi-agent systems">
+<meta name="citation_keywords" content="control plane">
+<meta name="citation_keywords" content="scheduler">
+<meta name="citation_keywords" content="task registry">
+<meta name="citation_keywords" content="watchdog">
+<meta name="citation_keywords" content="silent failure">
+<meta name="citation_keywords" content="experience report">
+<meta name="citation_keywords" content="reliability">
+<meta name="citation_keywords" content="observability">
+<meta name="citation_keywords" content="reproducibility">
+<meta name="citation_keywords" content="casebook">
+<link rel="canonical" href="https://tonydzi.github.io/papers/control-plane-casebook.html">
+<link rel="alternate" type="application/pdf" href="https://tonydzi.github.io/papers/control-plane-casebook.pdf">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ScholarlyArticle", "headline": "Silent by Construction: A Casebook of Control-Plane Failures in a Production LLM Agent Fleet", "name": "Silent by Construction: A Casebook of Control-Plane Failures in a Production LLM Agent Fleet", "datePublished": "2026-09-10", "author": {"@type": "Person", "name": "Anton Dziatkovskii", "sameAs": "https://orcid.org/0000-0001-7408-3054"}, "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.22688465"}, "sameAs": ["https://doi.org/10.5281/zenodo.22688465", "https://zenodo.org/records/22688465"], "url": "https://tonydzi.github.io/papers/control-plane-casebook.html", "encoding": {"@type": "MediaObject", "contentUrl": "https://tonydzi.github.io/papers/control-plane-casebook.pdf", "encodingFormat": "application/pdf"}, "license": "https://creativecommons.org/licenses/by/4.0/", "keywords": ["LLM agents", "multi-agent systems", "control plane", "scheduler", "task registry", "watchdog", "silent failure", "experience report", "reliability", "observability", "reproducibility", "casebook"], "abstract": "Experience report / casebook. The agent literature evaluates models. Production agent systems are stopped by something else: the control plane — the schedulers, registries, dispatchers and watchdogs that decide when and whether an agent runs at all. This paper reports eleven dated failures of that layer from a multi-machine LLM agent fleet (Windows, macOS, a cloud anchor) running dozens of scheduled agent routines in production since June 2026. Each case is given as symptom → root cause → detection guard → what the system did before that guard existed , and each is anchored to a public artifact: a stdlib-only deterministic model of the mechanism in the open casebook repository, an upstream bug report, or a dated journal line naming the instrument that measured it. The unifying finding is a property, not a bug: these failures are silent by construction . A scheduler that loads zero tasks does not crash; a registry that gained a second top-level list returns a confident zero; a watchdog that accepts any reply as service reports “0 orphans” for 22 consecutive runs across two real orphans; a detector with no executor raises a true alarm nobody can act on. Of 760 dated breakage lines in the fleet journal the largest family is a routine that stopped and could not be auto-healed (37 lines), and a fleet audit found that of 243 enabled scheduled tasks only 41 — 17% — could name an output distinguishing “it ran” from “work landed.” Five recurring mechanisms are distilled — all-or-nothing validation, writer/reader contract drift, the defaulting accessor, the liveness proxy that measures the guard instead of the guarded, and proof-by-intention — together with the cheap deterministic invariants that turn each from silence into an alarm. Evidence is tiered explicitly: three cases ship with reproducible stdlib-only repros and guards shown red on the broken behavior, two rest on public bug reports, six on the authors' own instruments. This is an experience report over one fleet (N=1), not a benchmark: no scoring, no vendor comparison, no leaderboard. Companion to the fleet experience report (doi:10.5281/zenodo.22639714). Code and data: github.com/tonydzi/agent-control-plane-casebook (MIT). Contact: dzyatkovskiy.a2@gmail.com · ORCID 0000-0001-7408-3054 · github.com/tonydzi · tonydzi.github.io ."}</script>
+<style>
+  body{background:#fdfdfd;color:#111;
+    font-family:"Bitstream Charter","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+    font-size:18px;line-height:1.55;max-width:47rem;margin:0 auto;padding:3rem 1rem 6rem;}
+  .crumb{font-size:.9rem;color:#666;margin-bottom:2rem}
+  h1{font-size:1.6rem;line-height:1.2;margin:0 0 .6rem;font-weight:600}
+  a{color:#0000ee;text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:#0000ee}
+  h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:#666;font-weight:600;margin:2.2rem 0 .7rem;padding-bottom:.35rem;border-bottom:1px solid #e2ded3}
+  p{margin:0 0 1rem;max-width:65ch}
+  .by{margin:0 0 .3rem}
+  .note{color:#666;font-size:.9rem}
+  .lk a{display:inline-block;margin:.2rem .9rem .2rem 0;text-decoration:underline;text-underline-offset:2px;border-bottom:none}
+  .item{padding:.6rem 0;border-bottom:1px solid #eee9dd}
+  .it-t{font-weight:600}
+  pre{background:#f4f2ec;padding:.8rem;overflow-x:auto;font-size:.8rem;white-space:pre-wrap;word-break:break-word}
+  .foot{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;color:#666;font-size:.85rem}
+  .sitenav{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;font-size:.9rem;line-height:1.9}
+  .sitenav a{margin:0 2px}
+</style>
+</head>
+<body>
+
+<div class="crumb"><a href="/">Anton Dziatkovskii</a> &rsaquo; <a href="/papers/">Papers</a></div>
+<h1>Silent by Construction: A Casebook of Control-Plane Failures in a Production LLM Agent Fleet</h1>
+<p class="by"><b>Anton Dziatkovskii</b> &middot; <a href="https://orcid.org/0000-0001-7408-3054">ORCID 0000-0001-7408-3054</a></p>
+<p class="note">Preprint, 10 September 2026. Version of record: Zenodo, DOI <a href="https://doi.org/10.5281/zenodo.22688465">10.5281/zenodo.22688465</a>. License CC BY 4.0.</p>
+<p class="lk"><a href="control-plane-casebook.pdf">Full text (PDF, 9 pages, 228 KB)</a><a href="https://doi.org/10.5281/zenodo.22688465">DOI</a><a href="https://github.com/tonydzi/agent-control-plane-casebook">Code: agent-control-plane-casebook</a></p>
+
+<h2>Abstract</h2>
+<p><strong>Experience report / casebook.</strong> The agent literature evaluates models. Production agent systems are stopped by something else: the <em>control plane</em> &mdash; the schedulers, registries, dispatchers and watchdogs that decide when and whether an agent runs at all.</p>
+
+<p>This paper reports eleven dated failures of that layer from a multi-machine LLM agent fleet (Windows, macOS, a cloud anchor) running dozens of scheduled agent routines in production since June 2026. Each case is given as <em>symptom &rarr; root cause &rarr; detection guard &rarr; what the system did before that guard existed</em>, and each is anchored to a public artifact: a stdlib-only deterministic model of the mechanism in the open casebook repository, an upstream bug report, or a dated journal line naming the instrument that measured it.</p>
+
+<p>The unifying finding is a property, not a bug: these failures are <em>silent by construction</em>. A scheduler that loads zero tasks does not crash; a registry that gained a second top-level list returns a confident zero; a watchdog that accepts any reply as service reports &ldquo;0 orphans&rdquo; for 22 consecutive runs across two real orphans; a detector with no executor raises a true alarm nobody can act on. Of 760 dated breakage lines in the fleet journal the largest family is a routine that stopped and could not be auto-healed (37 lines), and a fleet audit found that of 243 enabled scheduled tasks only 41 &mdash; 17% &mdash; could name an output distinguishing &ldquo;it ran&rdquo; from &ldquo;work landed.&rdquo;</p>
+
+<p>Five recurring mechanisms are distilled &mdash; all-or-nothing validation, writer/reader contract drift, the defaulting accessor, the liveness proxy that measures the guard instead of the guarded, and proof-by-intention &mdash; together with the cheap deterministic invariants that turn each from silence into an alarm. Evidence is tiered explicitly: three cases ship with reproducible stdlib-only repros and guards shown red on the broken behavior, two rest on public bug reports, six on the authors' own instruments.</p>
+
+<p>This is an experience report over one fleet (N=1), not a benchmark: no scoring, no vendor comparison, no leaderboard. Companion to the fleet experience report (doi:10.5281/zenodo.22639714).</p>
+
+<p><strong>Code and data:</strong> <a href="https://github.com/tonydzi/agent-control-plane-casebook">github.com/tonydzi/agent-control-plane-casebook</a> (MIT). <strong>Contact:</strong> dzyatkovskiy.a2@gmail.com &middot; <a href="https://orcid.org/0000-0001-7408-3054">ORCID 0000-0001-7408-3054</a> &middot; <a href="https://github.com/tonydzi">github.com/tonydzi</a> &middot; <a href="https://tonydzi.github.io">tonydzi.github.io</a>.</p>
+
+<h2>Keywords</h2>
+<p class="note">LLM agents · multi-agent systems · control plane · scheduler · task registry · watchdog · silent failure · experience report · reliability · observability · reproducibility · casebook</p>
+
+<h2>How to cite</h2>
+<p>Dziatkovskii, A. (2026). Silent by Construction: A Casebook of Control-Plane Failures in a Production LLM Agent Fleet. Preprint. Zenodo. https://doi.org/10.5281/zenodo.22688465</p>
+<pre>@misc{dziatkovskii2026controlplane,
+  author    = {Dziatkovskii, Anton},
+  title     = {Silent by Construction: A Casebook of Control-Plane Failures in a Production LLM Agent Fleet},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.22688465},
+  url       = {https://doi.org/10.5281/zenodo.22688465},
+  note      = {Preprint, CC BY 4.0}
+}</pre>
+<p class="note">One text, one DOI: the PDF on this page is the Zenodo file byte for byte. Please cite the DOI.</p>
+
+<div class="sitenav"><b>Anton Dziatkovskii</b> &middot; <a href="/">Candidate one-pager</a> &middot; <a href="/resume.pdf">Resume (PDF, ATS)</a> &middot; <a href="/resume.json">Resume (JSON)</a> &middot; <a href="/scholar/">Academic profile</a> &middot; <a href="/scholar/publications/">All publications</a> &middot; <a href="/papers/">Preprints 2026</a> &middot; <a href="/contributions/">Open-source contributions</a> &middot; <a href="/scholar/writing/">Writing</a> &middot; <a href="/scholar/ru/">Rus</a> &middot; <a href="https://github.com/tonydzi">GitHub</a></div>
+
+<div class="foot">Anton Dziatkovskii &middot; Palo Alto AI Research Lab &middot; <a href="/papers/">All 2026 preprints</a> &middot; <a href="/scholar/publications/">Full publication list</a></div>
+
+</body>
+</html>
