@@ -49,7 +49,7 @@ self-archiving. The mirror carries the published version; the publisher DOI stay
 each mirror record points at it with `isIdenticalTo`. Cite the publisher DOI; use the mirror to
 read the text without a paywall.
 
-- Chronological progress of blockchain in STEM - publisher DOI 10.3390/su141912074 (Sustainability, MDPI, CC BY) - open mirror 10.5281/zenodo.22280251
+- Chronological progress of blockchain in STEM - publisher DOI 10.3390/su141912074 (Sustainability, MDPI, CC BY) - open mirror https://zenodo.org/records/22280251 (the mirror record carries the publisher DOI itself, so it has no separate Zenodo DOI)
 - Research on contour feature extraction of multiple sports images - publisher DOI 10.1515/nleng-2022-0037 (Nonlinear Engineering, De Gruyter, CC BY) - open mirror 10.5281/zenodo.22758485
 - ICT in inclusive education by AI blockchain technology - publisher DOI 10.30574/wjaets.2023.8.1.0180 (WJAETS, CC BY) - open mirror 10.5281/zenodo.22758487
 - Using blockchain technology in public administration by ML & AI - publisher DOI 10.30574/wjarr.2022.16.3.1386 (WJARR, CC BY) - open mirror 10.5281/zenodo.22758489
