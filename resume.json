@@ -55,6 +55,11 @@
       }
     ]
   },
+  "x_role_summaries": {
+    "fde": "Engineer and technical operator building AI-agent systems with MCP connectors, retrieval-augmented generation (RAG), CRM automation and reliability evals. Operate a six-machine production fleet at an independent lab, with public failure reports and reproducible tests. Previously built an in-house CRM used daily by up to 30 operators and managed 40+ developers across APAC. Programming: Python and C++. US O-1 active; Polish citizen; no US/EU sponsorship required.",
+    "devrel": "Developer educator and AI-agent practitioner with a PhD in Education (Information Technologies). Built Solidity curricula and ran hackathons and cohorts for developers. At Palo Alto AI Research Lab, publish reproducible failure cases, reliability reviews and an operating manual for AI-agent systems. Grew a community of 100+ AI practitioners. Programming: Python and C++. US O-1 active; Polish citizen; no US/EU sponsorship required.",
+    "coo": "Operating executive with 11 years at an APAC incubator and software house. Managed 40+ developers as product owner; built an in-house CRM used daily by up to 30 operators. Ran startup cohorts, advisor matching and enterprise advisory, drawing on five years building Salesforce and Microsoft Navision systems. Combine operations leadership with hands-on programming in Python and C++. US O-1 active; Polish citizen; no US/EU sponsorship required."
+  },
   "work": [
     {
       "name": "Palo Alto AI Research Lab",
@@ -62,11 +67,12 @@
       "startDate": "2023",
       "summary": "Independent lab started in 2023 in Palo Alto, CA; grew a community of 100+ AI practitioners, including Stanford researchers and big-tech engineers. Production multi-machine Claude fleet run in public: claw-consensus (reproducible multi-machine agent consensus, offline demo, published evals, FAILURE-MODES.md), verbatim-citation-gate (zero-token gate + burden-of-proof judge that catches fabricated RAG citations, MIT), agent-control-plane-casebook (reproducible control-plane failures from the production fleet — each case ships a deterministic repro, a runnable red test and an upstream bug report), the operating manual written day by day (相棒 AIBŌ · The Partner).",
       "highlights": [
+        "Merged into microsoft/semantic-kernel (#14371, Oct 2026): closed the check-time/use-time gap in the OpenAPI plugin's anti-SSRF validator. The request now goes to the exact address the validator vetted, so a DNS-rebinding hostname can no longer pass the check and then reach an internal address; TLS is still verified against the hostname, no new dependency, 12 tests including one that drives real httpx + httpcore through a simulated rebind",
         "Run an evidence-first reliability program across the AI-agent open-source ecosystem: reproducible cross-project probes, mutation-tested reviews of other people's pull requests, and bug reports that arrive with a deterministic reproduction and a regression test demonstrated failing on the unfixed code",
         "Review accepted by the author, not merely posted — google/adk-python#6957, an OAuth2 client secret leaking over three endpoints: the mutation matrix showed which of the project's own tests stayed green, and the author adopted all three findings within six hours (“genuinely one of the most useful reviews I've gotten on this PR”)",
         "Failure classes driven to an upstream fix: google/adk-python#6887 (session ids normalised on write but not on read) fixed from the report; #6941, filed with a measured root cause, was labelled core, assigned to a maintainer and answered by two third-party pull requests",
         "Credited in a third-party release 40 hours after the report — headroom v2.0.8: “reported by @tonydzi”",
-        "Scope of the program since Jul 2026 (verified 2026-09-04): contributions merged into 14 third-party engineering projects — Model Context Protocol Go SDK, UK AISI inspect_ai, QwenLM/qwen-code, google-gemini/cookbook, fastmcp, agno, pydantic/logfire, deepset-ai/haystack-integrations, zilliztech/memsearch — plus 52 issues filed with reproductions",
+        "Scope of the program since Jul 2026 (verified 2026-10-06): 38 pull requests merged into 24 third-party engineering projects — Microsoft Semantic Kernel, Model Context Protocol Go SDK, UK AISI inspect_ai, QwenLM/qwen-code, google-gemini/cookbook, bytedance/deer-flow, fastmcp, agno, pydantic/logfire, deepset-ai/haystack-integrations — plus 65 issues filed upstream",
         "The program runs unattended: 13 daily autonomous lanes on the fleet (code review, live-install documentation QA, issue-first bug reports, thread watch), with human approval gates on anything irreversible"
       ]
     },
