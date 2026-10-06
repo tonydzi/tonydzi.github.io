@@ -46,24 +46,27 @@
  },
  {
   "slug": "graph-rag-benchmark",
-  "doi": "10.5281/zenodo.22639718",
-  "title": "When Does Graph Expansion Help Personal-Corpus Retrieval? A Query-Class-Stratified Evaluation Protocol for Retrieval over Human-Curated Wikilink Graphs, with Pilot Telemetry from a Production Deployment",
-  "date": "2026-09-07",
+  "doi": "10.5281/zenodo.23113066",
+  "title": "When Does Graph Expansion Help Personal-Corpus Retrieval? A Query-Class-Stratified Evaluation over Human-Curated Wikilink Graphs: Protocol and First Execution with LLM-Judged Relevance (v0.3)",
+  "date": "2026-10-03",
   "keywords": [
-   "retrieval-augmented generation",
+   "LLM relevance judgments",
+   "benchmark",
+   "evaluation protocol",
    "graph RAG",
    "information retrieval",
+   "inter-annotator agreement",
    "personal knowledge management",
-   "wikilinks",
-   "evaluation protocol"
+   "retrieval-augmented generation",
+   "wikilinks"
   ],
-  "abstract_html": "<p>Graph-augmented retrieval (Graph RAG) systems conventionally construct their graph by LLM-based entity and relation extraction. We study an alternative setting, common in personal knowledge management yet under-evaluated: the graph already exists as human-curated wikilinks accumulated in a linked note corpus. We describe a deployed retrieval system over such a corpus (dense retrieval with multilingual-e5, a bounded 1-hop wikilink expansion used strictly for candidate generation, and cross-encoder reranking; SQLite persistence; no graph database and no extraction pass), and report pilot A/B telemetry from production use: on 10 logged production queries compared vector-only versus vector-plus-graph, the graph hop changed the reranked top-12 in 5 cases (promoting 1-3 notes each, all arriving via the wikilink walk) and changed nothing in the other 5. The pilot also surfaced a directional failure mode: expansion appears to help thematic queries and hurt named-entity queries, whose hub-like cards flood the candidate pool. These observations motivate the paper's main contribution: a query-class-stratified evaluation protocol (entity, theme, bridge, compare, temporal strata) for measuring when graph expansion helps, together with ablations (hop depth, neighbour cap, entity gate) and a paired statistical analysis plan. The pilot sample is small (N=10 queries, one corpus, one user) and we state this plainly; the protocol, not the pilot, is the contribution. Code for the retrieval layer is public; the protocol is designed so that any owner of a linked corpus can replicate it on private data without disclosing that data.</p>",
+  "abstract_html": "<p>Version 0.3 of a preprint on graph-augmented retrieval over human-curated wikilink graphs (personal knowledge bases). v0.2 (doi:10.5281/zenodo.22639718) described the system, a query-class-stratified evaluation protocol (entity, theme, bridge, compare, temporal) and N=10 pilot A/B pairs. v0.3 reports the first full execution of the protocol: 38 queries, 509 pooled documents, graded 0-2 under blinding.</p><p><strong>The relevance labels were produced by an LLM judge (Claude Opus 5.5), not by a human annotator.</strong> Label reliability is bounded by a 14-query, 178-document subset re-graded by two LLM judges from other vendors (GPT-5.6, GLM-5.3): Cohen's kappa 0.32-0.42 unweighted (0.54-0.64 quadratic-weighted) between the primary judge and the others, 0.57 between the two external judges.</p><p>Under the primary labels, reranker-guarded 1-hop wikilink expansion is inert or slightly harmful: mean delta nDCG@12 = -0.036 over 38 queries (12 harmed, 6 helped, 20 unchanged); no stratum is significant after Holm correction; the v0.2 hypothesis that thematic queries benefit is not supported (theme: -0.020, 95% CI [-0.041, -0.002], n=16). The sign of the small per-query effects depends on the judge. Results are descriptive: one corpus, one user, 4-16 queries per stratum.</p>",
   "code": [
    "https://github.com/tonydzi/sqlite-graph-memory"
   ],
   "pages": 7,
-  "pdf_bytes": 205011,
-  "zenodo_id": 22639718,
+  "pdf_bytes": 303599,
+  "zenodo_id": 23113066,
   "short": "When Does Graph Expansion Help Personal-Corpus Retrieval?"
  },
  {
