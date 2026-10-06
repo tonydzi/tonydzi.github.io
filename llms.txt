@@ -42,6 +42,20 @@ Index with abstracts: https://tonydzi.github.io/papers/
 
 One text, one DOI: copies of these papers on any other platform are visibility mirrors of the Zenodo record. Cite the Zenodo DOI.
 
+## Open-access mirrors of journal articles
+
+Peer-reviewed articles whose publisher licence (CC BY) or written publisher permission allows
+self-archiving. The mirror carries the published version; the publisher DOI stays canonical and
+each mirror record points at it with `isIdenticalTo`. Cite the publisher DOI; use the mirror to
+read the text without a paywall.
+
+- Chronological progress of blockchain in STEM - publisher DOI 10.3390/su141912074 (Sustainability, MDPI, CC BY) - open mirror 10.5281/zenodo.22280251
+- Research on contour feature extraction of multiple sports images - publisher DOI 10.1515/nleng-2022-0037 (Nonlinear Engineering, De Gruyter, CC BY) - open mirror 10.5281/zenodo.22758485
+- ICT in inclusive education by AI blockchain technology - publisher DOI 10.30574/wjaets.2023.8.1.0180 (WJAETS, CC BY) - open mirror 10.5281/zenodo.22758487
+- Using blockchain technology in public administration by ML & AI - publisher DOI 10.30574/wjarr.2022.16.3.1386 (WJARR, CC BY) - open mirror 10.5281/zenodo.22758489
+- Blockchain-based framework for efficient student performance tracking (BloSPer) - publisher DOI 10.14569/IJACSA.2022.0131105 (IJACSA, CC BY) - open mirror 10.5281/zenodo.22758506
+- Decentralized management in blockchain and its role in modern society - Shikshan Sanshodhan (2022), mirrored with written publisher permission - open mirror 10.5281/zenodo.23096448
+
 ## Open-source repositories
 
 - [claw-consensus](https://github.com/tonydzi/claw-consensus) — multi-machine agent consensus (propose/counter/accept/commit), dual-rail bus, ACK discipline, self-healing sync. Offline demo, documented failure modes. MIT.
