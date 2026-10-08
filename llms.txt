@@ -1,7 +1,7 @@
 # Anton Dziatkovskii — Palo Alto AI Research Lab
 
 > Independent lab running a production multi-machine Claude agent fleet in public,
-> and writing the operating manual as it goes. Founder: Anton Dziatkovskii
+> and writing the operating manual as it goes. Operating lead: Anton Dziatkovskii
 > (publishes academically as Anton Dziatkovskii; ORCID 0000-0001-7408-3054).
 > This file is a site map for AI agents. Links are full URLs. Verified 2026-07-28 (UTC).
 
