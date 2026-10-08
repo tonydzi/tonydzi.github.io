@@ -96,7 +96,7 @@
     <a href="https://github.com/tonydzi?tab=repositories">GitHub → all repos</a>
     <a href="/scholar/">Academic profile → publications &amp; research</a>
   </div>
-  <p class="docs">&#128196; <a href="/resume.pdf"><b>Resume &mdash; PDF (ATS-friendly)</b></a> &middot; <a href="/resume.json">Resume &mdash; JSON</a> &middot; &#127891; <a href="/scholar/">Academic profile</a> &middot; <a href="/scholar/publications/">All publications</a> &middot; &#128295; <a href="/contributions/"><b>Open-source contributions</b> &mdash; <span id="prcount">145 pull requests across 89 repos</span>, each with its real status</a></p>
+  <p class="docs">&#128196; <a href="/resume.pdf"><b>Resume &mdash; PDF (ATS-friendly)</b></a> &middot; <a href="/resume.json">Resume &mdash; JSON</a> &middot; &#127891; <a href="/scholar/">Academic profile</a> &middot; <a href="/scholar/publications/">All publications</a> &middot; &#128295; <a href="/contributions/"><b>Open-source contributions</b> &mdash; <span id="prcount">148 pull requests across 90 repos</span>, each with its real status</a></p>
 
   <h2>Proof of work (flagships, not a gallery)</h2>
   <div class="proof">
@@ -112,6 +112,10 @@
   <div class="proof">
     <b><a href="https://github.com/tonydzi/claude-bible">claude-bible</a></b> — the governance layer: one rulebook that an operator, his agents and his team all load and obey.
     <div class="sub">Rules as files with precedence and a routing tree, a declined-decisions journal, objection sparring. Most-starred repo of the lab. <a href="/claude-bible/">Docs</a>.</div>
+  </div>
+  <div class="proof">
+    <b><a href="/contributions/">Upstream, in code I do not own</a></b> &mdash; security and reliability fixes merged by the maintainers of projects I do not control.
+    <div class="sub">Most recent: <a href="https://github.com/microsoft/semantic-kernel/pull/14371">microsoft/semantic-kernel #14371</a> (merged 5 Oct 2026) closed a check-time/use-time gap in the Python OpenAPI plugin's anti-SSRF validator &mdash; the request now goes to the exact address the validator vetted, so on the plugin's built-in HTTP client a DNS-rebinding hostname can no longer pass the check and then reach an internal address. Earlier: <a href="https://github.com/UKGovernmentBEIS/inspect_ai/pull/4769">UK AISI inspect_ai #4769</a> (a grader panel decided by strict majority, not mode) and <a href="https://github.com/google-gemini/cookbook/pull/1296">google-gemini/cookbook #1296</a>. <a href="/contributions/">Every pull request with its real status &rarr;</a></div>
   </div>
   <div class="proof">
     <b>The method behind it</b> — nine preprints, each published with a DOI (Zenodo, CC BY 4.0). The four core ones:

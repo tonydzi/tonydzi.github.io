@@ -24,6 +24,7 @@
 - [Preprints 2026, one page per paper](https://tonydzi.github.io/papers/)
 - [Writing](https://tonydzi.github.io/scholar/writing/)
 - [Профиль (RU)](https://tonydzi.github.io/scholar/ru/)
+- [Open-source contributions](https://tonydzi.github.io/contributions/) — every pull request into someone else's repository with its real status, generated from the GitHub API (closed ones included). Merged upstream code includes microsoft/semantic-kernel#14371 (anti-SSRF hardening in the Python OpenAPI plugin, merged 2026-10-05), UKGovernmentBEIS/inspect_ai#4769 and google-gemini/cookbook#1296.
 - [Resume (PDF)](https://tonydzi.github.io/resume.pdf) · [Resume (JSON)](https://tonydzi.github.io/resume.json)
 
 ## Preprints (version of record: Zenodo, CC BY 4.0)
