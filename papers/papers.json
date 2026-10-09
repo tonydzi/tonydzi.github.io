@@ -1,241 +1,262 @@
 [
- {
-  "slug": "agent-fleet",
-  "doi": "10.5281/zenodo.22639714",
-  "title": "Operating a Human-Governed Multi-Machine LLM Agent Fleet: An Experience Report",
-  "date": "2026-09-07",
-  "keywords": [
-   "LLM agents",
-   "multi-agent systems",
-   "distributed systems",
-   "consensus protocol",
-   "experience report",
-   "human oversight",
-   "AI safety"
-  ],
-  "abstract_html": "<p>Most published multi-agent LLM systems are single-process orchestrations evaluated on benchmarks. We report on something different: a fleet of LLM agents distributed across five physical machines (an always-on hub, laptops, a family computer, and a VPS anchor), operated continuously for roughly two months (June-July 2026) on real knowledge work by a non-technical founder and his collaborators. The fleet negotiates decisions through a deterministic consensus protocol (propose - counter - accept - commit over an append-only, single-writer-per-machine event log), communicates over a dual-rail bus (synced file mailbox plus a group chat that humans also read), enforces an acknowledgement discipline in which silence past an SLA is an incident, and gates every risky action behind a deterministic risk-tier tripwire that escalates to a dedicated human channel. The safety-critical layer makes zero LLM calls: it is auditable file I/O, and we show it derives full fleet state at microsecond cost. This is an experience report, not a benchmark study. Its evidence is (i) a reproducible offline harness — five self-checking scenarios covering the happy path, the human gate, the tripwire, split-brain, and ledger corruption, all passing on commodity hardware — and (ii) a catalog of nine production failure modes, each of which occurred before its guard existed, giving an unusual, historically grounded form of ablation: for every guard we can state what the system actually did without it. We distill the design principles that survived contact with production (single-writer files, dual-rail by construction, delivery is not completion, detect what you cannot prevent, a human gate needs an exit, alert-channel purity, owner-repairability) and state our limitations plainly: this is an N=1 longitudinal case study with no comparative baseline. Reference implementation: claw-consensus (MIT).</p>",
-  "code": [
-   "https://github.com/tonydzi/claw-consensus"
-  ],
-  "pages": 9,
-  "pdf_bytes": 226380,
-  "zenodo_id": 22639714,
-  "short": "Operating a Human-Governed Multi-Machine LLM Agent Fleet"
- },
- {
-  "slug": "homeostatic-governance",
-  "doi": "10.5281/zenodo.22639712",
-  "title": "Homeostatic Governance: A Gorsky-Anokhin Alternative to the Viable System Model for Decentralized Organizations",
-  "date": "2026-09-07",
-  "keywords": [
-   "DAO governance",
-   "cybernetics",
-   "homeostatics",
-   "viable system model",
-   "multi-agent systems",
-   "blockchain"
-  ],
-  "abstract_html": "<p>Decentralized autonomous organizations (DAOs) increasingly require principled governance design rather than ad-hoc parameter choices. The leading cybernetic lens applied to DAOs is Stafford Beer's Viable System Model (VSM), recently mapped to decentralized organizations by BlockScience (Zargham, Nabben). We propose a distinct cybernetic grounding drawn from the Soviet/Russian school of homeostatics (Gorsky) and Anokhin's theory of functional systems. We decompose governance into three coupled control circuits — a main steady-state circuit, an adaptive circuit, and a protective self-compensation circuit — and show that this tripartite model is a simpler, implementable subset of VSM's five subsystems with different coupling assumptions. We map the three circuits onto concrete on-chain mechanisms (Ethereum's slashing and inactivity-leak as negative feedback; dual-governance and circuit breakers as the protective circuit) and use the model to predict governance failure modes, which we compare against observed DAO crises. We additionally sketch a computable governance-stability score derived from a typed actor-relation matrix (developed in companion work), and exhibit the three circuits as executable guards in a dependency-free multi-agent consensus protocol (claw-consensus) offered as a reference implementation beyond the on-chain setting.</p>",
-  "code": [
-   "https://github.com/tonydzi/claw-consensus"
-  ],
-  "pages": 4,
-  "pdf_bytes": 169938,
-  "zenodo_id": 22639712,
-  "short": "Homeostatic Governance"
- },
- {
-  "slug": "graph-rag-benchmark",
-  "doi": "10.5281/zenodo.23113066",
-  "title": "When Does Graph Expansion Help Personal-Corpus Retrieval? A Query-Class-Stratified Evaluation over Human-Curated Wikilink Graphs: Protocol and First Execution with LLM-Judged Relevance (v0.3)",
-  "date": "2026-10-03",
-  "keywords": [
-   "LLM relevance judgments",
-   "benchmark",
-   "evaluation protocol",
-   "graph RAG",
-   "information retrieval",
-   "inter-annotator agreement",
-   "personal knowledge management",
-   "retrieval-augmented generation",
-   "wikilinks"
-  ],
-  "abstract_html": "<p>Version 0.3 of a preprint on graph-augmented retrieval over human-curated wikilink graphs (personal knowledge bases). v0.2 (doi:10.5281/zenodo.22639718) described the system, a query-class-stratified evaluation protocol (entity, theme, bridge, compare, temporal) and N=10 pilot A/B pairs. v0.3 reports the first full execution of the protocol: 38 queries, 509 pooled documents, graded 0-2 under blinding.</p><p><strong>The relevance labels were produced by an LLM judge (Claude Opus 5.5), not by a human annotator.</strong> Label reliability is bounded by a 14-query, 178-document subset re-graded by two LLM judges from other vendors (GPT-5.6, GLM-5.3): Cohen's kappa 0.32-0.42 unweighted (0.54-0.64 quadratic-weighted) between the primary judge and the others, 0.57 between the two external judges.</p><p>Under the primary labels, reranker-guarded 1-hop wikilink expansion is inert or slightly harmful: mean delta nDCG@12 = -0.036 over 38 queries (12 harmed, 6 helped, 20 unchanged); no stratum is significant after Holm correction; the v0.2 hypothesis that thematic queries benefit is not supported (theme: -0.020, 95% CI [-0.041, -0.002], n=16). The sign of the small per-query effects depends on the judge. Results are descriptive: one corpus, one user, 4-16 queries per stratum.</p>",
-  "code": [
-   "https://github.com/tonydzi/sqlite-graph-memory"
-  ],
-  "pages": 7,
-  "pdf_bytes": 303599,
-  "zenodo_id": 23113066,
-  "short": "When Does Graph Expansion Help Personal-Corpus Retrieval?"
- },
- {
-  "slug": "lechatelier-tokenomics",
-  "doi": "10.5281/zenodo.22639710",
-  "title": "Le Chatelier Tokenomics: A Thermodynamic-Homeostatic Framing of Negative-Feedback Token Supply Control, with a Multi-Asset Coupled-Equilibrium Extension",
-  "date": "2026-09-07",
-  "keywords": [
-   "tokenomics",
-   "algorithmic stablecoins",
-   "Le Chatelier principle",
-   "homeostasis",
-   "negative feedback",
-   "control theory",
-   "decentralized finance"
-  ],
-  "abstract_html": "<p>Algorithmic monetary policy in decentralized systems is conventionally described in the language of control engineering: elastic-supply tokens (Ampleforth) and PI-controlled redemption-rate systems (Reflexer/RAI) adjust token supply or implied interest in response to the deviation of market price from a target. This paper reframes the same family of mechanisms through the lens of thermodynamic and biological homeostasis, specifically the Le Chatelier-Brown principle, under which a system at equilibrium responds to an external perturbation by shifting in the direction that weakens that perturbation. We argue this framing is not merely cosmetic: it supplies design intuitions (ultra-stability, antagonistic regulation, managed hysteresis) that the control-engineering view leaves implicit, and it situates token stabilization within the broader theory of homeostatic systems. We formalize a single-asset negative-feedback supply controller as a discrete Le Chatelier response, make explicit its equivalence to a proportional controller, and then introduce a multi-asset coupled-equilibrium extension in which a perturbation to one token's equilibrium induces proportional corrective flows across N coupled markets — a regime, to our knowledge, absent from the existing algorithmic-stablecoin literature. We discuss stability conditions, hysteresis to suppress oscillation, and attack surfaces at phase transitions.</p>",
-  "code": [],
-  "pages": 4,
-  "pdf_bytes": 208088,
-  "zenodo_id": 22639710,
-  "short": "Le Chatelier Tokenomics"
- },
- {
-  "slug": "compact-canon",
-  "doi": "10.5281/zenodo.22684968",
-  "title": "Instructions That Never Arrive: Measuring Whether Operator Compaction Instructions Reach the Summarizer in a Production LLM Coding Agent",
-  "date": "2026-09-10",
-  "keywords": [
-   "LLM agents",
-   "context compaction",
-   "context window management",
-   "agent memory",
-   "prompt engineering",
-   "empirical software engineering",
-   "measurement methodology",
-   "Claude Code",
-   "reproducibility"
-  ],
-  "abstract_html": "<p><strong>Abstract.</strong> Long-running LLM coding agents survive finite context windows by <em>compaction</em>: replacing the conversation with a model-written summary. Compaction is lossy, and practitioners are widely advised to steer it by writing &ldquo;compact instructions&rdquo; into a project configuration file or a pre-compaction hook. We measure whether those instructions arrive. On two machines of one production fleet we scanned complete agent transcript archives and, for every compaction event, joined the summary to its metadata, recovered what the operator actually passed to the compaction command, and scored whether the summary carried the operator's custom seven-header skeleton.</p>\n<p>On machine A (16,107 transcript files; 456 events; CLI 2.1.161&ndash;2.1.246) not one of 447 compactions run without an inline instruction produced the skeleton. On machine B, measured for this paper (10,435 files; 469 events; CLI 2.1.149&ndash;2.1.260), 3 of 431 did (0.7%, 95% CI 0.2&ndash;2.0%) &mdash; and in all three the header text was already in the conversation before compaction, so the format was copied from visible content rather than delivered as an instruction. Passing the same instructions <em>inline</em>, the documented path, produced the skeleton in 16 of 38 runs on machine B and 5 of 9 on machine A (pooled 21/47, 44.7%, 95% CI 31.4&ndash;58.8%): often, not deterministically. Seeded live probes on the current release reproduce both halves.</p>\n<p>The paper also reports, with fixtures, four defects that make the naive version of this measurement report successes that are not there: the substring detector we began with calls 82 of 335 bare compactions successes where the corrected one finds 2. The study is single-fleet, Windows-only, one agent product; detector, fixtures and per-event table are public so the numbers can be contested.</p>\n<p><strong>Code and data:</strong> <a href=\"https://github.com/tonydzi/compact-canon\">github.com/tonydzi/compact-canon</a> &middot; <a href=\"https://tonydzi.github.io\">tonydzi.github.io</a> &middot; contact dzyatkovskiy.a2@gmail.com &middot; ORCID <a href=\"https://orcid.org/0000-0001-7408-3054\">0000-0001-7408-3054</a>.</p>",
-  "code": [
-   "https://github.com/tonydzi/compact-canon"
-  ],
-  "pages": 6,
-  "pdf_bytes": 304669,
-  "zenodo_id": 22684968,
-  "short": "Instructions That Never Arrive"
- },
- {
-  "slug": "control-plane-casebook",
-  "doi": "10.5281/zenodo.22688465",
-  "title": "Silent by Construction: A Casebook of Control-Plane Failures in a Production LLM Agent Fleet",
-  "date": "2026-09-10",
-  "keywords": [
-   "LLM agents",
-   "multi-agent systems",
-   "control plane",
-   "scheduler",
-   "task registry",
-   "watchdog",
-   "silent failure",
-   "experience report",
-   "reliability",
-   "observability",
-   "reproducibility",
-   "casebook"
-  ],
-  "abstract_html": "<p><strong>Experience report / casebook.</strong> The agent literature evaluates models. Production agent systems are stopped by something else: the <em>control plane</em> &mdash; the schedulers, registries, dispatchers and watchdogs that decide when and whether an agent runs at all.</p>\n\n<p>This paper reports eleven dated failures of that layer from a multi-machine LLM agent fleet (Windows, macOS, a cloud anchor) running dozens of scheduled agent routines in production since June 2026. Each case is given as <em>symptom &rarr; root cause &rarr; detection guard &rarr; what the system did before that guard existed</em>, and each is anchored to a public artifact: a stdlib-only deterministic model of the mechanism in the open casebook repository, an upstream bug report, or a dated journal line naming the instrument that measured it.</p>\n\n<p>The unifying finding is a property, not a bug: these failures are <em>silent by construction</em>. A scheduler that loads zero tasks does not crash; a registry that gained a second top-level list returns a confident zero; a watchdog that accepts any reply as service reports &ldquo;0 orphans&rdquo; for 22 consecutive runs across two real orphans; a detector with no executor raises a true alarm nobody can act on. Of 760 dated breakage lines in the fleet journal the largest family is a routine that stopped and could not be auto-healed (37 lines), and a fleet audit found that of 243 enabled scheduled tasks only 41 &mdash; 17% &mdash; could name an output distinguishing &ldquo;it ran&rdquo; from &ldquo;work landed.&rdquo;</p>\n\n<p>Five recurring mechanisms are distilled &mdash; all-or-nothing validation, writer/reader contract drift, the defaulting accessor, the liveness proxy that measures the guard instead of the guarded, and proof-by-intention &mdash; together with the cheap deterministic invariants that turn each from silence into an alarm. Evidence is tiered explicitly: three cases ship with reproducible stdlib-only repros and guards shown red on the broken behavior, two rest on public bug reports, six on the authors' own instruments.</p>\n\n<p>This is an experience report over one fleet (N=1), not a benchmark: no scoring, no vendor comparison, no leaderboard. Companion to the fleet experience report (doi:10.5281/zenodo.22639714).</p>\n\n<p><strong>Code and data:</strong> <a href=\"https://github.com/tonydzi/agent-control-plane-casebook\">github.com/tonydzi/agent-control-plane-casebook</a> (MIT). <strong>Contact:</strong> dzyatkovskiy.a2@gmail.com &middot; <a href=\"https://orcid.org/0000-0001-7408-3054\">ORCID 0000-0001-7408-3054</a> &middot; <a href=\"https://github.com/tonydzi\">github.com/tonydzi</a> &middot; <a href=\"https://tonydzi.github.io\">tonydzi.github.io</a>.</p>",
-  "code": [
-   "https://github.com/tonydzi/agent-control-plane-casebook"
-  ],
-  "pages": 9,
-  "pdf_bytes": 233720,
-  "zenodo_id": 22688465,
-  "short": "Silent by Construction"
- },
- {
-  "slug": "leash-8",
-  "doi": "10.5281/zenodo.22691782",
-  "title": "Keeping Agents on a Leash: An Eight-Domain Control Model for AI Agents with Delegated Authority",
-  "date": "2026-09-10",
-  "keywords": [
-   "LLM agents",
-   "agent security",
-   "delegated authority",
-   "prompt injection",
-   "confused deputy",
-   "least privilege",
-   "human approval",
-   "authorization",
-   "policy gate",
-   "blast radius",
-   "supply chain security",
-   "observability",
-   "incident response",
-   "scorecard",
-   "design paper"
-  ],
-  "abstract_html": "<p><strong>Design / position paper.</strong> An agent with delegated authority is an attack surface with credentials. The research answer is defenses evaluated on benchmarks, and those benchmarks are sobering: indirect prompt injection still succeeds between 10.7% and 29.6% against frontier models in production-like settings (LivePI), and of ten recent defenses on open-ended tasks almost all are either insufficiently secure or significantly over-defensive (AgentDyn). Operators must nevertheless ship.</p>\n\n<p>This paper presents <strong>LEASH-8</strong>, an eight-domain control model &mdash; identity, secrets, tool supply chain, approvals, containment, egress, observability, incident response &mdash; stated so that a small operation can implement it and, more importantly, <em>evidence</em> it: each domain carries a minimal implementation and an evidence test its owner must be able to satisfy in under a minute. Around the model are three instruments: a 24-statement scorecard with bands, a reference architecture in which the model plans, a deterministic gate authorizes and a scoped executor acts, and a checklist for designing the approval leg together with a catalogue of approval designs that fail it (including the one that fails by asking about everything and training its reader to stop looking).</p>\n\n<p><strong>No novelty is claimed at the level of principles.</strong> Every domain restates least privilege, zero trust, capability security, the confused deputy, supply-chain integrity or operational monitoring; enterprise maturity models (OWASP, CSA) already cover this ground for organizations with security teams, CaMeL formalizes policy enforcement outside the model, and OpenPort specifies risk-gated review, time-bounded approvals and state revalidation. The paper includes a per-domain <em>novelty ledger</em> that says &ldquo;no novelty&rdquo; where that is the honest verdict. The contribution is operationalization for the operator who has no security team: the smallest defensible control set, the evidence question that makes each control checkable, and two open reference implementations.</p>\n\n<p>Patterns come from a five-machine production agent operation, and a <em>grounding table</em> marks every such claim as either backed by a public artifact or as unaudited operator experience. This is a design paper, not an evaluation: no user study, no benchmark of our own, and no measurement that a higher score produces fewer incidents &mdash; the paper states what would falsify it instead.</p>\n\n<p><strong>Code:</strong> <a href=\"https://github.com/tonydzi/agent-leash\">github.com/tonydzi/agent-leash</a> (model, scorecard, checklist, reference A2A agent card, MIT) and <a href=\"https://github.com/tonydzi/agent-approval-gate\">github.com/tonydzi/agent-approval-gate</a> (standard-library approval gate with decision classes and tests, MIT). <strong>Contact:</strong> dzyatkovskiy.a2@gmail.com &middot; <a href=\"https://orcid.org/0000-0001-7408-3054\">ORCID 0000-0001-7408-3054</a> &middot; <a href=\"https://github.com/tonydzi\">github.com/tonydzi</a> &middot; <a href=\"https://tonydzi.github.io\">tonydzi.github.io</a>.</p>",
-  "code": [
-   "https://github.com/tonydzi/agent-leash",
-   "https://github.com/tonydzi/agent-approval-gate"
-  ],
-  "pages": 8,
-  "pdf_bytes": 219913,
-  "zenodo_id": 22691782,
-  "short": "Keeping Agents on a Leash (LEASH-8)"
- },
- {
-  "slug": "rules-as-files",
-  "doi": "10.5281/zenodo.22694070",
-  "title": "Rules as Files: Governing the Behaviour of LLM Agents Across Sessions, Machines and People. An Experience Report from a Single Production Operation",
-  "date": "2026-09-10",
-  "keywords": [
-   "LLM agents",
-   "agent governance",
-   "rules as code",
-   "policy as code",
-   "configuration management",
-   "CLAUDE.md",
-   "AGENTS.md",
-   "prompt engineering",
-   "precedence",
-   "supersede",
-   "declined decisions",
-   "decision records",
-   "human-agent teams",
-   "multi-machine agents",
-   "experience report",
-   "context window",
-   "instruction following",
-   "sycophancy",
-   "objection sparring"
-  ],
-  "abstract_html": "<p><strong>Experience report, not an evaluation.</strong> An operating instruction given to an LLM agent survives one session. Written into the agent's always-loaded configuration file it survives longer, until that file grows past the point where the model reliably attends to all of it, and then it decays silently: nothing errors, the rule simply stops firing. The same instruction given to a second machine, a second agent or a human assistant is a second copy, and copies drift.</p>\n\n<p>This report describes the governance layer run daily in a small production operation and published sanitized as an open repository: <strong>rules as one file each</strong> with typed frontmatter; <strong>precedence</strong> by recency and by author (newer beats older, owner-stated rules overturned only by their owner, supersede instead of delete); a <strong>routing tree</strong> giving each rule exactly one home, with deterministic &ldquo;every time X&rdquo; rules leaving prose for hooks; an <strong>always-loaded index</strong> carrying only trigger, essence and pointer, with the body loaded on demand; a <strong>journal of declined decisions</strong> with explicit revisit conditions; an <strong>intake ritual</strong> whose acceptance test is whether a parallel session that never saw the originating conversation would apply the rule unaided; a <strong>door quota</strong> requiring every rule to name the caller that will invoke it; a <strong>separation</strong> between writing a rule and compacting the index that holds it; and <strong>objection sparring</strong>, which turns an agent's refusal into a numbered objection list the principal is invited to rebut.</p>\n\n<p><strong>Two of the nine mechanics exist only because the design failed and the failure was measured.</strong> At one audit, 19 of 25 recently added rules had no caller anywhere in the system (76%), and one had sat unused for 42 days. A separate lesson came from a rule the operation could not keep at all: a release cadence tied to the calendar rather than to the work.</p>\n\n<p><strong>Most of this is not novel and the paper says so per mechanic.</strong> A novelty ledger names the prior art that already covers each one: policy-as-code, GitOps and infrastructure as code, architecture decision records, the RFC process, agent memory architectures, long-context attention limits, and the AGENTS.md convention, whose comparison the paper states in the convention's favour for single-machine operators. A grounding table separates what a reader can verify in the public repository from unaudited operator instrumentation and from design opinion, one central number is marked self-judged, and the limitations name the design's weakest joint: precedence carries dates, not a logical clock.</p>\n\n<p><strong>Code:</strong> <a href=\"https://github.com/tonydzi/claude-bible\">github.com/tonydzi/claude-bible</a> (specification, templates, sanitized examples, MIT), docs at <a href=\"https://tonydzi.github.io/claude-bible/\">tonydzi.github.io/claude-bible</a>. <strong>Contact:</strong> dzyatkovskiy.a2@gmail.com &middot; <a href=\"https://orcid.org/0000-0001-7408-3054\">ORCID 0000-0001-7408-3054</a> &middot; <a href=\"https://github.com/tonydzi\">github.com/tonydzi</a> &middot; <a href=\"https://tonydzi.github.io\">tonydzi.github.io</a>. Corrections and failed reproductions are welcome as issues on the repository.</p>",
-  "code": [
-   "https://github.com/tonydzi/claude-bible"
-  ],
-  "pages": 8,
-  "pdf_bytes": 201293,
-  "zenodo_id": 22694070,
-  "short": "Rules as Files"
- },
- {
-  "slug": "blood-panel-pipeline",
-  "doi": "10.5281/zenodo.22696755",
-  "title": "Facts Before Explanation: A Provenance-Tracked Pipeline for a Decade of Personal Lab Panels",
-  "date": "2026-09-10",
-  "keywords": [
-   "personal health informatics",
-   "provenance",
-   "LOINC",
-   "UCUM",
-   "clinical data normalization",
-   "privacy by design",
-   "self-tracking",
-   "deterministic rules",
-   "large language models",
-   "reproducibility",
-   "laboratory data",
-   "SQLite"
-  ],
-  "abstract_html": "<p><strong>System paper. Not an evaluation.</strong></p>\n\n<p>A person who has had blood drawn for ten years owns a decade of evidence in a form nothing\ncan query. Almost everyone in this position writes the same parser once, badly, and never\npublishes it, so the same defects are rediscovered privately every time. This paper describes a\nsmall stdlib-only system that turns such an archive into a provenance-tracked fact database, and\nargues for the decision it is built around: <strong>deterministic, testable rules decide what is\nmechanically true, and a language model, if added later, may only explain.</strong> Four planes\nseparate concerns &mdash; an immutable verbatim raw layer, a canonical parsed twin rebuilt on\nevery run, a rules plane, and a model plane deliberately shipped empty &mdash; and ambiguity is\nrecorded as a quality-control flag on the row rather than resolved silently or dropped.</p>\n\n<p>The empirical content is a failure, reproducible from the published artifact alone with no\nprivate data: mapping markers to standard LOINC identifiers by substring assigns a wrong code to\n12 of 52 matched analytes, including three distinct measurements carrying the code for\nhaemoglobin and red blood cells <em>in urine</em> carrying the code for red blood cells in blood.\nThe instructive part is the repair that did not work &mdash; re-ordering candidate keys\nlongest-first turned the failing test green while changing the outcome on exactly one row of 158,\nso a green suite certified a class that was 92% open. The real repair was to abandon substring\nmatching: exact normalised match only, no code at all for an unmatched analyte, assigned codes\ndropping from 52 to 40.</p>\n\n<p>Two principles generalise: for medical identifiers <strong>missing is recoverable and wrong is\nnot</strong>, and a fix that turns a red test green is evidence about an instance, never about a\nclass. The paper separates what a reader can run from what is the author's word, names the\nstudies that would turn this case report into a measurement, and reports two defects found in the\nauthor's own artifact while writing it.</p>\n\n<p><strong>Privacy:</strong> the repository ships no measurements and neither does this paper. No\nmeasured value, reference range from a real draw, draw date or diagnosis appears anywhere in it.</p>\n\n<p><strong>Reproducibility:</strong> every figure about the system is re-derivable by running the\npublic repository; tests/reproduce_miscoding.py re-derives the miscoding table from\nthe two shipped mapping files and exits non-zero if the published figures stop reproducing.</p>\n\n<p><strong>This is not medical advice</strong> and the system described is not a diagnostic\ndevice.</p>\n\n<p>Code: <a href=\"https://github.com/tonydzi/blood-panel-pipeline\">github.com/tonydzi/blood-panel-pipeline</a>\n(MIT) &middot; Author: <a href=\"https://github.com/tonydzi\">github.com/tonydzi</a> &middot;\n<a href=\"https://tonydzi.github.io\">tonydzi.github.io</a> &middot; ORCID\n<a href=\"https://orcid.org/0000-0001-7408-3054\">0000-0001-7408-3054</a> &middot;\ndzyatkovskiy.a2@gmail.com</p>",
-  "code": [
-   "https://github.com/tonydzi/blood-panel-pipeline"
-  ],
-  "pages": 8,
-  "pdf_bytes": 208077,
-  "zenodo_id": 22696755,
-  "short": "Facts Before Explanation"
- }
+  {
+    "slug": "t2-threshold-replay",
+    "doi": "10.5281/zenodo.23268660",
+    "title": "Recovery on Signal or on Schedule? A Small Pre-Registered Test of Health-Preserving Pedagogy in Continual Learning",
+    "date": "2026-10-09",
+    "keywords": [
+      "continual learning",
+      "experience replay",
+      "catastrophic forgetting",
+      "health-preserving pedagogy",
+      "pre-registration",
+      "negative result",
+      "cost of learning"
+    ],
+    "abstract_html": "<p>Health-preserving pedagogy holds that teaching has a cost to the learner and that a recovery phase should start when the learner's diagnosed state calls for one, not when the timetable does. We test the machine analogue at a fixed gradient-step budget in class- and domain-incremental continual learning (5 tasks from the 8&times;8 digits set, a small MLP). A threshold arm replays a small memory only when a held-out probe of past tasks shows a loss rise above tau; we compare it with replay of exactly the same count placed five other ways and with a sensor-free rule proportional to the number of past tasks.</p><p>On a pre-registered fresh holdout (seeds 20&ndash;29) at equal cost, the threshold arm beats globally uniform replay (Split-Digits 3.4&ndash;7.7 points; Permuted-Digits 0.6&ndash;4.1, reliable only at tau &ge; 0.75). The sensor-free proportional rule is never beaten by the threshold arm at any point and exceeds it by 6.2 points at the smallest budget. What transfers from the pedagogy is the dosage rule; the state alarm adds nothing measurable beyond a fixed proportional rule on this benchmark. Code, seeds, raw tables, the pre-registration and two superseded versions are public.</p>",
+    "code": "https://github.com/tonydzi/machine-pedagogy",
+    "pages": 7,
+    "pdf_bytes": 80585,
+    "zenodo_id": 23268660,
+    "short": "Pre-registered continual-learning test: replay triggered by a state signal beats uniform replay, but a sensor-free dosage rule matches it; what transfers from pedagogy is the dose, not the alarm."
+  },
+  {
+    "slug": "agent-fleet",
+    "doi": "10.5281/zenodo.22639714",
+    "title": "Operating a Human-Governed Multi-Machine LLM Agent Fleet: An Experience Report",
+    "date": "2026-09-07",
+    "keywords": [
+      "LLM agents",
+      "multi-agent systems",
+      "distributed systems",
+      "consensus protocol",
+      "experience report",
+      "human oversight",
+      "AI safety"
+    ],
+    "abstract_html": "<p>Most published multi-agent LLM systems are single-process orchestrations evaluated on benchmarks. We report on something different: a fleet of LLM agents distributed across five physical machines (an always-on hub, laptops, a family computer, and a VPS anchor), operated continuously for roughly two months (June-July 2026) on real knowledge work by a non-technical founder and his collaborators. The fleet negotiates decisions through a deterministic consensus protocol (propose - counter - accept - commit over an append-only, single-writer-per-machine event log), communicates over a dual-rail bus (synced file mailbox plus a group chat that humans also read), enforces an acknowledgement discipline in which silence past an SLA is an incident, and gates every risky action behind a deterministic risk-tier tripwire that escalates to a dedicated human channel. The safety-critical layer makes zero LLM calls: it is auditable file I/O, and we show it derives full fleet state at microsecond cost. This is an experience report, not a benchmark study. Its evidence is (i) a reproducible offline harness — five self-checking scenarios covering the happy path, the human gate, the tripwire, split-brain, and ledger corruption, all passing on commodity hardware — and (ii) a catalog of nine production failure modes, each of which occurred before its guard existed, giving an unusual, historically grounded form of ablation: for every guard we can state what the system actually did without it. We distill the design principles that survived contact with production (single-writer files, dual-rail by construction, delivery is not completion, detect what you cannot prevent, a human gate needs an exit, alert-channel purity, owner-repairability) and state our limitations plainly: this is an N=1 longitudinal case study with no comparative baseline. Reference implementation: claw-consensus (MIT).</p>",
+    "code": [
+      "https://github.com/tonydzi/claw-consensus"
+    ],
+    "pages": 9,
+    "pdf_bytes": 226380,
+    "zenodo_id": 22639714,
+    "short": "Operating a Human-Governed Multi-Machine LLM Agent Fleet"
+  },
+  {
+    "slug": "homeostatic-governance",
+    "doi": "10.5281/zenodo.22639712",
+    "title": "Homeostatic Governance: A Gorsky-Anokhin Alternative to the Viable System Model for Decentralized Organizations",
+    "date": "2026-09-07",
+    "keywords": [
+      "DAO governance",
+      "cybernetics",
+      "homeostatics",
+      "viable system model",
+      "multi-agent systems",
+      "blockchain"
+    ],
+    "abstract_html": "<p>Decentralized autonomous organizations (DAOs) increasingly require principled governance design rather than ad-hoc parameter choices. The leading cybernetic lens applied to DAOs is Stafford Beer's Viable System Model (VSM), recently mapped to decentralized organizations by BlockScience (Zargham, Nabben). We propose a distinct cybernetic grounding drawn from the Soviet/Russian school of homeostatics (Gorsky) and Anokhin's theory of functional systems. We decompose governance into three coupled control circuits — a main steady-state circuit, an adaptive circuit, and a protective self-compensation circuit — and show that this tripartite model is a simpler, implementable subset of VSM's five subsystems with different coupling assumptions. We map the three circuits onto concrete on-chain mechanisms (Ethereum's slashing and inactivity-leak as negative feedback; dual-governance and circuit breakers as the protective circuit) and use the model to predict governance failure modes, which we compare against observed DAO crises. We additionally sketch a computable governance-stability score derived from a typed actor-relation matrix (developed in companion work), and exhibit the three circuits as executable guards in a dependency-free multi-agent consensus protocol (claw-consensus) offered as a reference implementation beyond the on-chain setting.</p>",
+    "code": [
+      "https://github.com/tonydzi/claw-consensus"
+    ],
+    "pages": 4,
+    "pdf_bytes": 169938,
+    "zenodo_id": 22639712,
+    "short": "Homeostatic Governance"
+  },
+  {
+    "slug": "graph-rag-benchmark",
+    "doi": "10.5281/zenodo.23113066",
+    "title": "When Does Graph Expansion Help Personal-Corpus Retrieval? A Query-Class-Stratified Evaluation over Human-Curated Wikilink Graphs: Protocol and First Execution with LLM-Judged Relevance (v0.3)",
+    "date": "2026-10-03",
+    "keywords": [
+      "LLM relevance judgments",
+      "benchmark",
+      "evaluation protocol",
+      "graph RAG",
+      "information retrieval",
+      "inter-annotator agreement",
+      "personal knowledge management",
+      "retrieval-augmented generation",
+      "wikilinks"
+    ],
+    "abstract_html": "<p>Version 0.3 of a preprint on graph-augmented retrieval over human-curated wikilink graphs (personal knowledge bases). v0.2 (doi:10.5281/zenodo.22639718) described the system, a query-class-stratified evaluation protocol (entity, theme, bridge, compare, temporal) and N=10 pilot A/B pairs. v0.3 reports the first full execution of the protocol: 38 queries, 509 pooled documents, graded 0-2 under blinding.</p><p><strong>The relevance labels were produced by an LLM judge (Claude Opus 5.5), not by a human annotator.</strong> Label reliability is bounded by a 14-query, 178-document subset re-graded by two LLM judges from other vendors (GPT-5.6, GLM-5.3): Cohen's kappa 0.32-0.42 unweighted (0.54-0.64 quadratic-weighted) between the primary judge and the others, 0.57 between the two external judges.</p><p>Under the primary labels, reranker-guarded 1-hop wikilink expansion is inert or slightly harmful: mean delta nDCG@12 = -0.036 over 38 queries (12 harmed, 6 helped, 20 unchanged); no stratum is significant after Holm correction; the v0.2 hypothesis that thematic queries benefit is not supported (theme: -0.020, 95% CI [-0.041, -0.002], n=16). The sign of the small per-query effects depends on the judge. Results are descriptive: one corpus, one user, 4-16 queries per stratum.</p>",
+    "code": [
+      "https://github.com/tonydzi/sqlite-graph-memory"
+    ],
+    "pages": 7,
+    "pdf_bytes": 303599,
+    "zenodo_id": 23113066,
+    "short": "When Does Graph Expansion Help Personal-Corpus Retrieval?"
+  },
+  {
+    "slug": "lechatelier-tokenomics",
+    "doi": "10.5281/zenodo.22639710",
+    "title": "Le Chatelier Tokenomics: A Thermodynamic-Homeostatic Framing of Negative-Feedback Token Supply Control, with a Multi-Asset Coupled-Equilibrium Extension",
+    "date": "2026-09-07",
+    "keywords": [
+      "tokenomics",
+      "algorithmic stablecoins",
+      "Le Chatelier principle",
+      "homeostasis",
+      "negative feedback",
+      "control theory",
+      "decentralized finance"
+    ],
+    "abstract_html": "<p>Algorithmic monetary policy in decentralized systems is conventionally described in the language of control engineering: elastic-supply tokens (Ampleforth) and PI-controlled redemption-rate systems (Reflexer/RAI) adjust token supply or implied interest in response to the deviation of market price from a target. This paper reframes the same family of mechanisms through the lens of thermodynamic and biological homeostasis, specifically the Le Chatelier-Brown principle, under which a system at equilibrium responds to an external perturbation by shifting in the direction that weakens that perturbation. We argue this framing is not merely cosmetic: it supplies design intuitions (ultra-stability, antagonistic regulation, managed hysteresis) that the control-engineering view leaves implicit, and it situates token stabilization within the broader theory of homeostatic systems. We formalize a single-asset negative-feedback supply controller as a discrete Le Chatelier response, make explicit its equivalence to a proportional controller, and then introduce a multi-asset coupled-equilibrium extension in which a perturbation to one token's equilibrium induces proportional corrective flows across N coupled markets — a regime, to our knowledge, absent from the existing algorithmic-stablecoin literature. We discuss stability conditions, hysteresis to suppress oscillation, and attack surfaces at phase transitions.</p>",
+    "code": [],
+    "pages": 4,
+    "pdf_bytes": 208088,
+    "zenodo_id": 22639710,
+    "short": "Le Chatelier Tokenomics"
+  },
+  {
+    "slug": "compact-canon",
+    "doi": "10.5281/zenodo.22684968",
+    "title": "Instructions That Never Arrive: Measuring Whether Operator Compaction Instructions Reach the Summarizer in a Production LLM Coding Agent",
+    "date": "2026-09-10",
+    "keywords": [
+      "LLM agents",
+      "context compaction",
+      "context window management",
+      "agent memory",
+      "prompt engineering",
+      "empirical software engineering",
+      "measurement methodology",
+      "Claude Code",
+      "reproducibility"
+    ],
+    "abstract_html": "<p><strong>Abstract.</strong> Long-running LLM coding agents survive finite context windows by <em>compaction</em>: replacing the conversation with a model-written summary. Compaction is lossy, and practitioners are widely advised to steer it by writing &ldquo;compact instructions&rdquo; into a project configuration file or a pre-compaction hook. We measure whether those instructions arrive. On two machines of one production fleet we scanned complete agent transcript archives and, for every compaction event, joined the summary to its metadata, recovered what the operator actually passed to the compaction command, and scored whether the summary carried the operator's custom seven-header skeleton.</p>\n<p>On machine A (16,107 transcript files; 456 events; CLI 2.1.161&ndash;2.1.246) not one of 447 compactions run without an inline instruction produced the skeleton. On machine B, measured for this paper (10,435 files; 469 events; CLI 2.1.149&ndash;2.1.260), 3 of 431 did (0.7%, 95% CI 0.2&ndash;2.0%) &mdash; and in all three the header text was already in the conversation before compaction, so the format was copied from visible content rather than delivered as an instruction. Passing the same instructions <em>inline</em>, the documented path, produced the skeleton in 16 of 38 runs on machine B and 5 of 9 on machine A (pooled 21/47, 44.7%, 95% CI 31.4&ndash;58.8%): often, not deterministically. Seeded live probes on the current release reproduce both halves.</p>\n<p>The paper also reports, with fixtures, four defects that make the naive version of this measurement report successes that are not there: the substring detector we began with calls 82 of 335 bare compactions successes where the corrected one finds 2. The study is single-fleet, Windows-only, one agent product; detector, fixtures and per-event table are public so the numbers can be contested.</p>\n<p><strong>Code and data:</strong> <a href=\"https://github.com/tonydzi/compact-canon\">github.com/tonydzi/compact-canon</a> &middot; <a href=\"https://tonydzi.github.io\">tonydzi.github.io</a> &middot; contact dzyatkovskiy.a2@gmail.com &middot; ORCID <a href=\"https://orcid.org/0000-0001-7408-3054\">0000-0001-7408-3054</a>.</p>",
+    "code": [
+      "https://github.com/tonydzi/compact-canon"
+    ],
+    "pages": 6,
+    "pdf_bytes": 304669,
+    "zenodo_id": 22684968,
+    "short": "Instructions That Never Arrive"
+  },
+  {
+    "slug": "control-plane-casebook",
+    "doi": "10.5281/zenodo.22688465",
+    "title": "Silent by Construction: A Casebook of Control-Plane Failures in a Production LLM Agent Fleet",
+    "date": "2026-09-10",
+    "keywords": [
+      "LLM agents",
+      "multi-agent systems",
+      "control plane",
+      "scheduler",
+      "task registry",
+      "watchdog",
+      "silent failure",
+      "experience report",
+      "reliability",
+      "observability",
+      "reproducibility",
+      "casebook"
+    ],
+    "abstract_html": "<p><strong>Experience report / casebook.</strong> The agent literature evaluates models. Production agent systems are stopped by something else: the <em>control plane</em> &mdash; the schedulers, registries, dispatchers and watchdogs that decide when and whether an agent runs at all.</p>\n\n<p>This paper reports eleven dated failures of that layer from a multi-machine LLM agent fleet (Windows, macOS, a cloud anchor) running dozens of scheduled agent routines in production since June 2026. Each case is given as <em>symptom &rarr; root cause &rarr; detection guard &rarr; what the system did before that guard existed</em>, and each is anchored to a public artifact: a stdlib-only deterministic model of the mechanism in the open casebook repository, an upstream bug report, or a dated journal line naming the instrument that measured it.</p>\n\n<p>The unifying finding is a property, not a bug: these failures are <em>silent by construction</em>. A scheduler that loads zero tasks does not crash; a registry that gained a second top-level list returns a confident zero; a watchdog that accepts any reply as service reports &ldquo;0 orphans&rdquo; for 22 consecutive runs across two real orphans; a detector with no executor raises a true alarm nobody can act on. Of 760 dated breakage lines in the fleet journal the largest family is a routine that stopped and could not be auto-healed (37 lines), and a fleet audit found that of 243 enabled scheduled tasks only 41 &mdash; 17% &mdash; could name an output distinguishing &ldquo;it ran&rdquo; from &ldquo;work landed.&rdquo;</p>\n\n<p>Five recurring mechanisms are distilled &mdash; all-or-nothing validation, writer/reader contract drift, the defaulting accessor, the liveness proxy that measures the guard instead of the guarded, and proof-by-intention &mdash; together with the cheap deterministic invariants that turn each from silence into an alarm. Evidence is tiered explicitly: three cases ship with reproducible stdlib-only repros and guards shown red on the broken behavior, two rest on public bug reports, six on the authors' own instruments.</p>\n\n<p>This is an experience report over one fleet (N=1), not a benchmark: no scoring, no vendor comparison, no leaderboard. Companion to the fleet experience report (doi:10.5281/zenodo.22639714).</p>\n\n<p><strong>Code and data:</strong> <a href=\"https://github.com/tonydzi/agent-control-plane-casebook\">github.com/tonydzi/agent-control-plane-casebook</a> (MIT). <strong>Contact:</strong> dzyatkovskiy.a2@gmail.com &middot; <a href=\"https://orcid.org/0000-0001-7408-3054\">ORCID 0000-0001-7408-3054</a> &middot; <a href=\"https://github.com/tonydzi\">github.com/tonydzi</a> &middot; <a href=\"https://tonydzi.github.io\">tonydzi.github.io</a>.</p>",
+    "code": [
+      "https://github.com/tonydzi/agent-control-plane-casebook"
+    ],
+    "pages": 9,
+    "pdf_bytes": 233720,
+    "zenodo_id": 22688465,
+    "short": "Silent by Construction"
+  },
+  {
+    "slug": "leash-8",
+    "doi": "10.5281/zenodo.22691782",
+    "title": "Keeping Agents on a Leash: An Eight-Domain Control Model for AI Agents with Delegated Authority",
+    "date": "2026-09-10",
+    "keywords": [
+      "LLM agents",
+      "agent security",
+      "delegated authority",
+      "prompt injection",
+      "confused deputy",
+      "least privilege",
+      "human approval",
+      "authorization",
+      "policy gate",
+      "blast radius",
+      "supply chain security",
+      "observability",
+      "incident response",
+      "scorecard",
+      "design paper"
+    ],
+    "abstract_html": "<p><strong>Design / position paper.</strong> An agent with delegated authority is an attack surface with credentials. The research answer is defenses evaluated on benchmarks, and those benchmarks are sobering: indirect prompt injection still succeeds between 10.7% and 29.6% against frontier models in production-like settings (LivePI), and of ten recent defenses on open-ended tasks almost all are either insufficiently secure or significantly over-defensive (AgentDyn). Operators must nevertheless ship.</p>\n\n<p>This paper presents <strong>LEASH-8</strong>, an eight-domain control model &mdash; identity, secrets, tool supply chain, approvals, containment, egress, observability, incident response &mdash; stated so that a small operation can implement it and, more importantly, <em>evidence</em> it: each domain carries a minimal implementation and an evidence test its owner must be able to satisfy in under a minute. Around the model are three instruments: a 24-statement scorecard with bands, a reference architecture in which the model plans, a deterministic gate authorizes and a scoped executor acts, and a checklist for designing the approval leg together with a catalogue of approval designs that fail it (including the one that fails by asking about everything and training its reader to stop looking).</p>\n\n<p><strong>No novelty is claimed at the level of principles.</strong> Every domain restates least privilege, zero trust, capability security, the confused deputy, supply-chain integrity or operational monitoring; enterprise maturity models (OWASP, CSA) already cover this ground for organizations with security teams, CaMeL formalizes policy enforcement outside the model, and OpenPort specifies risk-gated review, time-bounded approvals and state revalidation. The paper includes a per-domain <em>novelty ledger</em> that says &ldquo;no novelty&rdquo; where that is the honest verdict. The contribution is operationalization for the operator who has no security team: the smallest defensible control set, the evidence question that makes each control checkable, and two open reference implementations.</p>\n\n<p>Patterns come from a five-machine production agent operation, and a <em>grounding table</em> marks every such claim as either backed by a public artifact or as unaudited operator experience. This is a design paper, not an evaluation: no user study, no benchmark of our own, and no measurement that a higher score produces fewer incidents &mdash; the paper states what would falsify it instead.</p>\n\n<p><strong>Code:</strong> <a href=\"https://github.com/tonydzi/agent-leash\">github.com/tonydzi/agent-leash</a> (model, scorecard, checklist, reference A2A agent card, MIT) and <a href=\"https://github.com/tonydzi/agent-approval-gate\">github.com/tonydzi/agent-approval-gate</a> (standard-library approval gate with decision classes and tests, MIT). <strong>Contact:</strong> dzyatkovskiy.a2@gmail.com &middot; <a href=\"https://orcid.org/0000-0001-7408-3054\">ORCID 0000-0001-7408-3054</a> &middot; <a href=\"https://github.com/tonydzi\">github.com/tonydzi</a> &middot; <a href=\"https://tonydzi.github.io\">tonydzi.github.io</a>.</p>",
+    "code": [
+      "https://github.com/tonydzi/agent-leash",
+      "https://github.com/tonydzi/agent-approval-gate"
+    ],
+    "pages": 8,
+    "pdf_bytes": 219913,
+    "zenodo_id": 22691782,
+    "short": "Keeping Agents on a Leash (LEASH-8)"
+  },
+  {
+    "slug": "rules-as-files",
+    "doi": "10.5281/zenodo.22694070",
+    "title": "Rules as Files: Governing the Behaviour of LLM Agents Across Sessions, Machines and People. An Experience Report from a Single Production Operation",
+    "date": "2026-09-10",
+    "keywords": [
+      "LLM agents",
+      "agent governance",
+      "rules as code",
+      "policy as code",
+      "configuration management",
+      "CLAUDE.md",
+      "AGENTS.md",
+      "prompt engineering",
+      "precedence",
+      "supersede",
+      "declined decisions",
+      "decision records",
+      "human-agent teams",
+      "multi-machine agents",
+      "experience report",
+      "context window",
+      "instruction following",
+      "sycophancy",
+      "objection sparring"
+    ],
+    "abstract_html": "<p><strong>Experience report, not an evaluation.</strong> An operating instruction given to an LLM agent survives one session. Written into the agent's always-loaded configuration file it survives longer, until that file grows past the point where the model reliably attends to all of it, and then it decays silently: nothing errors, the rule simply stops firing. The same instruction given to a second machine, a second agent or a human assistant is a second copy, and copies drift.</p>\n\n<p>This report describes the governance layer run daily in a small production operation and published sanitized as an open repository: <strong>rules as one file each</strong> with typed frontmatter; <strong>precedence</strong> by recency and by author (newer beats older, owner-stated rules overturned only by their owner, supersede instead of delete); a <strong>routing tree</strong> giving each rule exactly one home, with deterministic &ldquo;every time X&rdquo; rules leaving prose for hooks; an <strong>always-loaded index</strong> carrying only trigger, essence and pointer, with the body loaded on demand; a <strong>journal of declined decisions</strong> with explicit revisit conditions; an <strong>intake ritual</strong> whose acceptance test is whether a parallel session that never saw the originating conversation would apply the rule unaided; a <strong>door quota</strong> requiring every rule to name the caller that will invoke it; a <strong>separation</strong> between writing a rule and compacting the index that holds it; and <strong>objection sparring</strong>, which turns an agent's refusal into a numbered objection list the principal is invited to rebut.</p>\n\n<p><strong>Two of the nine mechanics exist only because the design failed and the failure was measured.</strong> At one audit, 19 of 25 recently added rules had no caller anywhere in the system (76%), and one had sat unused for 42 days. A separate lesson came from a rule the operation could not keep at all: a release cadence tied to the calendar rather than to the work.</p>\n\n<p><strong>Most of this is not novel and the paper says so per mechanic.</strong> A novelty ledger names the prior art that already covers each one: policy-as-code, GitOps and infrastructure as code, architecture decision records, the RFC process, agent memory architectures, long-context attention limits, and the AGENTS.md convention, whose comparison the paper states in the convention's favour for single-machine operators. A grounding table separates what a reader can verify in the public repository from unaudited operator instrumentation and from design opinion, one central number is marked self-judged, and the limitations name the design's weakest joint: precedence carries dates, not a logical clock.</p>\n\n<p><strong>Code:</strong> <a href=\"https://github.com/tonydzi/claude-bible\">github.com/tonydzi/claude-bible</a> (specification, templates, sanitized examples, MIT), docs at <a href=\"https://tonydzi.github.io/claude-bible/\">tonydzi.github.io/claude-bible</a>. <strong>Contact:</strong> dzyatkovskiy.a2@gmail.com &middot; <a href=\"https://orcid.org/0000-0001-7408-3054\">ORCID 0000-0001-7408-3054</a> &middot; <a href=\"https://github.com/tonydzi\">github.com/tonydzi</a> &middot; <a href=\"https://tonydzi.github.io\">tonydzi.github.io</a>. Corrections and failed reproductions are welcome as issues on the repository.</p>",
+    "code": [
+      "https://github.com/tonydzi/claude-bible"
+    ],
+    "pages": 8,
+    "pdf_bytes": 201293,
+    "zenodo_id": 22694070,
+    "short": "Rules as Files"
+  },
+  {
+    "slug": "blood-panel-pipeline",
+    "doi": "10.5281/zenodo.22696755",
+    "title": "Facts Before Explanation: A Provenance-Tracked Pipeline for a Decade of Personal Lab Panels",
+    "date": "2026-09-10",
+    "keywords": [
+      "personal health informatics",
+      "provenance",
+      "LOINC",
+      "UCUM",
+      "clinical data normalization",
+      "privacy by design",
+      "self-tracking",
+      "deterministic rules",
+      "large language models",
+      "reproducibility",
+      "laboratory data",
+      "SQLite"
+    ],
+    "abstract_html": "<p><strong>System paper. Not an evaluation.</strong></p>\n\n<p>A person who has had blood drawn for ten years owns a decade of evidence in a form nothing\ncan query. Almost everyone in this position writes the same parser once, badly, and never\npublishes it, so the same defects are rediscovered privately every time. This paper describes a\nsmall stdlib-only system that turns such an archive into a provenance-tracked fact database, and\nargues for the decision it is built around: <strong>deterministic, testable rules decide what is\nmechanically true, and a language model, if added later, may only explain.</strong> Four planes\nseparate concerns &mdash; an immutable verbatim raw layer, a canonical parsed twin rebuilt on\nevery run, a rules plane, and a model plane deliberately shipped empty &mdash; and ambiguity is\nrecorded as a quality-control flag on the row rather than resolved silently or dropped.</p>\n\n<p>The empirical content is a failure, reproducible from the published artifact alone with no\nprivate data: mapping markers to standard LOINC identifiers by substring assigns a wrong code to\n12 of 52 matched analytes, including three distinct measurements carrying the code for\nhaemoglobin and red blood cells <em>in urine</em> carrying the code for red blood cells in blood.\nThe instructive part is the repair that did not work &mdash; re-ordering candidate keys\nlongest-first turned the failing test green while changing the outcome on exactly one row of 158,\nso a green suite certified a class that was 92% open. The real repair was to abandon substring\nmatching: exact normalised match only, no code at all for an unmatched analyte, assigned codes\ndropping from 52 to 40.</p>\n\n<p>Two principles generalise: for medical identifiers <strong>missing is recoverable and wrong is\nnot</strong>, and a fix that turns a red test green is evidence about an instance, never about a\nclass. The paper separates what a reader can run from what is the author's word, names the\nstudies that would turn this case report into a measurement, and reports two defects found in the\nauthor's own artifact while writing it.</p>\n\n<p><strong>Privacy:</strong> the repository ships no measurements and neither does this paper. No\nmeasured value, reference range from a real draw, draw date or diagnosis appears anywhere in it.</p>\n\n<p><strong>Reproducibility:</strong> every figure about the system is re-derivable by running the\npublic repository; tests/reproduce_miscoding.py re-derives the miscoding table from\nthe two shipped mapping files and exits non-zero if the published figures stop reproducing.</p>\n\n<p><strong>This is not medical advice</strong> and the system described is not a diagnostic\ndevice.</p>\n\n<p>Code: <a href=\"https://github.com/tonydzi/blood-panel-pipeline\">github.com/tonydzi/blood-panel-pipeline</a>\n(MIT) &middot; Author: <a href=\"https://github.com/tonydzi\">github.com/tonydzi</a> &middot;\n<a href=\"https://tonydzi.github.io\">tonydzi.github.io</a> &middot; ORCID\n<a href=\"https://orcid.org/0000-0001-7408-3054\">0000-0001-7408-3054</a> &middot;\ndzyatkovskiy.a2@gmail.com</p>",
+    "code": [
+      "https://github.com/tonydzi/blood-panel-pipeline"
+    ],
+    "pages": 8,
+    "pdf_bytes": 208077,
+    "zenodo_id": 22696755,
+    "short": "Facts Before Explanation"
+  }
 ]

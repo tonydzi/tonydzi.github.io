@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recovery on Signal or on Schedule? A Small Pre-Registered Test of Health-Preserving Pedagogy in Continual Learning</title>
+<meta name="description" content="Pre-registered continual-learning experiment at a fixed gradient-step budget: replay triggered by a loss rise on a held-out probe beats uniform replay, but a sensor-free rule that gives later tasks proportionally more replay matches it at every point. What transfers from health-preserving pedagogy is the dosage rule, not the alarm.">
+<meta name="citation_title" content="Recovery on Signal or on Schedule? A Small Pre-Registered Test of Health-Preserving Pedagogy in Continual Learning">
+<meta name="citation_author" content="Dziatkovskii, Anton">
+<meta name="citation_author_orcid" content="0000-0001-7408-3054">
+<meta name="citation_publication_date" content="2026/10/09">
+<meta name="citation_online_date" content="2026/10/09">
+<meta name="citation_doi" content="10.5281/zenodo.23268660">
+<meta name="citation_pdf_url" content="https://tonydzi.github.io/papers/t2-threshold-replay.pdf">
+<meta name="citation_abstract_html_url" content="https://tonydzi.github.io/papers/t2-threshold-replay.html">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="continual learning">
+<meta name="citation_keywords" content="experience replay">
+<meta name="citation_keywords" content="catastrophic forgetting">
+<meta name="citation_keywords" content="health-preserving pedagogy">
+<meta name="citation_keywords" content="pre-registration">
+<meta name="citation_keywords" content="negative result">
+<meta name="citation_keywords" content="cost of learning">
+<link rel="canonical" href="https://tonydzi.github.io/papers/t2-threshold-replay.html">
+<link rel="alternate" type="application/pdf" href="https://tonydzi.github.io/papers/t2-threshold-replay.pdf">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ScholarlyArticle", "headline": "Recovery on Signal or on Schedule? A Small Pre-Registered Test of Health-Preserving Pedagogy in Continual Learning", "author": {"@type": "Person", "name": "Anton Dziatkovskii", "sameAs": "https://orcid.org/0000-0001-7408-3054"}, "datePublished": "2026-10-09", "identifier": "https://doi.org/10.5281/zenodo.23268660", "sameAs": "https://doi.org/10.5281/zenodo.23268660", "license": "https://creativecommons.org/licenses/by/4.0/", "url": "https://tonydzi.github.io/papers/t2-threshold-replay.html", "encoding": {"@type": "MediaObject", "contentUrl": "https://tonydzi.github.io/papers/t2-threshold-replay.pdf", "encodingFormat": "application/pdf"}}</script>
+<style>
+  body{background:#fdfdfd;color:#111;
+    font-family:"Bitstream Charter","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+    font-size:18px;line-height:1.55;max-width:47rem;margin:0 auto;padding:3rem 1rem 6rem;}
+  .crumb{font-size:.9rem;color:#666;margin-bottom:2rem}
+  h1{font-size:1.6rem;line-height:1.2;margin:0 0 .6rem;font-weight:600}
+  a{color:#0000ee;text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:#0000ee}
+  h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:#666;font-weight:600;margin:2.2rem 0 .7rem;padding-bottom:.35rem;border-bottom:1px solid #e2ded3}
+  p{margin:0 0 1rem;max-width:65ch}
+  .by{margin:0 0 .3rem}
+  .note{color:#666;font-size:.9rem}
+  .lk a{display:inline-block;margin:.2rem .9rem .2rem 0;text-decoration:underline;text-underline-offset:2px;border-bottom:none}
+  pre{background:#f4f2ec;padding:.8rem;overflow-x:auto;font-size:.8rem;white-space:pre-wrap;word-break:break-word}
+  .foot{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;color:#666;font-size:.85rem}
+  .sitenav{margin-top:3rem;padding-top:1rem;border-top:1px solid #e2ded3;font-size:.9rem;line-height:1.9}
+  .sitenav a{margin:0 2px}
+</style>
+</head>
+<body>
+
+<div class="crumb"><a href="/">Anton Dziatkovskii</a> &rsaquo; <a href="/papers/">Papers</a></div>
+<h1>Recovery on Signal or on Schedule? A Small Pre-Registered Test of Health-Preserving Pedagogy in Continual Learning</h1>
+<p class="by"><b>Anton Dziatkovskii</b> &middot; <a href="https://orcid.org/0000-0001-7408-3054">ORCID 0000-0001-7408-3054</a></p>
+<p class="note">Preprint v2, 9 October 2026. Version of record: Zenodo, DOI <a href="https://doi.org/10.5281/zenodo.23268660">10.5281/zenodo.23268660</a>. License CC BY 4.0.</p>
+<p class="lk"><a href="t2-threshold-replay.pdf">Full text (PDF, 7 pages, 79 KB)</a><a href="https://doi.org/10.5281/zenodo.23268660">DOI</a><a href="https://github.com/tonydzi/machine-pedagogy">Code, seeds and raw tables: machine-pedagogy</a></p>
+
+<h2>Abstract</h2>
+<p>Health-preserving pedagogy holds that teaching has a cost to the learner and that a recovery phase should start when the learner's diagnosed state calls for one, not when the timetable does. We test the machine analogue at a fixed gradient-step budget in class- and domain-incremental continual learning (5 tasks from the 8&times;8 digits set, a small MLP).</p>
+<p>A threshold arm replays a small memory only when a held-out probe of past tasks shows a loss rise above tau. We compare it with replay of exactly the same count placed five other ways: uniformly over the whole run, at random, at the start of each task, at random inside each task, and evenly inside each task with the threshold arm's own per-task counts. A sixth comparison is a sensor-free rule that makes replay proportional to the number of past tasks.</p>
+<p>On a pre-registered fresh holdout (seeds 20&ndash;29) at equal cost, the threshold arm beats globally uniform replay. On class-incremental Split-Digits the gain is 3.4&ndash;7.7 points (8&ndash;10 of 10 seeds at tau 0.5&ndash;1.0); on Permuted-Digits it is 0.6&ndash;4.1 points and reaches 8&ndash;10 of 10 seeds only at tau &ge; 0.75. The sensor-free proportional rule is never beaten by the threshold arm at any of the ten points and exceeds it by 6.2 points at the smallest budget on Split. An oracle control that keeps the sensor's per-task counts but spaces them evenly matches the threshold arm at medium budgets and exceeds it at the two smallest.</p>
+<p>What transfers from the pedagogy is the dosage rule: more recovery as more material accumulates, spread evenly. On this benchmark the state alarm adds nothing measurable beyond what a fixed proportional rule already gives, and at small budgets its within-task timing costs accuracy. Code, seeds, raw tables, the pre-registration with two dated addenda and two superseded versions are public.</p>
+
+<h2>Keywords</h2>
+<p class="note">continual learning · experience replay · catastrophic forgetting · curriculum learning · health-preserving pedagogy · homeostatic approach · pre-registration · negative result · recovery phase · learner state · cost of learning</p>
+
+<h2>How to cite</h2>
+<p>Dziatkovskii, A. (2026). Recovery on Signal or on Schedule? A Small Pre-Registered Test of Health-Preserving Pedagogy in Continual Learning. Preprint v2, Zenodo. https://doi.org/10.5281/zenodo.23268660</p>
+<pre>@misc{dziatkovskii2026recoveryonsignal,
+  author    = {Dziatkovskii, Anton},
+  title     = {Recovery on Signal or on Schedule? A Small Pre-Registered Test of Health-Preserving Pedagogy in Continual Learning},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.23268660},
+  url       = {https://doi.org/10.5281/zenodo.23268660},
+  note      = {Preprint v2, CC BY 4.0}
+}</pre>
+<p class="note">One text, one DOI: the PDF on this page is the Zenodo file byte for byte. Please cite the DOI.</p>
+
+<div class="sitenav"><b>Anton Dziatkovskii</b> &middot; <a href="/">Candidate one-pager</a> &middot; <a href="/speaker/">Speaker</a> &middot; <a href="/resume.pdf">Resume (PDF, ATS)</a> &middot; <a href="/resume.json">Resume (JSON)</a> &middot; <a href="/papers/">Papers</a> &middot; <a href="/scholar/publications/">Publications</a></div>
+
+<div class="foot">Anton Dziatkovskii &middot; Palo Alto AI Research Lab &middot; <a href="/papers/">All 2026 preprints</a> &middot; <a href="/scholar/publications/">Full publication list</a></div>
+
+</body>
+</html>

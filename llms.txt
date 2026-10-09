@@ -31,6 +31,7 @@
 
 Index with abstracts: https://tonydzi.github.io/papers/
 
+- [Recovery on Signal or on Schedule? A Small Pre-Registered Test of Health-Preserving Pedagogy in Continual Learning](https://tonydzi.github.io/papers/t2-threshold-replay.html) - DOI 10.5281/zenodo.23268660 (2026). Full text: https://tonydzi.github.io/papers/t2-threshold-replay.pdf . Code: https://github.com/tonydzi/machine-pedagogy
 - [Rules as Files: Governing the Behaviour of LLM Agents Across Sessions, Machines and People. An Experience Report from a Single Production Operation](https://tonydzi.github.io/papers/rules-as-files.html) - DOI 10.5281/zenodo.22694070 (2026). Full text: https://tonydzi.github.io/papers/rules-as-files.pdf
 - [Keeping Agents on a Leash: An Eight-Domain Control Model for AI Agents with Delegated Authority](https://tonydzi.github.io/papers/leash-8.html) - DOI 10.5281/zenodo.22691782 (2026). Full text: https://tonydzi.github.io/papers/leash-8.pdf
 - [Silent by Construction: A Casebook of Control-Plane Failures in a Production LLM Agent Fleet](https://tonydzi.github.io/papers/control-plane-casebook.html) - DOI 10.5281/zenodo.22688465 (2026). Full text: https://tonydzi.github.io/papers/control-plane-casebook.pdf
