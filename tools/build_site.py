@@ -38,6 +38,7 @@ OWN_PAGES = [
     ("/scholar/ru/",             "scholar/ru/index.html",            "monthly"),
     ("/papers/",                 "papers/index.html",                "monthly"),
     ("/speaker/",                "speaker/index.html",               "weekly"),
+    ("/tokens/",                 "tokens/index.html",                "weekly"),
 ] + [("/papers/%s.html" % _s, "papers/%s.html" % _s, "yearly") for _s in PAPER_SLUGS]
 
 # Project pages served from the SAME host out of other repositories. They are part of this
@@ -59,6 +60,7 @@ NAV_EN = ('<div class="sitenav"><b>Anton Dziatkovskii</b> &middot; '
           '<a href="/scholar/publications/">All publications</a> &middot; '
           '<a href="/papers/">Preprints 2026</a> &middot; '
           '<a href="/contributions/">Open-source contributions</a> &middot; '
+          '<a href="/tokens/">Fleet token meter</a> &middot; '
           '<a href="/scholar/writing/">Writing</a> &middot; '
           '<a href="/scholar/ru/">Rus</a> &middot; '
           '<a href="https://github.com/tonydzi">GitHub</a></div>')
@@ -70,6 +72,7 @@ NAV_RU = ('<div class="sitenav"><b>Антон Дзятковский</b> &middot
           '<a href="/scholar/">Академический профиль</a> &middot; '
           '<a href="/scholar/publications/">Все публикации</a> &middot; '
           '<a href="/contributions/">Вклад в открытый код</a> &middot; '
+          '<a href="/tokens/">Счётчик токенов флота</a> &middot; '
           '<a href="/scholar/writing/">Эссе</a> &middot; '
           '<a href="https://github.com/tonydzi">GitHub</a></div>')
 
