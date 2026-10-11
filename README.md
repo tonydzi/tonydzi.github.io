@@ -2,6 +2,12 @@
 
 START HERE page of Anton Dziatkovskii — live at https://tonydzi.github.io/
 
+## Fleet token meter
+
+How many LLM tokens the fleet has burned, by vendor, model, machine and week,
+counted from harness logs and updated weekly: [tokens/](tokens/) (live at
+https://tonydzi.github.io/tokens/).
+
 ## AI contributors
 
 This project is built by a human + AI team, and the git log says so: Claude

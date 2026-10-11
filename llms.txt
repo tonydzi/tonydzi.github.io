@@ -75,3 +75,4 @@ read the text without a paywall.
 
 - [robots.txt](https://tonydzi.github.io/robots.txt) — AI crawlers explicitly allowed.
 - [sitemap.xml](https://tonydzi.github.io/sitemap.xml)
+- [Fleet token meter](https://tonydzi.github.io/tokens/): LLM tokens burned by the fleet, by vendor, model, machine and week; counted from harness logs, updated weekly; tokens.json alongside

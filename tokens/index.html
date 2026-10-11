@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fleet token meter</title>
+<meta name="description" content="How many LLM tokens the Palo Alto AI Lab fleet has burned, by vendor, model, machine and week. Counted from the harness logs, no estimates, updated weekly.">
+<link rel="canonical" href="https://palo-alto.ai/tokens/">
+<style>
+:root{--paper:#fdfdfd;--ink:#111;--muted:#666;--rule:#e2ded3;--hair:#eee9dd;--link:#0000ee;--seen:#551a8b;--codebg:#f7f5ef;
+  --mono:ui-monospace,"SF Mono",Consolas,Menlo,"Courier New",monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#12110f;--ink:#e8e4db;--muted:#9a938a;--rule:#3a352d;--hair:#2a2620;--link:#8ab4ff;--seen:#c3a0e8;--codebg:#1a1712}}
+:root[data-theme="dark"]{--paper:#12110f;--ink:#e8e4db;--muted:#9a938a;--rule:#3a352d;--hair:#2a2620;--link:#8ab4ff;--seen:#c3a0e8;--codebg:#1a1712}
+*{box-sizing:border-box}
+body{margin:0 auto;background:var(--paper);color:var(--ink);font-family:"Bitstream Charter","Iowan Old Style",Palatino,Georgia,"Times New Roman",serif;
+  font-size:18px;line-height:1.55;max-width:47rem;padding:4rem 1rem 6rem}
+h1{font-size:2.1rem;line-height:1.12;margin:0 0 .4rem;font-weight:600;letter-spacing:-.01em}
+h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:600;margin:2.6rem 0 .8rem;padding-bottom:.35rem;border-bottom:1px solid var(--rule)}
+p{margin:0 0 1rem;max-width:65ch}
+a{color:var(--link);text-decoration:none;border-bottom:1px solid transparent}a:hover{border-bottom-color:var(--link)}a:visited{color:var(--seen)}
+.muted{color:var(--muted)}.mono{font-family:var(--mono);font-size:.85rem}
+.tally{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;margin:0 0 1.2rem;font-variant-numeric:tabular-nums}
+.tally div{white-space:nowrap}.tally b{font-size:1.5rem;font-weight:600;margin-right:.35rem}
+.tally span{color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.08em}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:.95rem;margin:0 0 1rem}
+th,td{text-align:left;padding:.3rem .5rem .3rem 0;border-bottom:1px solid var(--hair);vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+td.n,th.n{text-align:right;white-space:nowrap}
+.wrap{overflow-x:auto}
+code{font-family:var(--mono);font-size:.86em;background:var(--codebg);padding:.08em .35em;border-radius:2px}
+ul{margin:0 0 1rem;padding-left:1.1rem}li{margin:.35rem 0}
+.sitenav{margin-top:4rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.9rem;line-height:1.9}
+.foot{margin-top:1.4rem;color:var(--muted);font-size:.85rem;line-height:1.7}
+</style>
+</head>
+<body>
+<h1>Fleet token meter</h1>
+<p class="muted">Counted from the logs the agent harnesses write, no estimates. Since 2026-07-13, updated weekly. Last run 2026-10-11 07:01 UTC.</p>
+
+<div class="tally">
+<div><b>61.40 B</b><span>tokens, all vendors</span></div>
+<div><b>51.15 B</b><span>Claude</span></div>
+<div><b>10.24 B</b><span>Codex</span></div>
+<div><b>22.1 M</b><span>OpenRouter</span></div>
+</div>
+<p>A token here is every token a vendor billed for: prompt input, cache writes, cache reads and output. Cache reads are the cheapest kind and the largest share: an agent re-reads its whole context on every turn. The page says what it could not count, so the number is a floor, not a guess.</p>
+
+<h2>By vendor</h2>
+<div class="wrap"><table>
+<tr><th>Vendor</th><th class=n>Total</th><th class=n>Input</th><th class=n>Cache read</th><th class=n>Cache write</th><th class=n>Output</th><th class=n>Share</th></tr>
+<tr><td>Claude (Claude Code, whole fleet)</td><td class=n>33.81 B</td><td class=n>6.0 M</td><td class=n>32.46 B</td><td class=n>1.21 B</td><td class=n>130.7 M</td><td class=n>55.1%</td></tr>
+<tr><td>Claude (older daily ledger, totals only)</td><td class=n>17.34 B</td><td class=n>0</td><td class=n>0</td><td class=n>0</td><td class=n>0</td><td class=n>28.2%</td></tr>
+<tr><td>OpenAI Codex CLI (hub)</td><td class=n>10.24 B</td><td class=n>456.3 M</td><td class=n>9.74 B</td><td class=n>0</td><td class=n>34.8 M</td><td class=n>16.7%</td></tr>
+<tr><td>OpenRouter: GLM, Mistral (hub)</td><td class=n>22.1 M</td><td class=n>18.0 M</td><td class=n>0</td><td class=n>0</td><td class=n>4.1 M</td><td class=n>0.0%</td></tr>
+</table></div>
+<p class="muted">OpenRouter is pay-per-token: 34.16 USD so far. Claude and Codex run on flat subscriptions, so no dollar figure is shown for them.</p>
+
+<h2>By model</h2>
+<div class="wrap"><table>
+<tr><th>Model</th><th>Vendor</th><th class=n>Tokens</th><th class=n>Share</th></tr>
+<tr><td>claude-opus-5</td><td class=muted>claude</td><td class=n>17.56 B</td><td class=n>28.6%</td></tr>
+<tr><td>claude (archive ledger, no model split)</td><td class=muted>claude-archive</td><td class=n>17.34 B</td><td class=n>28.2%</td></tr>
+<tr><td>gpt-5.6-sol</td><td class=muted>codex</td><td class=n>7.07 B</td><td class=n>11.5%</td></tr>
+<tr><td>claude-opus-5-5</td><td class=muted>claude</td><td class=n>6.57 B</td><td class=n>10.7%</td></tr>
+<tr><td>claude-sonnet-5</td><td class=muted>claude</td><td class=n>4.39 B</td><td class=n>7.1%</td></tr>
+<tr><td>gpt-6-astra</td><td class=muted>codex</td><td class=n>2.92 B</td><td class=n>4.7%</td></tr>
+<tr><td>claude-fable-5-1</td><td class=muted>claude</td><td class=n>2.45 B</td><td class=n>4.0%</td></tr>
+<tr><td>claude-fable-5</td><td class=muted>claude</td><td class=n>1.54 B</td><td class=n>2.5%</td></tr>
+<tr><td>claude-sonnet-5-5</td><td class=muted>claude</td><td class=n>756.1 M</td><td class=n>1.2%</td></tr>
+<tr><td>claude-opus-4-8</td><td class=muted>claude</td><td class=n>351.8 M</td><td class=n>0.6%</td></tr>
+<tr><td>codex-auto-review</td><td class=muted>codex</td><td class=n>150.8 M</td><td class=n>0.2%</td></tr>
+<tr><td>claude-sonnet-4-6</td><td class=muted>claude</td><td class=n>142.9 M</td><td class=n>0.2%</td></tr>
+<tr><td>codex (model not in log)</td><td class=muted>codex</td><td class=n>55.3 M</td><td class=n>0.1%</td></tr>
+<tr><td>glm-5.3</td><td class=muted>claude</td><td class=n>36.1 M</td><td class=n>0.1%</td></tr>
+</table></div>
+
+<h2>By machine (Claude only)</h2>
+<p class="muted">Every machine in the fleet uploads its own Claude usage slice once a day. Codex and OpenRouter are counted on the hub only. Machines with a slice: A-2022BAYAREA, FLEET-ANCHOR, MacBook-Anton, MacPro192, ZBOOKG8-2023PAL.</p>
+<div class="wrap"><table>
+<tr><th>Machine</th><th class=n>Claude tokens</th><th class=n>Share</th></tr>
+<tr><td>A-2022BAYAREA</td><td class=n>29.02 B</td><td class=n>56.7%</td></tr>
+<tr><td>ZBOOKG8-2023PAL</td><td class=n>10.69 B</td><td class=n>20.9%</td></tr>
+<tr><td>MacBook-Anton</td><td class=n>5.90 B</td><td class=n>11.5%</td></tr>
+<tr><td>MacPro192</td><td class=n>4.02 B</td><td class=n>7.9%</td></tr>
+<tr><td>FLEET-ANCHOR</td><td class=n>1.52 B</td><td class=n>3.0%</td></tr>
+</table></div>
+
+<h2>By week</h2>
+<div class="wrap"><table>
+<tr><th>ISO week <span class=muted>(Monday)</span></th><th class=n>Claude</th><th class=n>Codex</th><th class=n>OpenRouter</th><th class=n>Total</th></tr>
+<tr><td>2026-W41 <span class=muted>2026-10-05</span></td><td class=n>17.96 B</td><td class=n>1.20 B</td><td class=n>4.3 M</td><td class=n><b>19.16 B</b></td></tr>
+<tr><td>2026-W40 <span class=muted>2026-09-28</span></td><td class=n>11.25 B</td><td class=n>2.01 B</td><td class=n>11.4 M</td><td class=n><b>13.27 B</b></td></tr>
+<tr><td>2026-W39 <span class=muted>2026-09-21</span></td><td class=n>4.60 B</td><td class=n>5.20 B</td><td class=n>6.4 M</td><td class=n><b>9.81 B</b></td></tr>
+<tr><td>2026-W38 <span class=muted>2026-09-14</span></td><td class=n>1.58 B</td><td class=n>936.2 M</td><td class=n>0</td><td class=n><b>2.51 B</b></td></tr>
+<tr><td>2026-W37 <span class=muted>2026-09-07</span></td><td class=n>5.60 B</td><td class=n>298.6 M</td><td class=n>0</td><td class=n><b>5.90 B</b></td></tr>
+<tr><td>2026-W36 <span class=muted>2026-08-31</span></td><td class=n>9.55 B</td><td class=n>149.4 M</td><td class=n>0</td><td class=n><b>9.70 B</b></td></tr>
+<tr><td>2026-W35 <span class=muted>2026-08-24</span></td><td class=n>611.9 M</td><td class=n>616.7 k</td><td class=n>0</td><td class=n><b>612.5 M</b></td></tr>
+<tr><td>2026-W34 <span class=muted>2026-08-17</span></td><td class=n>0</td><td class=n>159.7 M</td><td class=n>0</td><td class=n><b>159.7 M</b></td></tr>
+<tr><td>2026-W33 <span class=muted>2026-08-10</span></td><td class=n>0</td><td class=n>134.8 M</td><td class=n>0</td><td class=n><b>134.8 M</b></td></tr>
+<tr><td>2026-W32 <span class=muted>2026-08-03</span></td><td class=n>0</td><td class=n>133.6 M</td><td class=n>0</td><td class=n><b>133.6 M</b></td></tr>
+<tr><td>2026-W31 <span class=muted>2026-07-27</span></td><td class=n>0</td><td class=n>4.7 M</td><td class=n>0</td><td class=n><b>4.7 M</b></td></tr>
+<tr><td>2026-W30 <span class=muted>2026-07-20</span></td><td class=n>0</td><td class=n>3.8 M</td><td class=n>0</td><td class=n><b>3.8 M</b></td></tr>
+<tr><td>2026-W29 <span class=muted>2026-07-13</span></td><td class=n>0</td><td class=n>2.1 M</td><td class=n>0</td><td class=n><b>2.1 M</b></td></tr>
+</table></div>
+<p class="muted">The first and the current week are partial. Weeks older than the 45-day retention of the Claude fleet ledger are frozen from earlier runs and never shrink.</p>
+
+<h2>Not counted</h2>
+<ul>
+<li>Gemini CLI and Antigravity (no usage counter in their logs yet)</li>
+<li>Grok CLI (session logs carry no token usage)</li>
+<li>Mistral called directly, outside OpenRouter</li>
+<li>Web chats: claude.ai, ChatGPT, Gemini, Grok, NotebookLM</li>
+<li>Codex and OpenRouter calls made on machines other than the hub</li>
+</ul>
+
+<h2>Method</h2>
+<ul>
+<li><b>Claude.</b> Each machine runs <code>token_usage_ledger.py</code> nightly over its Claude Code transcripts, deduplicates usage records by message id (streaming writes the same record several times), and drops one hourly row per session and model into the fleet bus. This page merges all slices and collapses a machine that reports under two hostnames into one.</li>
+<li><b>Codex.</b> Codex CLI logs a cumulative <code>token_count</code> after every turn. We take the deltas between consecutive events, so a session that spans weeks is split correctly.</li>
+<li><b>OpenRouter.</b> Our router <code>llm_ask.py</code> writes one line per call with the input and output tokens and the price the API returned.</li>
+<li>Machine-readable: <a href="tokens.json">tokens.json</a> (this snapshot) and <a href="history.json">history.json</a> (every week ever recorded). The instruments are open source: <a href="https://github.com/tonydzi/llm-spend-audit">llm-spend-audit</a>.</li>
+</ul>
+
+<div class="sitenav">&copy; 2026 <b>Palo Alto AI Lab</b> &middot; <a href="https://palo-alto.ai/">Home</a> &middot; <a href="https://palo-alto.ai/anton/">Anton</a> &middot; <a href="https://palo-alto.ai/code/">Code</a> &middot; <a href="https://palo-alto.ai/members/">Members</a> &middot; <a href="https://tonydzi.github.io/">Candidate one-pager</a> &middot; <a href="https://github.com/tonydzi">GitHub</a> &middot; <a href="https://github.com/tonydzi/join-the-fleet">Join the fleet</a></div>
+<p class="foot">Generated 2026-10-11 07:01 UTC by a weekly job on the fleet hub. Not affiliated with Anthropic, OpenAI or any other vendor named here.</p>
+</body>
+</html>
