@@ -228,19 +228,19 @@
     }
    },
    "codex": {
-    "in": 42588292,
+    "in": 42694168,
     "cache_write": 0,
     "cache_read": 889993088,
-    "out": 3658798,
-    "total": 936240178,
+    "out": 3662645,
+    "total": 936349901,
     "calls": 6680,
     "usd": 0.0,
     "by_model": {
-     "gpt-5.6-sol": 935946541,
+     "gpt-5.6-sol": 936056264,
      "gpt-5.6-terra": 293637
     },
     "by_node": {
-     "A-2022BAYAREA": 936240178
+     "A-2022BAYAREA": 936349901
     }
    }
   },
@@ -271,15 +271,15 @@
     }
    },
    "codex": {
-    "in": 154989387,
+    "in": 155343282,
     "cache_write": 0,
     "cache_read": 5027751547,
-    "out": 16801878,
-    "total": 5199542812,
+    "out": 16811576,
+    "total": 5199906405,
     "calls": 37250,
     "usd": 0.0,
     "by_model": {
-     "gpt-5.6-sol": 4562879702,
+     "gpt-5.6-sol": 4563243295,
      "gpt-5.6-terra": 1789461,
      "gpt-5.6-luna": 38003,
      "gpt-6-astra": 581230215,
@@ -289,7 +289,7 @@
      "codex (model not in log)": 6355550
     },
     "by_node": {
-     "A-2022BAYAREA": 5199542812
+     "A-2022BAYAREA": 5199906405
     }
    },
    "openrouter": {
@@ -405,36 +405,36 @@
     }
    },
    "codex": {
-    "in": 79113394,
+    "in": 79430827,
     "cache_write": 0,
-    "cache_read": 1115678208,
-    "out": 4977536,
-    "total": 1199769138,
-    "calls": 10175,
+    "cache_read": 1116011776,
+    "out": 4991613,
+    "total": 1200434216,
+    "calls": 10182,
     "usd": 0.0,
     "by_model": {
      "gpt-6-astra": 485309710,
-     "gpt-5.6-sol": 690621893,
+     "gpt-5.6-sol": 691286971,
      "gpt-6.1-sol": 19972314,
      "gpt-5.6-terra": 3865221
     },
     "by_node": {
-     "A-2022BAYAREA": 1199769138
+     "A-2022BAYAREA": 1200434216
     }
    },
    "openrouter": {
-    "in": 3405638,
+    "in": 3421207,
     "cache_write": 0,
     "cache_read": 0,
-    "out": 928199,
-    "total": 4333837,
-    "calls": 528,
-    "usd": 5.0522,
+    "out": 930542,
+    "total": 4351749,
+    "calls": 531,
+    "usd": 5.0632,
     "by_model": {
-     "z-ai/glm-5.3": 4333837
+     "z-ai/glm-5.3": 4351749
     },
     "by_node": {
-     "A-2022BAYAREA": 4331740,
+     "A-2022BAYAREA": 4349652,
      "node": 2097
     }
    }
