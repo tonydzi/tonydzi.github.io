@@ -35,42 +35,42 @@ ul{margin:0 0 1rem;padding-left:1.1rem}li{margin:.35rem 0}
 </head>
 <body>
 <h1>Fleet token meter</h1>
-<p class="muted">Counted from the logs the agent harnesses write, no estimates. Since 2026-07-13, updated weekly. Last run 2026-10-14 20:07 UTC.</p>
+<p class="muted">Counted from the logs the agent harnesses write, no estimates. Since 2026-07-13, updated weekly. Last run 2026-10-18 04:30 UTC.</p>
 
 <div class="tally">
-<div><b>68.40 B</b><span>tokens, all vendors</span></div>
-<div><b>55.80 B</b><span>Claude</span></div>
-<div><b>12.57 B</b><span>Codex</span></div>
-<div><b>23.4 M</b><span>OpenRouter</span></div>
+<div><b>74.70 B</b><span>tokens, all vendors</span></div>
+<div><b>60.13 B</b><span>Claude</span></div>
+<div><b>14.55 B</b><span>Codex</span></div>
+<div><b>25.7 M</b><span>OpenRouter</span></div>
 </div>
 <p>A token here is every token a vendor billed for: prompt input, cache writes, cache reads and output. Cache reads are the cheapest kind and the largest share: an agent re-reads its whole context on every turn. The page says what it could not count, so the number is a floor, not a guess.</p>
 
 <h2>By vendor</h2>
 <div class="wrap"><table>
 <tr><th>Vendor</th><th class=n>Total</th><th class=n>Input</th><th class=n>Cache read</th><th class=n>Cache write</th><th class=n>Output</th><th class=n>Share</th></tr>
-<tr><td>Claude (Claude Code, whole fleet)</td><td class=n>38.46 B</td><td class=n>7.1 M</td><td class=n>36.83 B</td><td class=n>1.47 B</td><td class=n>152.4 M</td><td class=n>56.2%</td></tr>
-<tr><td>Claude (older daily ledger, totals only)</td><td class=n>17.34 B</td><td class=n>0</td><td class=n>0</td><td class=n>0</td><td class=n>0</td><td class=n>25.3%</td></tr>
-<tr><td>OpenAI Codex CLI (hub)</td><td class=n>12.57 B</td><td class=n>536.9 M</td><td class=n>11.99 B</td><td class=n>0</td><td class=n>42.3 M</td><td class=n>18.4%</td></tr>
-<tr><td>OpenRouter: GLM, Mistral (hub)</td><td class=n>23.4 M</td><td class=n>19.0 M</td><td class=n>0</td><td class=n>0</td><td class=n>4.4 M</td><td class=n>0.0%</td></tr>
+<tr><td>Claude (Claude Code, whole fleet)</td><td class=n>42.79 B</td><td class=n>7.9 M</td><td class=n>40.89 B</td><td class=n>1.72 B</td><td class=n>167.7 M</td><td class=n>57.3%</td></tr>
+<tr><td>Claude (older daily ledger, totals only)</td><td class=n>17.34 B</td><td class=n>0</td><td class=n>0</td><td class=n>0</td><td class=n>0</td><td class=n>23.2%</td></tr>
+<tr><td>OpenAI Codex CLI (hub)</td><td class=n>14.55 B</td><td class=n>599.1 M</td><td class=n>13.90 B</td><td class=n>0</td><td class=n>47.1 M</td><td class=n>19.5%</td></tr>
+<tr><td>OpenRouter: GLM, Mistral (hub)</td><td class=n>25.7 M</td><td class=n>21.1 M</td><td class=n>0</td><td class=n>0</td><td class=n>4.6 M</td><td class=n>0.0%</td></tr>
 </table></div>
-<p class="muted">OpenRouter is pay-per-token: 36.41 USD so far. Claude and Codex run on flat subscriptions, so no dollar figure is shown for them.</p>
+<p class="muted">OpenRouter is pay-per-token: 38.43 USD so far. Claude and Codex run on flat subscriptions, so no dollar figure is shown for them.</p>
 
 <h2>By model</h2>
 <div class="wrap"><table>
 <tr><th>Model</th><th>Vendor</th><th class=n>Tokens</th><th class=n>Share</th></tr>
-<tr><td>claude-opus-5</td><td class=muted>claude</td><td class=n>17.95 B</td><td class=n>26.2%</td></tr>
-<tr><td>claude (archive ledger, no model split)</td><td class=muted>claude-archive</td><td class=n>17.34 B</td><td class=n>25.3%</td></tr>
-<tr><td>claude-opus-5-5</td><td class=muted>claude</td><td class=n>9.35 B</td><td class=n>13.7%</td></tr>
-<tr><td>gpt-5.6-sol</td><td class=muted>codex</td><td class=n>8.42 B</td><td class=n>12.3%</td></tr>
-<tr><td>claude-sonnet-5</td><td class=muted>claude</td><td class=n>4.57 B</td><td class=n>6.7%</td></tr>
-<tr><td>gpt-6-astra</td><td class=muted>codex</td><td class=n>2.92 B</td><td class=n>4.3%</td></tr>
-<tr><td>claude-fable-5-1</td><td class=muted>claude</td><td class=n>2.75 B</td><td class=n>4.0%</td></tr>
-<tr><td>claude-fable-5</td><td class=muted>claude</td><td class=n>1.54 B</td><td class=n>2.2%</td></tr>
-<tr><td>claude-sonnet-5-5</td><td class=muted>claude</td><td class=n>1.47 B</td><td class=n>2.2%</td></tr>
-<tr><td>gpt-6.1-sol</td><td class=muted>codex</td><td class=n>1.00 B</td><td class=n>1.5%</td></tr>
-<tr><td>claude-opus-4-8</td><td class=muted>claude</td><td class=n>382.2 M</td><td class=n>0.6%</td></tr>
-<tr><td>claude-haiku-5-5</td><td class=muted>claude</td><td class=n>192.7 M</td><td class=n>0.3%</td></tr>
-<tr><td>claude-sonnet-4-6</td><td class=muted>claude</td><td class=n>176.3 M</td><td class=n>0.3%</td></tr>
+<tr><td>claude-opus-5</td><td class=muted>claude</td><td class=n>18.27 B</td><td class=n>24.5%</td></tr>
+<tr><td>claude (archive ledger, no model split)</td><td class=muted>claude-archive</td><td class=n>17.34 B</td><td class=n>23.2%</td></tr>
+<tr><td>claude-opus-5-5</td><td class=muted>claude</td><td class=n>11.32 B</td><td class=n>15.1%</td></tr>
+<tr><td>gpt-5.6-sol</td><td class=muted>codex</td><td class=n>8.64 B</td><td class=n>11.6%</td></tr>
+<tr><td>claude-sonnet-5</td><td class=muted>claude</td><td class=n>4.66 B</td><td class=n>6.2%</td></tr>
+<tr><td>claude-fable-5-1</td><td class=muted>claude</td><td class=n>3.41 B</td><td class=n>4.6%</td></tr>
+<tr><td>gpt-6-astra</td><td class=muted>codex</td><td class=n>2.97 B</td><td class=n>4.0%</td></tr>
+<tr><td>gpt-6.1-sol</td><td class=muted>codex</td><td class=n>2.70 B</td><td class=n>3.6%</td></tr>
+<tr><td>claude-sonnet-5-5</td><td class=muted>claude</td><td class=n>2.45 B</td><td class=n>3.3%</td></tr>
+<tr><td>claude-fable-5</td><td class=muted>claude</td><td class=n>1.54 B</td><td class=n>2.1%</td></tr>
+<tr><td>claude-haiku-5-5</td><td class=muted>claude</td><td class=n>462.9 M</td><td class=n>0.6%</td></tr>
+<tr><td>claude-opus-4-8</td><td class=muted>claude</td><td class=n>427.5 M</td><td class=n>0.6%</td></tr>
+<tr><td>claude-sonnet-4-6</td><td class=muted>claude</td><td class=n>176.3 M</td><td class=n>0.2%</td></tr>
 <tr><td>codex-auto-review</td><td class=muted>codex</td><td class=n>150.8 M</td><td class=n>0.2%</td></tr>
 </table></div>
 
@@ -78,17 +78,17 @@ ul{margin:0 0 1rem;padding-left:1.1rem}li{margin:.35rem 0}
 <p class="muted">Every machine in the fleet uploads its own Claude usage slice once a day. Codex and OpenRouter are counted on the hub only. Machines with a slice: A-2022BAYAREA, FLEET-ANCHOR, MacBook-Anton, MacPro192, ZBOOKG8-2023PAL. Fleet machines with <b>no slice yet</b> (their Claude usage is missing from every number here): EDITKA, MacBook-Ruslana, MyOwnPC-Natalia.</p>
 <div class="wrap"><table>
 <tr><th>Machine</th><th class=n>Claude tokens</th><th class=n>Share</th></tr>
-<tr><td>A-2022BAYAREA</td><td class=n>30.46 B</td><td class=n>54.6%</td></tr>
-<tr><td>ZBOOKG8-2023PAL</td><td class=n>12.62 B</td><td class=n>22.6%</td></tr>
-<tr><td>MacBook-Anton</td><td class=n>6.59 B</td><td class=n>11.8%</td></tr>
-<tr><td>MacPro192</td><td class=n>4.51 B</td><td class=n>8.1%</td></tr>
-<tr><td>FLEET-ANCHOR</td><td class=n>1.62 B</td><td class=n>2.9%</td></tr>
+<tr><td>A-2022BAYAREA</td><td class=n>33.04 B</td><td class=n>55.0%</td></tr>
+<tr><td>ZBOOKG8-2023PAL</td><td class=n>13.23 B</td><td class=n>22.0%</td></tr>
+<tr><td>MacBook-Anton</td><td class=n>7.43 B</td><td class=n>12.4%</td></tr>
+<tr><td>MacPro192</td><td class=n>4.70 B</td><td class=n>7.8%</td></tr>
+<tr><td>FLEET-ANCHOR</td><td class=n>1.72 B</td><td class=n>2.9%</td></tr>
 </table></div>
 
 <h2>By week</h2>
 <div class="wrap"><table>
 <tr><th>ISO week <span class=muted>(Monday)</span></th><th class=n>Claude</th><th class=n>Codex</th><th class=n>OpenRouter</th><th class=n>Total</th></tr>
-<tr><td>2026-W42 <span class=muted>2026-10-12</span></td><td class=n>2.84 B</td><td class=n>2.30 B</td><td class=n>1.2 M</td><td class=n><b>5.13 B</b></td></tr>
+<tr><td>2026-W42 <span class=muted>2026-10-12</span></td><td class=n>7.16 B</td><td class=n>4.27 B</td><td class=n>3.5 M</td><td class=n><b>11.44 B</b></td></tr>
 <tr><td>2026-W41 <span class=muted>2026-10-05</span></td><td class=n>19.78 B</td><td class=n>1.24 B</td><td class=n>4.4 M</td><td class=n><b>21.02 B</b></td></tr>
 <tr><td>2026-W40 <span class=muted>2026-09-28</span></td><td class=n>11.25 B</td><td class=n>2.01 B</td><td class=n>11.4 M</td><td class=n><b>13.27 B</b></td></tr>
 <tr><td>2026-W39 <span class=muted>2026-09-21</span></td><td class=n>4.60 B</td><td class=n>5.20 B</td><td class=n>6.4 M</td><td class=n><b>9.81 B</b></td></tr>
@@ -124,6 +124,6 @@ ul{margin:0 0 1rem;padding-left:1.1rem}li{margin:.35rem 0}
 </ul>
 
 <div class="sitenav">&copy; 2026 <b>Palo Alto AI Lab</b> &middot; <a href="https://palo-alto.ai/">Home</a> &middot; <a href="https://palo-alto.ai/anton/">Anton</a> &middot; <a href="https://palo-alto.ai/code/">Code</a> &middot; <a href="https://palo-alto.ai/members/">Members</a> &middot; <a href="https://tonydzi.github.io/">Candidate one-pager</a> &middot; <a href="https://github.com/tonydzi">GitHub</a> &middot; <a href="https://github.com/tonydzi/join-the-fleet">Join the fleet</a></div>
-<p class="foot">Generated 2026-10-14 20:07 UTC by a weekly job on the fleet hub. Not affiliated with Anthropic, OpenAI or any other vendor named here.</p>
+<p class="foot">Generated 2026-10-18 04:30 UTC by a weekly job on the fleet hub. Not affiliated with Anthropic, OpenAI or any other vendor named here.</p>
 </body>
 </html>

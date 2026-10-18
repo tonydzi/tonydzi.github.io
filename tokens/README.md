@@ -1,22 +1,22 @@
 # Fleet token meter
 
-How many LLM tokens the Palo Alto AI Lab fleet has burned. Counted from harness logs, no estimates. Updated weekly. Last run 2026-10-14 20:07 UTC.
+How many LLM tokens the Palo Alto AI Lab fleet has burned. Counted from harness logs, no estimates. Updated weekly. Last run 2026-10-18 04:30 UTC.
 
 Live page: https://palo-alto.ai/tokens/ and https://tonydzi.github.io/tokens/. Data: [tokens.json](tokens.json), [history.json](history.json).
 
 | Vendor | Total | Input | Cache read | Cache write | Output |
 |---|---:|---:|---:|---:|---:|
-| Claude (Claude Code, whole fleet) | 38.46 B | 7.1 M | 36.83 B | 1.47 B | 152.4 M |
+| Claude (Claude Code, whole fleet) | 42.79 B | 7.9 M | 40.89 B | 1.72 B | 167.7 M |
 | Claude (older daily ledger, totals only) | 17.34 B | 0 | 0 | 0 | 0 |
-| OpenAI Codex CLI (hub) | 12.57 B | 536.9 M | 11.99 B | 0 | 42.3 M |
-| OpenRouter: GLM, Mistral (hub) | 23.4 M | 19.0 M | 0 | 0 | 4.4 M |
-| **All** | **68.40 B** | | | | |
+| OpenAI Codex CLI (hub) | 14.55 B | 599.1 M | 13.90 B | 0 | 47.1 M |
+| OpenRouter: GLM, Mistral (hub) | 25.7 M | 21.1 M | 0 | 0 | 4.6 M |
+| **All** | **74.70 B** | | | | |
 
 ## By week
 
 | Week | Claude | Codex | OpenRouter | Total |
 |---|---:|---:|---:|---:|
-| 2026-W42 (2026-10-12) | 2.84 B | 2.30 B | 1.2 M | 5.13 B |
+| 2026-W42 (2026-10-12) | 7.16 B | 4.27 B | 3.5 M | 11.44 B |
 | 2026-W41 (2026-10-05) | 19.78 B | 1.24 B | 4.4 M | 21.02 B |
 | 2026-W40 (2026-09-28) | 11.25 B | 2.01 B | 11.4 M | 13.27 B |
 | 2026-W39 (2026-09-21) | 4.60 B | 5.20 B | 6.4 M | 9.81 B |

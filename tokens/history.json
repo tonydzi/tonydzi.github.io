@@ -442,63 +442,67 @@
   },
   "2026-W42": {
    "claude": {
-    "in": 330092,
-    "cache_write": 212024922,
-    "cache_read": 2608733025,
-    "out": 15019856,
-    "total": 2836107895,
-    "calls": 14337,
+    "in": 1068251,
+    "cache_write": 460325629,
+    "cache_read": 6670701104,
+    "out": 30256466,
+    "total": 7162351450,
+    "calls": 36301,
     "usd": 0.0,
     "by_model": {
-     "claude-sonnet-5-5": 586353849,
-     "claude-fable-5-1": 45677276,
-     "claude-haiku-5-5": 191796021,
-     "claude-haiku-4-5-20251001": 10834017,
-     "claude-opus-5-5": 1729800202,
-     "claude-opus-4-8": 13213951,
+     "claude-sonnet-5-5": 1564970428,
+     "claude-fable-5-1": 699442028,
+     "claude-haiku-5-5": 461986627,
+     "claude-haiku-4-5-20251001": 11022724,
+     "claude-opus-5-5": 3694273736,
+     "claude-opus-4-8": 58501129,
      "claude-sonnet-4-6": 27398255,
-     "claude-opus-5": 126955908,
-     "claude-sonnet-5": 104078416
+     "claude-opus-5": 440079151,
+     "claude-sonnet-5": 193224151,
+     "claude-fable-5": 7594728,
+     "deepseek/deepseek-v4.1-flash": 3735250,
+     "grok-4.7": 123243
     },
     "by_node": {
-     "A-2022BAYAREA": 1015383309,
-     "MacPro192": 81301825,
-     "FLEET-ANCHOR": 70837331,
-     "MacBook-Anton": 295520315,
-     "ZBOOKG8-2023PAL": 1373065115
+     "A-2022BAYAREA": 3595939415,
+     "MacPro192": 274037829,
+     "FLEET-ANCHOR": 169084741,
+     "MacBook-Anton": 1139533844,
+     "ZBOOKG8-2023PAL": 1983755621
     }
    },
    "codex": {
-    "in": 77629821,
+    "in": 139816453,
     "cache_write": 0,
-    "cache_read": 2210273920,
-    "out": 7300726,
-    "total": 2295204467,
-    "calls": 14548,
+    "cache_read": 4121559936,
+    "out": 12116695,
+    "total": 4273493084,
+    "calls": 24142,
     "usd": 0.0,
     "by_model": {
-     "gpt-5.6-sol": 1310623411,
-     "gpt-6.1-sol": 984581056
+     "gpt-6.1-sol": 2684148443,
+     "gpt-6-astra": 54845222,
+     "gpt-5.6-sol": 1534499419
     },
     "by_node": {
-     "A-2022BAYAREA": 2295204467
+     "A-2022BAYAREA": 4273493084
     }
    },
    "openrouter": {
-    "in": 966497,
+    "in": 3068882,
     "cache_write": 0,
     "cache_read": 0,
-    "out": 200628,
-    "total": 1167125,
-    "calls": 163,
-    "usd": 2.1195,
+    "out": 480998,
+    "total": 3549880,
+    "calls": 408,
+    "usd": 4.1435,
     "by_model": {
-     "z-ai/glm-5.3": 1167125,
-     "mistralai/mistral-medium-3-5": 0
+     "z-ai/glm-5.3": 3517246,
+     "mistralai/mistral-medium-3-5": 32634
     },
     "by_node": {
-     "A-2022BAYAREA": 1166167,
-     "node": 958
+     "A-2022BAYAREA": 2967000,
+     "node": 582880
     }
    }
   }
