@@ -1,25 +1,26 @@
 # Fleet token meter
 
-How many LLM tokens the Palo Alto AI Lab fleet has burned. Counted from harness logs, no estimates. Updated weekly. Last run 2026-10-18 04:30 UTC.
+How many LLM tokens the Palo Alto AI Lab fleet has burned. Counted from harness logs, no estimates. Updated weekly. Last run 2026-10-25 05:30 UTC.
 
 Live page: https://palo-alto.ai/tokens/ and https://tonydzi.github.io/tokens/. Data: [tokens.json](tokens.json), [history.json](history.json).
 
 | Vendor | Total | Input | Cache read | Cache write | Output |
 |---|---:|---:|---:|---:|---:|
-| Claude (Claude Code, whole fleet) | 42.79 B | 7.9 M | 40.89 B | 1.72 B | 167.7 M |
+| Claude (Claude Code, whole fleet) | 36.00 B | 7.1 M | 34.09 B | 1.76 B | 140.3 M |
 | Claude (older daily ledger, totals only) | 17.34 B | 0 | 0 | 0 | 0 |
-| OpenAI Codex CLI (hub) | 14.55 B | 599.1 M | 13.90 B | 0 | 47.1 M |
-| OpenRouter: GLM, Mistral (hub) | 25.7 M | 21.1 M | 0 | 0 | 4.6 M |
-| **All** | **74.70 B** | | | | |
+| OpenAI Codex CLI (hub) | 21.54 B | 813.3 M | 20.66 B | 0 | 67.0 M |
+| OpenRouter: GLM, Mistral (hub) | 29.2 M | 23.6 M | 0 | 0 | 5.7 M |
+| **All** | **74.91 B** | | | | |
 
 ## By week
 
 | Week | Claude | Codex | OpenRouter | Total |
 |---|---:|---:|---:|---:|
-| 2026-W42 (2026-10-12) | 7.16 B | 4.27 B | 3.5 M | 11.44 B |
-| 2026-W41 (2026-10-05) | 19.78 B | 1.24 B | 4.4 M | 21.02 B |
-| 2026-W40 (2026-09-28) | 11.25 B | 2.01 B | 11.4 M | 13.27 B |
-| 2026-W39 (2026-09-21) | 4.60 B | 5.20 B | 6.4 M | 9.81 B |
+| 2026-W43 (2026-10-19) | 14.02 B | 5.89 B | 2.4 M | 19.92 B |
+| 2026-W42 (2026-10-12) | 3.97 B | 5.37 B | 4.6 M | 9.34 B |
+| 2026-W41 (2026-10-05) | 8.01 B | 1.24 B | 4.4 M | 9.26 B |
+| 2026-W40 (2026-09-28) | 7.11 B | 2.01 B | 11.4 M | 9.14 B |
+| 2026-W39 (2026-09-21) | 2.89 B | 5.20 B | 6.4 M | 8.09 B |
 | 2026-W38 (2026-09-14) | 1.58 B | 936.3 M | 0 | 2.51 B |
 | 2026-W37 (2026-09-07) | 5.60 B | 298.6 M | 0 | 5.90 B |
 | 2026-W36 (2026-08-31) | 9.55 B | 149.4 M | 0 | 9.70 B |
@@ -38,6 +39,6 @@ Live page: https://palo-alto.ai/tokens/ and https://tonydzi.github.io/tokens/. D
 - Mistral called directly, outside OpenRouter
 - Web chats: claude.ai, ChatGPT, Gemini, Grok, NotebookLM
 - Codex and OpenRouter calls made on machines other than the hub
-- Claude usage on fleet machines without a slice: EDITKA, MacBook-Ruslana, MyOwnPC-Natalia
+- Claude usage on fleet machines without a slice: A-2022BAYAREA, EDITKA, MacBook-Ruslana, MyOwnPC-Natalia
 
 Instruments: https://github.com/tonydzi/llm-spend-audit
