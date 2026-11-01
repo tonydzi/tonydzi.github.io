@@ -269,25 +269,20 @@
     }
    },
    "codex": {
-    "in": 155343282,
+    "in": 3224500,
     "cache_write": 0,
-    "cache_read": 5027751547,
-    "out": 16811576,
-    "total": 5199906405,
-    "calls": 37250,
+    "cache_read": 64012672,
+    "out": 184644,
+    "total": 67421816,
+    "calls": 499,
     "usd": 0.0,
     "by_model": {
-     "gpt-5.6-sol": 4563243295,
-     "gpt-5.6-terra": 1789461,
      "gpt-5.6-luna": 38003,
-     "gpt-6-astra": 581230215,
-     "gpt-daybreak-blue-latest": 6364370,
-     "gpt-5.5": 172684,
-     "codex-auto-review": 40712827,
-     "codex (model not in log)": 6355550
+     "gpt-5.6-sol": 57556134,
+     "gpt-6-astra": 9827679
     },
     "by_node": {
-     "A-2022BAYAREA": 5199906405
+     "A-2022BAYAREA": 67421816
     }
    },
    "openrouter": {
@@ -310,26 +305,27 @@
   },
   "2026-W40": {
    "claude": {
-    "in": 3795438,
-    "cache_write": 270899793,
-    "cache_read": 6807433442,
-    "out": 28578470,
-    "total": 7110707143,
-    "calls": 30530,
+    "in": 4041538,
+    "cache_write": 445283505,
+    "cache_read": 10751989196,
+    "out": 43688854,
+    "total": 11245003093,
+    "calls": 50277,
     "usd": 0.0,
     "by_model": {
-     "claude-opus-5-5": 3173458254,
+     "claude-sonnet-5": 1647333790,
+     "claude-opus-5": 4139607574,
+     "claude-opus-4-8": 141868216,
+     "claude-sonnet-4-6": 55379989,
+     "claude-fable-5": 937310620,
+     "claude-opus-5-5": 3240777283,
+     "claude-haiku-4-5-20251001": 2350435,
      "claude-fable-5-1": 961091244,
      "claude-sonnet-5-5": 83235199,
-     "glm-5.3": 36048743,
-     "claude-haiku-4-5-20251001": 1617608,
-     "claude-sonnet-5": 716738873,
-     "claude-opus-5": 1961138232,
-     "claude-opus-4-8": 56731144,
-     "claude-fable-5": 84764504,
-     "claude-sonnet-4-6": 35883342
+     "glm-5.3": 36048743
     },
     "by_node": {
+     "A-2022BAYAREA": 4134295950,
      "MacPro192": 2982915208,
      "FLEET-ANCHOR": 488658952,
      "MacBook-Anton": 1837787157,
@@ -337,22 +333,18 @@
     }
    },
    "codex": {
-    "in": 113093829,
+    "in": 901300,
     "cache_write": 0,
-    "cache_read": 1894271104,
-    "out": 5619597,
-    "total": 2012984530,
-    "calls": 13978,
+    "cache_read": 7254272,
+    "out": 13215,
+    "total": 8168787,
+    "calls": 64,
     "usd": 0.0,
     "by_model": {
-     "gpt-5.6-sol": 3485889,
-     "gpt-6-astra": 1849603697,
-     "codex-auto-review": 110044575,
-     "codex (model not in log)": 48994353,
-     "gpt-5.6-terra": 856016
+     "gpt-6-astra": 8168787
     },
     "by_node": {
-     "A-2022BAYAREA": 2012984530
+     "A-2022BAYAREA": 8168787
     }
    },
    "openrouter": {
@@ -374,26 +366,28 @@
   },
   "2026-W41": {
    "claude": {
-    "in": 1657386,
-    "cache_write": 304786082,
-    "cache_read": 7672422731,
-    "out": 35417731,
-    "total": 8014283930,
-    "calls": 35102,
+    "in": 1973671,
+    "cache_write": 610648035,
+    "cache_read": 19092321255,
+    "out": 73404768,
+    "total": 19778347729,
+    "calls": 78195,
     "usd": 0.0,
     "by_model": {
-     "claude-opus-5-5": 3611719457,
-     "claude-sonnet-5-5": 555180479,
-     "glm-5.3": 99167,
-     "claude-fable-5-1": 844481391,
-     "claude-sonnet-5": 949847969,
-     "claude-opus-5": 1859347844,
-     "claude-haiku-4-5-20251001": 14394168,
-     "claude-opus-4-8": 113390298,
-     "claude-fable-5": 29882962,
-     "claude-sonnet-4-6": 35940195
+     "claude-opus-5": 11681999741,
+     "claude-sonnet-5": 1746880357,
+     "claude-opus-4-8": 137588447,
+     "claude-sonnet-4-6": 62416763,
+     "claude-opus-5-5": 3960553691,
+     "claude-fable-5": 183175031,
+     "claude-haiku-4-5-20251001": 15285683,
+     "claude-sonnet-5-5": 805314553,
+     "claude-fable-5-1": 1184150553,
+     "claude-haiku-5-5": 883743,
+     "glm-5.3": 99167
     },
     "by_node": {
+     "A-2022BAYAREA": 11764063799,
      "MacPro192": 1441299999,
      "FLEET-ANCHOR": 735718112,
      "MacBook-Anton": 2776100649,
@@ -401,21 +395,18 @@
     }
    },
    "codex": {
-    "in": 81694749,
+    "in": 187513,
     "cache_write": 0,
-    "cache_read": 1153970432,
-    "out": 5135463,
-    "total": 1240800644,
-    "calls": 10515,
+    "cache_read": 4935552,
+    "out": 19441,
+    "total": 5142506,
+    "calls": 34,
     "usd": 0.0,
     "by_model": {
-     "gpt-6-astra": 485309710,
-     "gpt-5.6-sol": 731653399,
-     "gpt-6.1-sol": 19972314,
-     "gpt-5.6-terra": 3865221
+     "gpt-5.6-sol": 5142506
     },
     "by_node": {
-     "A-2022BAYAREA": 1240800644
+     "A-2022BAYAREA": 5142506
     }
    },
    "openrouter": {
@@ -437,28 +428,29 @@
   },
   "2026-W42": {
    "claude": {
-    "in": 699473,
-    "cache_write": 332817318,
-    "cache_read": 3612523821,
-    "out": 19638544,
-    "total": 3965679156,
-    "calls": 21471,
+    "in": 1099153,
+    "cache_write": 505366819,
+    "cache_read": 7493491775,
+    "out": 33705412,
+    "total": 8033663159,
+    "calls": 41221,
     "usd": 0.0,
     "by_model": {
-     "claude-opus-5-5": 2548204034,
-     "claude-sonnet-5-5": 683244533,
+     "claude-sonnet-5-5": 1788622751,
+     "claude-fable-5-1": 732158095,
+     "claude-haiku-5-5": 517128852,
+     "claude-haiku-4-5-20251001": 11022724,
+     "claude-opus-5-5": 4182773523,
+     "claude-opus-4-8": 59155856,
+     "claude-sonnet-4-6": 27398255,
+     "claude-opus-5": 443931700,
      "claude-sonnet-5": 260018182,
-     "claude-opus-5": 153863665,
-     "claude-haiku-5-5": 88451203,
-     "claude-haiku-4-5-20251001": 376306,
-     "claude-opus-4-8": 35930459,
-     "claude-fable-5-1": 179115740,
      "claude-fable-5": 7594728,
      "deepseek/deepseek-v4.1-flash": 3735250,
-     "grok-4.7": 123243,
-     "claude-sonnet-4-6": 5021813
+     "grok-4.7": 123243
     },
     "by_node": {
+     "A-2022BAYAREA": 4067984003,
      "MacPro192": 277062551,
      "FLEET-ANCHOR": 239731321,
      "MacBook-Anton": 1423811366,
@@ -466,20 +458,19 @@
     }
    },
    "codex": {
-    "in": 165757180,
+    "in": 9277578,
     "cache_write": 0,
-    "cache_read": 5192461824,
-    "out": 15072255,
-    "total": 5373291259,
-    "calls": 29682,
+    "cache_read": 350226560,
+    "out": 1020922,
+    "total": 360525060,
+    "calls": 2006,
     "usd": 0.0,
     "by_model": {
-     "gpt-6.1-sol": 3651052123,
-     "gpt-6-astra": 147569005,
-     "gpt-5.6-sol": 1574670131
+     "gpt-5.6-sol": 147742629,
+     "gpt-6.1-sol": 212782431
     },
     "by_node": {
-     "A-2022BAYAREA": 5373291259
+     "A-2022BAYAREA": 360525060
     }
    },
    "openrouter": {
@@ -502,70 +493,143 @@
   },
   "2026-W43": {
    "claude": {
-    "in": 362994,
-    "cache_write": 744659542,
-    "cache_read": 13234603803,
-    "out": 43916558,
-    "total": 14023542897,
-    "calls": 59340,
+    "in": 533701,
+    "cache_write": 979088390,
+    "cache_read": 17940730923,
+    "out": 62617225,
+    "total": 18982970239,
+    "calls": 83298,
     "usd": 0.0,
     "by_model": {
-     "claude-sonnet-5-5": 1282761997,
-     "claude-fable-5-1": 1396329796,
-     "claude-opus-5-5": 9057769969,
+     "claude-haiku-5-5": 559430910,
+     "claude-sonnet-5-5": 2466565653,
+     "claude-opus-5-5": 11406356148,
+     "claude-sonnet-4-6": 2898441,
+     "claude-opus-4-8": 72751826,
+     "claude-fable-5-1": 1828365974,
+     "claude-opus-5": 2202076369,
+     "claude-fable-5": 144536520,
+     "claude-haiku-4-5-20251001": 83216,
      "glm-5.3": 153067,
-     "claude-opus-4-8": 61359626,
-     "claude-opus-5": 1720687482,
-     "claude-haiku-5-5": 88679053,
-     "claude-sonnet-5": 272120238,
-     "claude-fable-5": 143681669
+     "claude-sonnet-5": 299752115
     },
     "by_node": {
-     "MacPro192": 2972562428,
-     "FLEET-ANCHOR": 328032580,
-     "MacBook-Anton": 6025002616,
-     "ZBOOKG8-2023PAL": 4697945273
+     "A-2022BAYAREA": 4346131524,
+     "MacPro192": 2982046550,
+     "FLEET-ANCHOR": 431237987,
+     "MacBook-Anton": 6472368243,
+     "ZBOOKG8-2023PAL": 4751185935
     }
    },
    "codex": {
-    "in": 188219538,
+    "in": 109955547,
     "cache_write": 0,
-    "cache_read": 5685918208,
-    "out": 16924398,
-    "total": 5891062144,
-    "calls": 31225,
+    "cache_read": 2874614528,
+    "out": 10383128,
+    "total": 2994953203,
+    "calls": 15089,
     "usd": 0.0,
     "by_model": {
-     "gpt-6.1-sol": 5167316772,
-     "gpt-6-astra": 382484505,
-     "gpt-5.6-sol": 124564740,
-     "codex-auto-review": 157142970,
-     "gpt-5.6-terra": 59553157
+     "gpt-6.1-sol": 2792017117,
+     "gpt-5.6-sol": 59611941,
+     "gpt-6-astra": 143271504,
+     "codex-auto-review": 52641
     },
     "by_node": {
-     "A-2022BAYAREA": 5891062144
+     "A-2022BAYAREA": 2994953203
     }
    },
    "openrouter": {
-    "in": 1439495,
+    "in": 1457566,
     "cache_write": 0,
     "cache_read": 0,
-    "out": 994870,
-    "total": 2434365,
-    "calls": 278,
-    "usd": 4.2242,
+    "out": 1054177,
+    "total": 2511743,
+    "calls": 302,
+    "usd": 4.4522,
     "by_model": {
-     "z-ai/glm-5.3": 1242512,
-     "deepseek/deepseek-v4-pro-0813": 378198,
-     "qwen/qwen3.7-plus": 231798,
-     "mistralai/mistral-medium-3-5": 319128,
-     "openai/gpt-6-sol": 115401,
-     "x-ai/grok-4.3": 147328
+     "z-ai/glm-5.3": 1256114,
+     "deepseek/deepseek-v4-pro-0813": 395112,
+     "qwen/qwen3.7-plus": 248503,
+     "mistralai/mistral-medium-3-5": 334346,
+     "openai/gpt-6-sol": 121519,
+     "x-ai/grok-4.3": 156149
     },
     "by_node": {
-     "A-2022BAYAREA": 1928139,
+     "A-2022BAYAREA": 1950498,
      "node": 124722,
-     "unknown": 381504
+     "unknown": 436523
+    }
+   }
+  },
+  "2026-W44": {
+   "claude": {
+    "in": 1752314,
+    "cache_write": 519843020,
+    "cache_read": 9113371159,
+    "out": 31942546,
+    "total": 9666909039,
+    "calls": 43928,
+    "usd": 0.0,
+    "by_model": {
+     "claude-haiku-5-5": 553563772,
+     "claude-sonnet-5-5": 1271221729,
+     "claude-opus-5-5": 6696892716,
+     "claude-sonnet-4-6": 2411183,
+     "claude-opus-5": 262670510,
+     "claude-fable-5-1": 707405304,
+     "claude-haiku-4-5-20251001": 796560,
+     "claude-sonnet-5": 148813112,
+     "claude-opus-4-8": 22567468,
+     "claude-fable-5": 566685
+    },
+    "by_node": {
+     "A-2022BAYAREA": 3102592557,
+     "MacPro192": 3320853466,
+     "FLEET-ANCHOR": 164155729,
+     "MacBook-Anton": 1068436780,
+     "ZBOOKG8-2023PAL": 2010870507
+    }
+   },
+   "codex": {
+    "in": 266035367,
+    "cache_write": 0,
+    "cache_read": 8577074304,
+    "out": 29788020,
+    "total": 8872897691,
+    "calls": 45848,
+    "usd": 0.0,
+    "by_model": {
+     "gpt-6.1-sol": 6585486475,
+     "gpt-5.6-sol": 10977814,
+     "gpt-6-astra": 2212638510,
+     "codex-auto-review": 54505058,
+     "gpt-5.6-terra": 9289834
+    },
+    "by_node": {
+     "A-2022BAYAREA": 8872897691
+    }
+   },
+   "openrouter": {
+    "in": 2305394,
+    "cache_write": 0,
+    "cache_read": 0,
+    "out": 1969597,
+    "total": 4274991,
+    "calls": 750,
+    "usd": 11.0754,
+    "by_model": {
+     "z-ai/glm-5.3": 1070669,
+     "deepseek/deepseek-v4-pro-0813": 393554,
+     "qwen/qwen3.7-plus": 413320,
+     "mistralai/mistral-medium-3-5": 2035536,
+     "openai/gpt-6-sol": 139255,
+     "x-ai/grok-4.3": 222657
+    },
+    "by_node": {
+     "A-2022BAYAREA": 3435026,
+     "unknown": 793818,
+     "node": 46147
     }
    }
   }
