@@ -35,6 +35,7 @@ OWN_PAGES = [
     ("/scholar/",                "scholar/index.html",               "monthly"),
     ("/scholar/publications/",   "scholar/publications/index.html",  "monthly"),
     ("/scholar/writing/",        "scholar/writing/index.html",       "monthly"),
+    ("/scholar/writing/bitemporal-agent-memory.html", "scholar/writing/bitemporal-agent-memory.html", "yearly"),
     ("/scholar/ru/",             "scholar/ru/index.html",            "monthly"),
     ("/papers/",                 "papers/index.html",                "monthly"),
     ("/speaker/",                "speaker/index.html",               "weekly"),
