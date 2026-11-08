@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Memory over time: our stack vs Graphiti vs Mem0</title>
+<style>
+@page{size:A4;margin:14mm}
+body{font-family:Segoe UI,Arial,sans-serif;font-size:10.5pt;color:#1a1a1a;line-height:1.35}
+h1{font-size:17pt;margin:0 0 2px}
+.sub{color:#555;margin:0 0 10px}
+h2{font-size:12pt;margin:14px 0 6px;border-bottom:1px solid #ccc;padding-bottom:2px}
+table{border-collapse:collapse;width:100%;margin:4px 0}
+th,td{border:1px solid #ccc;padding:4px 6px;text-align:left;vertical-align:top}
+th{background:#f2f2f2}
+.ok{color:#0a7a2f;font-weight:600}.bad{color:#b3261e;font-weight:600}.mid{color:#8a6100;font-weight:600}
+.note{font-size:9pt;color:#555}
+code{font-size:9pt;background:#f5f5f5;padding:0 3px}
+</style></head><body>
+<h1>Memory over time: an object and its timeline</h1>
+<p class="sub">Our bitemporal memory vs Graphiti (open-source core of Zep) vs Mem0 OSS · live measurements, 5 Nov 2026 · Anton Dziatkovskii</p>
+
+<h2>The problem we test</h2>
+<p>An object changes: a hotel room is empty, then a guest checks in, then checks out; a sales lead is hot, then cools down.
+A good memory must (1) keep the whole history instead of overwriting it, (2) close the old fact with a date when a new one arrives,
+(3) answer "what was true on date D", and (4) undo a fact that was recorded by mistake, bringing the previous one back.</p>
+
+<h2>Result 1: room 402 scenario (deterministic, no LLM in the loop)</h2>
+<table>
+<tr><th>Scenario</th><th>Our <code>fact_history</code></th><th>Graphiti 0.31.2 core</th><th>Mem0 OSS 2.2.1</th></tr>
+<tr><td>S1. Four guests in a row: who was in the room on date D?</td><td class="ok">pass</td><td class="ok">pass</td><td class="mid">old and new value stored side by side (our 3 Nov canary)</td></tr>
+<tr><td>S2. A late fact arrives for the middle of the timeline</td><td class="ok">pass</td><td class="ok">pass</td><td>not tested yet</td></tr>
+<tr><td>S3. A record turns out to be wrong and is retracted</td><td class="ok">pass: previous guest comes back</td><td class="bad">fail: closing date is written into the old fact, no retract operation, the room shows empty</td><td>not tested yet</td></tr>
+<tr><th>Score</th><th class="ok">3 / 3</th><th class="mid">2 / 3</th><th>1 canary, full run pending</th></tr>
+</table>
+<p class="note">Why we pass S3: in our design the end of a fact is not stored, it is derived at read time from the next fact in the chain, so retracting a mistake automatically revives the previous value. Graphiti, like ours, uses two time axes (valid time and record time).</p>
+
+<h2>Result 2: real CRM data (15 real changes of lead status overnight, 30 questions "what was it on date D")</h2>
+<table>
+<tr><th>System</th><th>Input</th><th>Answers correct</th><th>Latency</th></tr>
+<tr><td>Ours: SQLite triggers write every change into an append-only history table, inside the same transaction</td><td>structured rows</td><td class="ok">30 / 30</td><td>0.01 ms per question, 0 LLM calls</td></tr>
+<tr><td>Graphiti 0.31.2 with GLM-5.3 as the extraction LLM, Kuzu graph</td><td>the same 15 changes as plain-text episodes</td><td class="mid">12 / 30 via search</td><td>~24 s per episode to ingest (LLM extraction)</td></tr>
+</table>
+<p class="note">Fair reading: Graphiti did extract all 30 episodes and correctly closed old facts with dates (example: Lead A "band Now" got an end date the moment "This month" arrived). Most misses came from retrieval: in this smoke run we used a simple word-hash embedder instead of a real embedding model, so search often returned another lead's facts. A run with a real embedder (multilingual-e5) and a direct timeline check without search is in progress.</p>
+
+<h2>What this means</h2>
+<ul>
+<li>For data that is already structured (CRM, job pipeline), a trigger-based history in the existing database is exact, instant and free. An LLM memory layer adds cost and recall errors there.</li>
+<li>Graphiti's strength is the step we do not have yet: turning raw text (calls, chats, notes) into dated facts automatically. That is what we want to borrow.</li>
+<li>Retracting a mistaken fact is a real gap in Graphiti's core and a natural question for any memory vendor.</li>
+</ul>
+
+<h2>Questions for Mem0</h2>
+<ol>
+<li>When a user's preference changes ("coffee" then "tea since Nov 2"), does Mem0 keep both with dates, or overwrite? Can I ask "what did they prefer in October"?</li>
+<li>How do you undo a memory that was extracted by mistake, and does the previous value come back?</li>
+<li>What do you recommend for data that is already structured: ingest it as text, or keep it in our DB and let Mem0 only handle conversations?</li>
+<li>Which benchmark do you trust for temporal questions (knowledge updates, "as of" questions), and what is your number on it?</li>
+</ol>
+<p class="note">Sources: our test scripts and receipts in the repo (<code>fact_history.py</code>, <code>timeline_H35889.py</code>, <code>our_side_asof.py</code>, <code>graphiti_glm_asof.py</code>). Lead names anonymised.</p>
+</body></html>
