@@ -1,0 +1,491 @@
+{
+  "_passport": "Single source of truth for /solutions/ landing pages. Edit numbers here, then run: python tools/build_landings.py. Every metric needs value, date and source. Refresh cadence: every two weeks. Machine: A-2022BAYAREA (Hub) · Agent: Claude Code · Operator: Anton · 2026-11-09",
+  "refreshed": "2026-11-09",
+  "cadence": "every two weeks",
+  "calendly": "https://calendly.com/paloaltolab/1-on-1",
+  "author": {
+    "name": "Anton Dziatkovskii",
+    "role": "COO/CTO and Python/C++ engineer, Palo Alto AI Research Lab",
+    "merged": "70 merged pull requests in 42 open-source projects, among them microsoft/semantic-kernel, google/adk-go and QwenLM/qwen-code",
+    "merged_as_of": "2026-11-04",
+    "merged_source": "https://github.com/tonydzi/tonydzi#readme",
+    "ai": "Pages and code are co-written with Mycroft, a synthetic AI cofounder (a Claude-based agent). Every number on this page links to the run that produced it."
+  },
+  "products": [
+    {
+      "slug": "agent-memory",
+      "family": "Agent memory",
+      "name": "Memory over time",
+      "headline": "Agent memory that knows when a fact stopped being true",
+      "pain": "Your agent remembers that a customer moved, then answers with the old address. Most memory layers store facts; few can answer \"what did we believe on 1 March\" or cleanly retract a wrong fact.",
+      "for_whom": [
+        "Teams shipping agents that talk to the same users for months (CRM, support, sales assistants)",
+        "Anyone evaluating Mem0, Zep/Graphiti or a homegrown store and needing an honest comparison on their own data",
+        "Regulated workflows where you must show what the agent knew at a given date"
+      ],
+      "first_win": "Your agent answers an \"as of date D\" question correctly on your own records, and a retracted fact stays retracted.",
+      "metrics": [
+        {
+          "bench": "DolphinBench retrieval, 20 tests, 200 sessions",
+          "metric": "Recall@5",
+          "rows": [
+            [
+              "Ours: hybrid BM25 + e5",
+              "0.883",
+              true
+            ],
+            [
+              "Anima Connectome",
+              "0.883"
+            ],
+            [
+              "Zep / Graphiti 0.31.2",
+              "0.767"
+            ],
+            [
+              "Mem0 OSS 2.2.1",
+              "0.567"
+            ]
+          ],
+          "date": "2026-11-05",
+          "source": "https://tonydzi.github.io/bench/dolphinbench-retrieval-mem0-zep-anima-ours-2026-11-05.pdf"
+        },
+        {
+          "bench": "Retracting a wrong fact (scenario 402)",
+          "metric": "correct of 3",
+          "rows": [
+            [
+              "Ours: bitemporal fact history",
+              "3/3",
+              true
+            ],
+            [
+              "Mem0 OSS",
+              "3/3"
+            ],
+            [
+              "Graphiti core",
+              "2/3"
+            ]
+          ],
+          "date": "2026-11-05",
+          "source": "https://tonydzi.github.io/bench/memory-over-time-ours-graphiti-mem0-2026-11-05.html"
+        },
+        {
+          "bench": "LoCoMo temporal questions",
+          "metric": "accuracy, %",
+          "rows": [
+            [
+              "Full context (upper bound)",
+              "85.7"
+            ],
+            [
+              "Mem0",
+              "76.5"
+            ],
+            [
+              "Ours: time-stamped fact log",
+              "72.2",
+              true
+            ]
+          ],
+          "date": "2026-11-08",
+          "source": "https://github.com/tonydzi/memory-over-time"
+        }
+      ],
+      "limits": [
+        "On LoCoMo temporal questions Mem0 beats us (76.5 vs 72.2, borderline significance); we publish it anyway.",
+        "DolphinBench numbers are source-session recall, not the full DolphinBench pass rate.",
+        "LongMemEval has not been run yet; it is next on the list."
+      ],
+      "repo": "https://github.com/tonydzi/memory-over-time",
+      "extra_links": [
+        [
+          "Open memory-bench leaderboard, rerun in CI",
+          "https://github.com/tonydzi/sqlite-graph-memory/blob/main/bench/LEADERBOARD.md"
+        ],
+        [
+          "Essay: bitemporal agent memory",
+          "https://tonydzi.github.io/scholar/writing/bitemporal-agent-memory.html"
+        ]
+      ]
+    },
+    {
+      "slug": "second-brain",
+      "family": "Second brain",
+      "name": "Second brain search",
+      "headline": "Search your team's notes like it remembers everything",
+      "pain": "Years of notes, calls and chats sit in Obsidian, Drive and Telegram. Keyword search misses meaning, vector search misses names and dates, and nobody measured which one your data needs.",
+      "for_whom": [
+        "Operators, researchers and small teams with a large markdown or Obsidian vault",
+        "Teams who want their agents (Claude, Codex, Cursor) to read the same knowledge base over MCP",
+        "Anyone choosing between pgvector, Qdrant, LanceDB or SQLite and wanting numbers instead of opinions"
+      ],
+      "first_win": "On 20 real questions from your own notes, the right note lands in the top 5 more often, and the system says \"not in your notes\" instead of inventing an answer.",
+      "metrics": [
+        {
+          "bench": "DolphinBench retrieval, 50 tests, 1,000 sessions (~120K tokens)",
+          "metric": "Recall@5",
+          "rows": [
+            [
+              "BM25 baseline",
+              "0.760"
+            ],
+            [
+              "Anima Connectome (GPU)",
+              "0.757"
+            ],
+            [
+              "Ours: hybrid BM25 + e5",
+              "0.717",
+              true
+            ],
+            [
+              "Mem0 OSS",
+              "0.647"
+            ]
+          ],
+          "date": "2026-11-05",
+          "source": "https://tonydzi.github.io/bench/dolphinbench-retrieval-mem0-zep-anima-ours-2026-11-05.pdf"
+        },
+        {
+          "bench": "memory-bench v0.1, 202 notes, 91 questions, rerun in CI",
+          "metric": "Recall@5 / abstains when the answer is absent",
+          "rows": [
+            [
+              "Plain RAG (reference)",
+              "0.93 / 0.18"
+            ],
+            [
+              "Ours: sqlite-graph-memory, vector",
+              "0.88 / 0.45",
+              true
+            ],
+            [
+              "Mem0 local 2.2.1",
+              "0.87 / 0.14"
+            ],
+            [
+              "BM25 (reference)",
+              "0.77 / 0.36"
+            ]
+          ],
+          "date": "2026-11-09",
+          "source": "https://github.com/tonydzi/sqlite-graph-memory/blob/main/bench/LEADERBOARD.md"
+        }
+      ],
+      "limits": [
+        "On the CI leaderboard a plain RAG reference still edges us on Recall@5 (0.93 vs 0.88); we win on refusing to answer when the note does not exist.",
+        "Plain BM25 beats every dense setup on name-heavy data; we tell you when you do not need vectors at all.",
+        "Our own reranker cost us 12 to 18 points of Recall@5; the benchmark caught it and we removed it.",
+        "Questions that point to one meeting by date are still the shared failure of every system we tested."
+      ],
+      "repo": "https://github.com/tonydzi/sqlite-graph-memory",
+      "extra_links": [
+        [
+          "Second brain starter kit",
+          "https://github.com/tonydzi/second-brain-starter-kit"
+        ]
+      ]
+    },
+    {
+      "slug": "ai-cofounder",
+      "family": "Synthetic cofounder",
+      "name": "Synthetic cofounder",
+      "headline": "An AI cofounder that keeps its character when you swap the model",
+      "pain": "You built an agent persona that argues, says no and remembers your decisions. Then the vendor ships a new model and the persona quietly turns into a polite yes-man. Nobody measures that.",
+      "for_whom": [
+        "Operators who want a sparring partner that pushes back with evidence, not a chat assistant",
+        "Teams running one agent persona across Claude, GPT, Gemini or Grok",
+        "Builders of companion or advisor products who need to prove character stability"
+      ],
+      "first_win": "Your persona scores within a measured band on two different models, on five tasks that probe character, not knowledge.",
+      "metrics": [
+        {
+          "bench": "Persona Portability Benchmark, 18 models, 5 tasks, blind 3-judge panel",
+          "metric": "rank / note",
+          "rows": [
+            [
+              "Claude Fable 5.1",
+              "1st",
+              true
+            ],
+            [
+              "Gemini 4 Argon",
+              "3rd"
+            ],
+            [
+              "Claude Haiku 4.5",
+              "last"
+            ],
+            [
+              "Panel vs independent Gemini judge",
+              "rho 0.82"
+            ]
+          ],
+          "date": "2026-10-29",
+          "source": "https://github.com/tonydzi/persona-portability-benchmark"
+        },
+        {
+          "bench": "First run, 7 models, same persona and frozen memory",
+          "metric": "score 1-5",
+          "rows": [
+            [
+              "Claude Fable 5",
+              "4.80",
+              true
+            ],
+            [
+              "Claude Opus 5",
+              "4.60"
+            ],
+            [
+              "OpenAI Codex CLI",
+              "3.20"
+            ],
+            [
+              "xAI Grok CLI",
+              "2.20"
+            ]
+          ],
+          "date": "2026-08-03",
+          "source": "https://doi.org/10.5281/zenodo.23915113"
+        }
+      ],
+      "limits": [
+        "We found no public benchmark for one persona on many models, so we built one; it is ours and it is open.",
+        "The ruler moved by up to 0.8 between runs on unchanged models; we report it.",
+        "Stronger models fabricate more convincing evidence; the benchmark has a task for that."
+      ],
+      "repo": "https://github.com/tonydzi/persona-portability-benchmark",
+      "extra_links": [
+        [
+          "Archived dataset and paper (DOI)",
+          "https://doi.org/10.5281/zenodo.23915113"
+        ]
+      ]
+    },
+    {
+      "slug": "agent-fleet",
+      "family": "Multi-machine agents",
+      "name": "Agent fleet: bus and consensus",
+      "headline": "Many machines, many agents, no human courier in the middle",
+      "pain": "A fix lands on the desktop and the laptop never hears about it. You copy-paste between terminals. \"Sent\" quietly becomes \"done\". This is what happens once you run agents on more than one machine.",
+      "for_whom": [
+        "Teams running Claude Code, Codex or Cursor agents on several machines",
+        "Engineers building inter-agent messaging (A2A, MCP) who want a protocol that has survived production",
+        "Anyone who needs machines to agree on routine decisions and wake a human only for risky ones"
+      ],
+      "first_win": "Two of your machines exchange a signed, acknowledged task without you copying anything between them.",
+      "metrics": [
+        {
+          "bench": "103 days of telemetry, seven-machine fleet",
+          "metric": "observation",
+          "rows": [
+            [
+              "Safety rules over 103 days",
+              "held",
+              true
+            ],
+            [
+              "Consensus proposals per month",
+              "121 to 6"
+            ]
+          ],
+          "date": "2026-11-06",
+          "source": "https://huggingface.co/blog/TonyDzi/coordination-decay-103-days-of-a-seven-machine-llm"
+        },
+        {
+          "bench": "Machine-to-machine SSH mesh, live check",
+          "metric": "routes green",
+          "rows": [
+            [
+              "Our fleet",
+              "29/30",
+              true
+            ]
+          ],
+          "date": "2026-11-08",
+          "source": "https://github.com/tonydzi/claw-consensus"
+        }
+      ],
+      "limits": [
+        "There is no mature public benchmark for multi-machine consensus; we publish our own telemetry and a zero-token harness.",
+        "The decline from 121 to 6 proposals is a finding about coordination decay, not a success metric; we publish it as such.",
+        "Preprint on arXiv (cs.MA) is pending endorsement; the repository copy is canonical."
+      ],
+      "repo": "https://github.com/tonydzi/claw-consensus",
+      "extra_links": [
+        [
+          "Fleet deploy: roll a fix to every node and prove it landed",
+          "https://github.com/tonydzi/fleet-deploy"
+        ]
+      ]
+    },
+    {
+      "slug": "llm-spend-audit",
+      "family": "LLM cost",
+      "name": "LLM spend audit",
+      "headline": "Find out how much of your LLM bill is mechanics",
+      "pain": "Your most expensive model runs shell commands and reads files all day, while cheaper subscriptions you already pay for sit idle. The vendor dashboard shows the total, not where it went.",
+      "for_whom": [
+        "Teams paying for several LLM subscriptions and API keys at once",
+        "Engineering leads who need a per-task breakdown before cutting a contract",
+        "Anyone running agent harnesses (Claude Code, Codex) at volume"
+      ],
+      "first_win": "A one-page breakdown of your own transcripts: which share of tokens is judgement and which is mechanics that can move to a cheaper rail.",
+      "metrics": [
+        {
+          "bench": "Our hub, 7 days of output tokens on the top model",
+          "metric": "share",
+          "rows": [
+            [
+              "Shell commands",
+              "54.4%"
+            ],
+            [
+              "Writing code",
+              "15.6%"
+            ],
+            [
+              "Reading files",
+              "12.4%"
+            ],
+            [
+              "Pure mechanics, total",
+              "82%",
+              true
+            ]
+          ],
+          "date": "2026-10-19",
+          "source": "https://github.com/tonydzi/llm-spend-audit"
+        },
+        {
+          "bench": "Same week, already-paid cheaper subscription",
+          "metric": "allowance used",
+          "rows": [
+            [
+              "Coding subscription",
+              "4%",
+              true
+            ]
+          ],
+          "date": "2026-10-19",
+          "source": "https://github.com/tonydzi/llm-spend-audit"
+        }
+      ],
+      "limits": [
+        "Absolute totals are inflated by double counting in the transcripts; only the shares are reliable, and the tool says so.",
+        "Reads local transcripts only: no LLM call, no network, no API key."
+      ],
+      "repo": "https://github.com/tonydzi/llm-spend-audit",
+      "extra_links": []
+    },
+    {
+      "slug": "mcp-daemon-diet",
+      "family": "Agent infrastructure",
+      "name": "MCP daemon diet",
+      "headline": "Stop every agent session from spawning its own copy of every MCP server",
+      "pain": "Each Claude or Codex session starts its own stdio copy of every MCP server. With 50 sessions open the machine swaps, the fans spin and nobody knows why.",
+      "for_whom": [
+        "Anyone running many parallel agent sessions on one machine",
+        "Teams with Telegram, MongoDB, n8n or browser MCP servers in their config",
+        "Ops people who were told \"just buy more RAM\""
+      ],
+      "first_win": "One shared MCP daemon per machine instead of one per session, and a measured RAM drop on your own machine.",
+      "metrics": [
+        {
+          "bench": "One laptop, 1 to 3 Aug 2026",
+          "metric": "copies / RAM",
+          "rows": [
+            [
+              "Launcher wrappers (npx, cmd)",
+              "~60 / ~5 GB"
+            ],
+            [
+              "mongodb",
+              "~26 / ~3.0 GB"
+            ],
+            [
+              "telegram",
+              "~9 / ~2.7 GB"
+            ]
+          ],
+          "date": "2026-08-03",
+          "source": "https://github.com/tonydzi/mcp-daemon-diet"
+        },
+        {
+          "bench": "Our hub after the switch, same measuring script",
+          "metric": "processes serving every open session",
+          "rows": [
+            [
+              "telegram: one shared daemon",
+              "1",
+              true
+            ],
+            [
+              "n8n: one shared daemon",
+              "1",
+              true
+            ]
+          ],
+          "date": "2026-11-09",
+          "source": "https://github.com/tonydzi/mcp-daemon-diet#readme"
+        }
+      ],
+      "limits": [
+        "Summed RSS overstates real memory because pages are shared; the README says so.",
+        "Before removing a server we count real tool calls; servers that are used stay."
+      ],
+      "repo": "https://github.com/tonydzi/mcp-daemon-diet",
+      "extra_links": []
+    },
+    {
+      "slug": "second-opinion",
+      "family": "Code review",
+      "name": "Second-opinion panel",
+      "headline": "One reviewer model is one blind spot. Ask several families at once.",
+      "pain": "You ask a model to review code and get confident findings. Half of them are about code it never saw. A single vendor also shares its own blind spots with the code it wrote.",
+      "for_whom": [
+        "Teams letting agents write code and wanting an independent review before merge",
+        "Anyone with Claude, GPT, Gemini and Grok subscriptions who wants them to check each other",
+        "Leads who need an exit code that refuses to go green without a real second opinion"
+      ],
+      "first_win": "A review of one real pull request by three model families, with quorum counted by family and fake findings filtered out.",
+      "metrics": [
+        {
+          "bench": "Same repo, 4 models from 4 families, only the input changed",
+          "metric": "real findings",
+          "rows": [
+            [
+              "Paths only, natural prompt",
+              "0 of 20"
+            ],
+            [
+              "Full file contents",
+              "10 of 10",
+              true
+            ],
+            [
+              "Real defects then fixed",
+              "4"
+            ]
+          ],
+          "date": "2026-08-10",
+          "source": "https://github.com/tonydzi/secondop-panel"
+        }
+      ],
+      "limits": [
+        "One measured repository, four models; small sample, stated as such.",
+        "19 gotchas the panel found in its own code are listed in the repo."
+      ],
+      "repo": "https://github.com/tonydzi/secondop-panel",
+      "extra_links": [
+        [
+          "The 19 gotchas",
+          "https://github.com/tonydzi/secondop-panel/blob/main/docs/GOTCHAS.md"
+        ]
+      ]
+    }
+  ]
+}
