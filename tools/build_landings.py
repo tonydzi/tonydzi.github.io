@@ -74,7 +74,7 @@ def product_page(d, p, others):
     cal = d["calendly"]
     b = [f"<div class=eyebrow>{E(p['family'])}</div><h1>{E(p['headline'])}</h1>",
          f"<p class=lead>{E(p['pain'])}</p>",
-         f"<a class=cta href='{E(cal)}'>Book a 15-minute call</a>",
+         f"<a class=cta href='{E(cal)}'>Book a 15-minute Google Meet</a>",
          f"<a class=ghost href='{E(p['repo'])}'>Read the code</a>",
          "<h2>Is this for you</h2><ul>" + "".join(f"<li>{E(x)}</li>" for x in p["for_whom"]) + "</ul>",
          f"<div class='card win'><b>The first win we aim for:</b> {E(p['first_win'])}</div>",
@@ -88,9 +88,9 @@ def product_page(d, p, others):
                  f"<table>{rows}</table></div>")
     b.append("<h2>What we do not claim</h2><ul>" + "".join(f"<li>{E(x)}</li>" for x in p["limits"]) + "</ul>")
     b.append("<h2>How we start</h2><ol><li>A 15-minute call: your setup, your data, what a first win means for you.</li>"
-             "<li>We run the same benchmark on your data and show the numbers, including where we lose.</li>"
+             "<li>We agree on a test for your setup and show the numbers, including where we lose.</li>"
              "<li>You decide with the numbers in hand: adopt the open-source tool yourself, or work with us.</li></ol>"
-             f"<a class=cta href='{E(cal)}'>Book a 15-minute call</a>")
+             f"<a class=cta href='{E(cal)}'>Book a 15-minute Google Meet</a>")
     links = [(f"Source code: {p['repo'].split('github.com/')[-1]}", p["repo"])] + [tuple(x) for x in p["extra_links"]]
     b.append("<h2>Go deeper</h2><ul>" + "".join(f"<li><a href='{E(u)}'>{E(t)}</a></li>" for t, u in links) + "</ul>")
     b.append(author_block(d))
@@ -107,9 +107,9 @@ def index_page(d):
         f"<p><b>{E(p['headline'])}</b></p><p class=meta>{E(p['metrics'][0]['bench'])}</p></div></a>"
         for p in d["products"])
     body = ("<div class=eyebrow>Palo Alto AI Research Lab</div><h1>Agent infrastructure, measured in public</h1>"
-            "<p class=lead>Small open-source tools we built to run our own AI agent fleet. Each one stands on a "
-            "benchmark you can rerun, including the runs where we lose.</p>"
-            f"<a class=cta href='{E(d['calendly'])}'>Book a 15-minute call</a>"
+            "<p class=lead>Small open-source tools we built to run our own AI agent fleet. Each one stands on dated measurements with a public test or source, "
+            "including the runs where we lose.</p>"
+            f"<a class=cta href='{E(d['calendly'])}'>Book a 15-minute Google Meet</a>"
             f"<h2>Pick your problem</h2><div class=grid>{cards}</div>" + author_block(d) +
             f"<footer>Numbers refreshed {E(d['refreshed'])}, {E(d['cadence'])}. <a href='../'>tonydzi.github.io</a></footer>")
     return page("Solutions · Palo Alto AI Research Lab", "Open-source agent infrastructure tools, each with a public benchmark.", body)

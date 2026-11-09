@@ -51,11 +51,11 @@
           "source": "https://tonydzi.github.io/bench/dolphinbench-retrieval-mem0-zep-anima-ours-2026-11-05.pdf"
         },
         {
-          "bench": "Retracting a wrong fact (scenario 402)",
+          "bench": "Retracting a wrong fact (scenario 402), narrow test with a red control",
           "metric": "correct of 3",
           "rows": [
             [
-              "Ours: bitemporal fact history",
+              "Ours: bitemporal fact history (separate engine)",
               "3/3",
               true
             ],
@@ -66,6 +66,10 @@
             [
               "Graphiti core",
               "2/3"
+            ],
+            [
+              "Red control (no retraction support)",
+              "0/3"
             ]
           ],
           "date": "2026-11-05",
@@ -76,7 +80,7 @@
           "metric": "accuracy, %",
           "rows": [
             [
-              "Full context (upper bound)",
+              "Full context (reference)",
               "85.7"
             ],
             [
@@ -84,7 +88,7 @@
               "76.5"
             ],
             [
-              "Ours: time-stamped fact log",
+              "Ours: time-stamped turn log",
               "72.2",
               true
             ]
@@ -95,6 +99,8 @@
       ],
       "limits": [
         "On LoCoMo temporal questions Mem0 beats us (76.5 vs 72.2, borderline significance); we publish it anyway.",
+        "The retraction result ties Mem0; it shows the scenario works, not that we are better.",
+        "The LoCoMo row and the retraction row are two different engines of ours, labelled as such.",
         "DolphinBench numbers are source-session recall, not the full DolphinBench pass rate.",
         "LongMemEval has not been run yet; it is next on the list."
       ],
@@ -266,52 +272,115 @@
       ]
     },
     {
-      "slug": "agent-fleet",
-      "family": "Multi-machine agents",
-      "name": "Agent fleet: bus and consensus",
-      "headline": "Many machines, many agents, no human courier in the middle",
-      "pain": "A fix lands on the desktop and the laptop never hears about it. You copy-paste between terminals. \"Sent\" quietly becomes \"done\". This is what happens once you run agents on more than one machine.",
+      "slug": "agent-bus",
+      "family": "Inter-agent communication",
+      "name": "Agent message bus",
+      "headline": "Messages between agents on different machines, with a receipt for every task",
+      "pain": "Machine A needs something from machine B, so a human copy-pastes between terminals. Or an agent hands off a task, nobody checks it landed, and silence gets read as success.",
+      "for_whom": [
+        "Teams running Claude Code, Codex or Cursor agents on several machines",
+        "Engineers wiring A2A or MCP agents together who need delivery receipts, not hope",
+        "Anyone whose \"human in the loop\" has turned into \"human as the courier\""
+      ],
+      "first_win": "Two of your machines exchange a task over two rails at once and the sender sees an explicit ACK, not silence.",
+      "metrics": [
+        {
+          "bench": "103 days of fleet telemetry, task acknowledgements",
+          "metric": "tasks / share",
+          "rows": [
+            [
+              "Tasks with an id",
+              "1,567"
+            ],
+            [
+              "Matched to an explicit ACK",
+              "726 (46%)",
+              true
+            ],
+            [
+              "Median time to ACK",
+              "1.6 h"
+            ]
+          ],
+          "date": "2026-11-06",
+          "source": "https://github.com/tonydzi/claw-consensus/blob/main/paper/telemetry/cain-2027/aggregates-cain-2027.json"
+        }
+      ],
+      "limits": [
+        "Less than half of tasks got a matched ACK; that gap is exactly what the protocol exposes and what we are fixing.",
+        "There is no mature public benchmark for inter-agent messaging; we publish raw telemetry and scripts instead.",
+        "Historical telemetry from our own fleet, not a test run on your machines."
+      ],
+      "repo": "https://github.com/tonydzi/claw-consensus",
+      "extra_links": [
+        [
+          "Coordination Decay: 103 days of a seven-machine fleet",
+          "https://huggingface.co/blog/TonyDzi/coordination-decay-103-days-of-a-seven-machine-llm"
+        ]
+      ]
+    },
+    {
+      "slug": "fleet-consensus",
+      "family": "Machine consensus",
+      "name": "Fleet consensus",
+      "headline": "Let your machines agree on routine decisions and wake you only for risky ones",
+      "pain": "Once agents run on several machines they drift apart, two of them commit conflicting changes, and every decision ends up back on your desk.",
       "for_whom": [
         "Teams running Claude Code, Codex or Cursor agents on several machines",
         "Engineers building inter-agent messaging (A2A, MCP) who want a protocol that has survived production",
         "Anyone who needs machines to agree on routine decisions and wake a human only for risky ones"
       ],
-      "first_win": "Two of your machines exchange a signed, acknowledged task without you copying anything between them.",
+      "first_win": "A routine change is proposed, accepted and independently verified by a second machine, and a risky one waits for you.",
       "metrics": [
         {
-          "bench": "103 days of telemetry, seven-machine fleet",
-          "metric": "observation",
+          "bench": "103 days of fleet telemetry, consensus log",
+          "metric": "count",
           "rows": [
             [
-              "Safety rules over 103 days",
-              "held",
+              "Proposals with a risk tier",
+              "148"
+            ],
+            [
+              "Committed",
+              "115"
+            ],
+            [
+              "Risky (Tier-2) commits without prior human approval",
+              "0 of 27",
               true
             ],
             [
-              "Consensus proposals per month",
-              "121 to 6"
+              "Commits checked by an independent machine",
+              "76 of 115"
+            ],
+            [
+              "Conflicting commits from two machines",
+              "0"
+            ]
+          ],
+          "date": "2026-11-06",
+          "source": "https://github.com/tonydzi/claw-consensus/blob/main/paper/telemetry/cain-2027/aggregates-cain-2027.json"
+        },
+        {
+          "bench": "Same study, monthly activity",
+          "metric": "proposals per month",
+          "rows": [
+            [
+              "First month",
+              "121"
+            ],
+            [
+              "Latest month",
+              "6"
             ]
           ],
           "date": "2026-11-06",
           "source": "https://huggingface.co/blog/TonyDzi/coordination-decay-103-days-of-a-seven-machine-llm"
-        },
-        {
-          "bench": "Machine-to-machine SSH mesh, live check",
-          "metric": "routes green",
-          "rows": [
-            [
-              "Our fleet",
-              "29/30",
-              true
-            ]
-          ],
-          "date": "2026-11-08",
-          "source": "https://github.com/tonydzi/claw-consensus"
         }
       ],
       "limits": [
-        "There is no mature public benchmark for multi-machine consensus; we publish our own telemetry and a zero-token harness.",
-        "The decline from 121 to 6 proposals is a finding about coordination decay, not a success metric; we publish it as such.",
+        "Proposals fell from 121 to 6 a month: a finding about coordination decay, published as such, not a success metric.",
+        "Historical telemetry from our own fleet; no public consensus benchmark exists.",
         "Preprint on arXiv (cs.MA) is pending endorsement; the repository copy is canonical."
       ],
       "repo": "https://github.com/tonydzi/claw-consensus",
@@ -319,6 +388,10 @@
         [
           "Fleet deploy: roll a fix to every node and prove it landed",
           "https://github.com/tonydzi/fleet-deploy"
+        ],
+        [
+          "Coordination Decay: 103 days of a seven-machine fleet",
+          "https://huggingface.co/blog/TonyDzi/coordination-decay-103-days-of-a-seven-machine-llm"
         ]
       ]
     },
