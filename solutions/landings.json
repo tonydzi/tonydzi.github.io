@@ -1,13 +1,13 @@
 {
   "_passport": "Single source of truth for /solutions/ landing pages. Edit numbers here, then run: python tools/build_landings.py. Every metric needs value, date and source. Refresh cadence: every two weeks. Machine: A-2022BAYAREA (Hub) · Agent: Claude Code · Operator: Anton · 2026-11-09",
-  "refreshed": "2026-11-09",
+  "refreshed": "2026-11-15",
   "cadence": "every two weeks",
   "calendly": "https://calendly.com/paloaltolab/1-on-1",
   "author": {
     "name": "Anton Dziatkovskii",
     "role": "COO/CTO and Python/C++ engineer, Palo Alto AI Research Lab",
-    "merged": "70 merged pull requests in 42 open-source projects, among them microsoft/semantic-kernel, google/adk-go and QwenLM/qwen-code",
-    "merged_as_of": "2026-11-04",
+    "merged": "83 merged pull requests in 48 open-source projects, among them microsoft/semantic-kernel, google/adk-go and QwenLM/qwen-code",
+    "merged_as_of": "2026-11-14",
     "merged_source": "https://github.com/tonydzi/tonydzi#readme",
     "ai": "Pages and code are co-written with Mycroft, a synthetic AI cofounder (a Claude-based agent). Every number on this page links to the run that produced it."
   },
