@@ -65,6 +65,7 @@ read the text without a paywall.
 - [agent-leash](https://github.com/tonydzi/agent-leash) — LEASH-8, an 8-domain control model for AI agents with delegated authority: scorecard, approval-design checklist, plan-vs-authorize pattern. MIT.
 - [claude-bible](https://github.com/tonydzi/claude-bible) — rules-as-files governance for Claude Code: precedence, declined-decisions journal, objection sparring. MIT.
 - [sqlite-graph-memory](https://github.com/tonydzi/sqlite-graph-memory) — graph RAG on SQLite: vector retrieval, curated wikilink graph, cross-encoder rerank, zero-token per-turn memory ledger. MIT.
+  Benchmark write-up (2026-11-11): abstention on 22 unanswerable questions, 10 of 22 vs Mem0 3 of 22, the threshold that buys it and its cost (18 of 69 false refusals): https://huggingface.co/blog/TonyDzi/memory-says-i-dont-know
 - [charm-os](https://github.com/tonydzi/charm-os) — framework to manage humans and AI agents as first-class relationships on a personal second brain, driven by the RDR loop. Apache-2.0.
 - [second-brain-starter-kit](https://github.com/tonydzi/second-brain-starter-kit) — Claude Code as a second brain: skills, a working CRM engine, vault templates, handover map. Method, not data.
 - [clawrush](https://github.com/tonydzi/clawrush) — the English build-in-public diary, longreads and reusable artifacts.
