@@ -1,26 +1,27 @@
 # Fleet token meter
 
-How many LLM tokens the Palo Alto AI Lab fleet has burned. Counted from harness logs, no estimates. Updated weekly. Last run 2026-11-15 05:30 UTC.
+How many LLM tokens the Palo Alto AI Lab fleet has burned. Counted from harness logs, no estimates. Updated weekly. Last run 2026-11-22 05:30 UTC.
 
 Live page: https://palo-alto.ai/tokens/ and https://tonydzi.github.io/tokens/. Data: [tokens.json](tokens.json), [history.json](history.json).
 
 | Vendor | Total | Input | Cache read | Cache write | Output |
 |---|---:|---:|---:|---:|---:|
-| Claude (Claude Code, whole fleet) | 98.74 B | 10.6 M | 93.94 B | 4.43 B | 355.6 M |
+| Claude (Claude Code, whole fleet) | 112.92 B | 10.8 M | 107.53 B | 4.98 B | 401.7 M |
 | Claude (older daily ledger, totals only) | 17.34 B | 0 | 0 | 0 | 0 |
-| OpenAI Codex CLI (hub) | 9.25 B | 317.4 M | 8.91 B | 0 | 21.6 M |
-| OpenRouter: GLM, Mistral (hub) | 39.9 M | 28.4 M | 0 | 0 | 11.6 M |
-| **All** | **125.36 B** | | | | |
+| OpenAI Codex CLI (hub) | 4.90 B | 192.9 M | 4.70 B | 0 | 13.2 M |
+| OpenRouter: GLM, Mistral (hub) | 44.4 M | 30.9 M | 0 | 0 | 13.5 M |
+| **All** | **135.21 B** | | | | |
 
 ## By week
 
 | Week | Claude | Codex | OpenRouter | Total |
 |---|---:|---:|---:|---:|
-| 2026-W46 (2026-11-09) | 11.41 B | 5.24 B | 5.0 M | 16.66 B |
-| 2026-W45 (2026-11-02) | 13.67 B | 1.05 B | 958.5 k | 14.72 B |
-| 2026-W44 (2026-10-26) | 12.73 B | 559.6 M | 4.7 M | 13.29 B |
-| 2026-W43 (2026-10-19) | 18.98 B | 369.6 M | 2.5 M | 19.36 B |
-| 2026-W42 (2026-10-12) | 8.03 B | 118.9 M | 4.6 M | 8.16 B |
+| 2026-W47 (2026-11-16) | 12.99 B | 1.37 B | 4.2 M | 14.37 B |
+| 2026-W46 (2026-11-09) | 12.36 B | 657.9 M | 5.3 M | 13.02 B |
+| 2026-W45 (2026-11-02) | 13.92 B | 364.9 M | 958.5 k | 14.29 B |
+| 2026-W44 (2026-10-26) | 12.73 B | 353.4 M | 4.7 M | 13.09 B |
+| 2026-W43 (2026-10-19) | 18.98 B | 227.6 M | 2.5 M | 19.21 B |
+| 2026-W42 (2026-10-12) | 8.03 B | 27.4 M | 4.6 M | 8.07 B |
 | 2026-W41 (2026-10-05) | 19.78 B | 5.1 M | 4.4 M | 19.79 B |
 | 2026-W40 (2026-09-28) | 11.25 B | 8.2 M | 11.4 M | 11.26 B |
 | 2026-W39 (2026-09-21) | 2.89 B | 67.4 M | 6.4 M | 2.96 B |
@@ -42,6 +43,6 @@ Live page: https://palo-alto.ai/tokens/ and https://tonydzi.github.io/tokens/. D
 - Mistral called directly, outside OpenRouter
 - Web chats: claude.ai, ChatGPT, Gemini, Grok, NotebookLM
 - Codex and OpenRouter calls made on machines other than the hub
-- Claude usage on fleet machines without a slice: EDITKA, MacBook-Ruslana, MacStudioM4, MyOwnPC-Natalia
+- Claude usage on fleet machines without a slice: EDITKA, MacBook-Ruslana, MyOwnPC-Natalia
 
 Instruments: https://github.com/tonydzi/llm-spend-audit
